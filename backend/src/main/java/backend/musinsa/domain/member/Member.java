@@ -1,28 +1,32 @@
-package backend.musinsa.domain;
+package backend.musinsa.domain.member;
 
 
-import backend.musinsa.domain.option.BaseTimeEntity;
+import backend.musinsa.domain.cart.Cart;
+import backend.musinsa.domain.order.Order;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Entity
-public class review extends BaseTimeEntity {
+public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String comment;
-    private String reviewImageUrl;
-    private Integer grade;
-    private Item item;
+    private String memberId;
+    private String password;
+    private String name;
+    private MemberInfo memberInfo;
+    private List<Order> orderList;
+    private List<Cart> cartList;
+
 
 
 }

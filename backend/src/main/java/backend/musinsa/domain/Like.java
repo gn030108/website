@@ -1,7 +1,6 @@
-package backend.musinsa.domain.option;
+package backend.musinsa.domain;
 
 
-import backend.musinsa.domain.option.BaseTimeEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,21 +9,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @NoArgsConstructor
-@Getter
 @AllArgsConstructor
+@Getter
 @Entity
-public class MemberInfo extends BaseTimeEntity {
+public class Like {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String address;
-    private String phoneNumber;
-    private String email;
-    private Integer age;
-    private String gender;
 
 }
-

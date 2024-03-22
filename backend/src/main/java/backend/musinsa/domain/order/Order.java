@@ -1,8 +1,8 @@
-package backend.musinsa.domain;
+package backend.musinsa.domain.order;
 
 
-import backend.musinsa.domain.option.BaseTimeEntity;
-import backend.musinsa.domain.option.OrderState;
+import backend.musinsa.domain.member.Member;
+import backend.musinsa.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +21,7 @@ public class Order extends BaseTimeEntity {
     private Member member;
     private Integer orderNumber;    //주문번호
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private OrderState order_state;    //주문상태
 
     private String deliveryAddress;     //배송받을 주소

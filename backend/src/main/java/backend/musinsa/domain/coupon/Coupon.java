@@ -1,4 +1,4 @@
-package backend.musinsa.domain;
+package backend.musinsa.domain.coupon;
 
 
 import jakarta.persistence.Entity;
@@ -9,15 +9,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Entity
-public class OrderItem {
+public class Coupon {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Boolean usable;
 
+    private LocalDateTime expiredTime;
 
 }

@@ -1,30 +1,21 @@
-package backend.musinsa.domain;
+package backend.musinsa.domain.cart;
 
 
-import backend.musinsa.domain.option.MemberInfo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 @Entity
-public class Member {
-
+public class Cart {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String memberId;
-    private String password;
-    private String name;
-    private MemberInfo memberInfo;
-    private List<Order> orderList;
-    private List<Cart> cartList;
 
 
 
