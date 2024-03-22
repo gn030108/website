@@ -1,12 +1,12 @@
 package backend.musinsa.domain.item;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import backend.musinsa.domain.board.Board;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,17 +17,24 @@ public class Item {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private itemReview itemReview;
-
     private String name;
 
     private String category;
 
     private String tag;
 
-    private ItemOption option;
-
+    @OneToOne(mappedBy = "item",fetch = FetchType.LAZY)
     private ItemInfo itemInfo;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
+
+    @OneToMany(mappedBy = "item")
+    private List<Like> likeList;
+
+    @OneToMany(mappedBy = "item")
+    private List<Review> reviewList;
 
 
 }

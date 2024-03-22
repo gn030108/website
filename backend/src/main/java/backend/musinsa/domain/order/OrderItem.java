@@ -2,6 +2,7 @@ package backend.musinsa.domain.order;
 
 
 import backend.musinsa.domain.coupon.CouponHistory;
+import backend.musinsa.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,8 +29,15 @@ public class OrderItem {
     @Lob
     private String thumbnail;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @OneToMany(mappedBy = "order_item",fetch = FetchType.LAZY)
     private List<CouponHistory> usedCouponList;
 
-
+    @OneToOne
+    @JoinColumn(name = "item_id")       //단방향
+    private Item item;
 
 }

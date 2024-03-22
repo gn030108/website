@@ -2,10 +2,7 @@ package backend.musinsa.domain.member;
 
 
 import backend.musinsa.domain.BaseTimeEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +22,9 @@ public class MemberInfo extends BaseTimeEntity {
     private String email;
     private Integer age;
     private String gender;
+
+    @OneToOne(mappedBy = "memberInfo",fetch = FetchType.LAZY)
+    private Member member;
 
 }
 

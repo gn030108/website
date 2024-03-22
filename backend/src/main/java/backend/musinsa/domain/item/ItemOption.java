@@ -1,10 +1,8 @@
 package backend.musinsa.domain.item;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import backend.musinsa.domain.cart.CartItem;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +21,13 @@ public class ItemOption {
     private String option;
 
     private String option2;
+
+    @OneToOne
+    @JoinColumn(name = "item_id")   //단방향
+    private Item item;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_item_id")
+    private CartItem cartItemList;
 
 }

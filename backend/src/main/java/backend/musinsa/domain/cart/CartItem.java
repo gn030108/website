@@ -1,9 +1,7 @@
 package backend.musinsa.domain.cart;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import backend.musinsa.domain.item.ItemOption;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +17,12 @@ public class CartItem {
     private Long id;
 
     private Integer count;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
+    @OneToOne(mappedBy = "cart_item",fetch = FetchType.LAZY)
+    private ItemOption itemOption;
 
 }

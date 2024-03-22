@@ -23,4 +23,7 @@ public class CouponInfo extends BaseTimeEntity {
 
     private Integer discountValue;
 
+    @OneToMany(mappedBy = "coupon_id")
+    private Coupon coupon;
+
 }

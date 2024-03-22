@@ -1,36 +1,28 @@
-package backend.musinsa.domain.coupon;
+package backend.musinsa.domain.item;
 
 
+import backend.musinsa.domain.item.Item;
 import backend.musinsa.domain.member.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Entity
-public class Coupon {
+public class Like {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Boolean usable;
-
-    private LocalDateTime expiredTime;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "coupon_info_id")
-    private CouponInfo couponInfo;
-
-    @OneToOne(mappedBy = "coupon")
-    private CouponHistory couponHistory;
+    @JoinColumn(name = "item_id")
+    private Item item;
 
 }

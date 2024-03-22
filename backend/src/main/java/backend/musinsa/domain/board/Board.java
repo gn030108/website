@@ -2,10 +2,7 @@ package backend.musinsa.domain.board;
 
 
 import backend.musinsa.domain.item.Item;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +18,12 @@ public class Board {
 
     private String title;
 
+    private String comment;
+
+    @OneToOne(mappedBy = "board",fetch = FetchType.LAZY)
     private Item item;
 
-    private String comment;
+
 
 
 }
