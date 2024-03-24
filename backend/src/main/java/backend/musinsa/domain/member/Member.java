@@ -8,11 +8,14 @@ import backend.musinsa.domain.coupon.Coupon;
 import backend.musinsa.domain.order.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @NoArgsConstructor
+@Getter
 @AllArgsConstructor
 @Entity
 public class Member {
@@ -44,4 +47,11 @@ public class Member {
     @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
     private List<Like> likeList;
 
+    @Builder
+    public Member(String memberId, String password, String name, MemberInfo memberInfo) {
+        this.memberId = memberId;
+        this.password = password;
+        this.name = name;
+        this.memberInfo = memberInfo;
+    }
 }

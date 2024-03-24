@@ -4,6 +4,7 @@ package backend.musinsa.domain.member;
 import backend.musinsa.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,8 +24,16 @@ public class MemberInfo extends BaseTimeEntity {
     private Integer age;
     private String gender;
 
-    @OneToOne(mappedBy = "memberInfo",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "memberInfo")
     private Member member;
 
+    @Builder
+    public MemberInfo(String address, String phoneNumber, String email, Integer age, String gender) {
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.age = age;
+        this.gender = gender;
+    }
 }
 
