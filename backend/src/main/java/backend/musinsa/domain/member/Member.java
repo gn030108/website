@@ -1,6 +1,5 @@
 package backend.musinsa.domain.member;
 
-
 import backend.musinsa.domain.item.Like;
 import backend.musinsa.domain.item.Review;
 import backend.musinsa.domain.cart.Cart;
@@ -26,6 +25,7 @@ public class Member {
     private String memberId;
     private String password;
     private String name;
+    private Role role;
 
     @OneToOne
     @JoinColumn(name = "member_info_id")
@@ -53,5 +53,9 @@ public class Member {
         this.password = password;
         this.name = name;
         this.memberInfo = memberInfo;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

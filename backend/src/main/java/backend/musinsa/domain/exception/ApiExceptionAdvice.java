@@ -26,4 +26,26 @@ public class ApiExceptionAdvice {
                         .exception(apiExceptionEntity)
                         .build());
     }
+
+    @ExceptionHandler({ExistIdException.class})
+    public ResponseEntity<ApiResult> existIdExceptionHandler(ExistIdException e){
+
+        ApiExceptionEntity apiExceptionEntity = ApiExceptionEntity.builder()
+                .errorCode(ExceptionEnum.ALREADY_EXIST_MEMBER_ID_EXCEPTION.getCode())
+                .errorMessage(e.getMessage())
+                .build();
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .status(ExceptionEnum.ALREADY_EXIST_MEMBER_ID_EXCEPTION.getStatus())
+                .body(ApiResult
+                        .builder()
+                        .status("error")
+                        .message("이미 존재하는 아이디 입니다.")
+                        .exception(apiExceptionEntity)
+                        .build());
+
+    }
+
 }

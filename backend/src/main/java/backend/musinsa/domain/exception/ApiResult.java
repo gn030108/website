@@ -21,4 +21,10 @@ public class ApiResult {
         this.message = message;
         this.exception = exception;
     }
+
+    @Builder
+    public ApiResult(String status, String message) {
+        this.status = status;
+        this.message = message;
+    }
 }
