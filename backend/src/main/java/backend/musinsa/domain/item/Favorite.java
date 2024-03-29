@@ -1,7 +1,6 @@
 package backend.musinsa.domain.item;
 
 
-import backend.musinsa.domain.item.Item;
 import backend.musinsa.domain.member.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 @Entity
-public class Like {
+public class Favorite {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

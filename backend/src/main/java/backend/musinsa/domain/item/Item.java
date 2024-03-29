@@ -31,7 +31,7 @@ public class Item {
     private Board board;
 
     @OneToMany(mappedBy = "item")
-    private List<Like> likeList;
+    private List<Favorite> favoriteList;
 
     @OneToMany(mappedBy = "item")
     private List<Review> reviewList;

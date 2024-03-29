@@ -1,10 +1,10 @@
 package backend.musinsa.domain.member;
 
-import backend.musinsa.domain.item.Like;
+import backend.musinsa.domain.item.Favorite;
 import backend.musinsa.domain.item.Review;
 import backend.musinsa.domain.cart.Cart;
 import backend.musinsa.domain.coupon.Coupon;
-import backend.musinsa.domain.order.Order;
+import backend.musinsa.domain.order.MemberOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,16 +36,16 @@ public class Member {
 
     @OneToOne
     @JoinColumn(name = "cart_id")
-    private List<Cart> cartList;
+    private Cart cart;
 
     @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
     private List<Coupon> couponList;
 
     @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
-    private List<Order> orderList;
+    private List<MemberOrder> memberOrderList;
 
     @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
-    private List<Like> likeList;
+    private List<Favorite> favoriteList;
 
     @Builder
     public Member(String memberId, String password, String name, MemberInfo memberInfo) {

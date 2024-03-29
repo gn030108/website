@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class ItemOption {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -28,6 +27,6 @@ public class ItemOption {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_item_id")
-    private CartItem cartItemList;
+    private CartItem cartItem;
 
 }

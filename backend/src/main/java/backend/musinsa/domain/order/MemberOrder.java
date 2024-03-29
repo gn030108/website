@@ -14,8 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Order extends BaseTimeEntity {
-
+public class MemberOrder extends BaseTimeEntity {
+    @Column(name = "member_order_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -31,7 +31,7 @@ public class Order extends BaseTimeEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order_item_id")
+    @OneToMany(mappedBy = "memberOrder")
     private List<OrderItem> orderItem;
 
     @Enumerated(EnumType.STRING)

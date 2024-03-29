@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -23,7 +25,7 @@ public class CouponInfo extends BaseTimeEntity {
 
     private Integer discountValue;
 
-    @OneToMany(mappedBy = "coupon_id")
-    private Coupon coupon;
+    @OneToMany(mappedBy = "couponInfo")
+    private List<Coupon> coupon;
 
 }

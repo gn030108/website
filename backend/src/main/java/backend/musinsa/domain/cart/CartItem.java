@@ -22,7 +22,7 @@ public class CartItem {
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @OneToOne(mappedBy = "cart_item",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "cartItem",fetch = FetchType.LAZY)
     private ItemOption itemOption;
 
 }

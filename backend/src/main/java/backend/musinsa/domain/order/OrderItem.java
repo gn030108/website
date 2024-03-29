@@ -30,10 +30,10 @@ public class OrderItem {
     private String thumbnail;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "member_order_id")
+    private MemberOrder memberOrder;
 
-    @OneToMany(mappedBy = "order_item",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "orderItem",fetch = FetchType.LAZY)
     private List<CouponHistory> usedCouponList;
 
     @OneToOne
