@@ -47,5 +47,25 @@ public class ApiExceptionAdvice {
                         .build());
 
     }
+    @ExceptionHandler({TokenWithOutCredentials.class})
+    public ResponseEntity<ApiResult> tokenWithOutCredentials(TokenWithOutCredentials e){
+
+        ApiExceptionEntity apiExceptionEntity = ApiExceptionEntity.builder()
+                .errorCode(ExceptionEnum.TOKEN_WITH_OUT_CREDENTIALS.getCode())
+                .errorMessage(e.getMessage())
+                .build();
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .status(ExceptionEnum.TOKEN_WITH_OUT_CREDENTIALS.getStatus())
+                .body(ApiResult
+                        .builder()
+                        .status("error")
+                        .message("자격 증명이 되지않은 토큰입니다.")
+                        .exception(apiExceptionEntity)
+                        .build());
+    }
+
 
 }

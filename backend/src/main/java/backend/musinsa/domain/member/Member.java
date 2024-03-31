@@ -10,14 +10,19 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@NoArgsConstructor
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class Member {
+public class Member implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,7 +30,9 @@ public class Member {
     private String memberId;
     private String password;
     private String name;
-    private Role role;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
 
     @OneToOne
     @JoinColumn(name = "member_info_id")
@@ -55,7 +62,39 @@ public class Member {
         this.memberInfo = memberInfo;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles.stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }
