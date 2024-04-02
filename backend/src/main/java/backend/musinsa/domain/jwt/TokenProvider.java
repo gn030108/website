@@ -71,6 +71,8 @@ public class TokenProvider {
         String refreshToken = Jwts.builder()
                 .setExpiration(new Date(now + REFRESH_TOKEN_EXPIRES))       //7일
                 .signWith(key, SignatureAlgorithm.HS256)
+                .claim("mid",authentication.getName())
+                .claim("auth",authorities)
                 .compact();
 
         return TokenDto.builder()
@@ -110,6 +112,17 @@ public class TokenProvider {
         // UserDetails 객체 생성
         UserDetails principal = new User(claims.getSubject(),"",authorities);
         return new UsernamePasswordAuthenticationToken(principal,"",authorities);
+    }
+
+    /**
+     * 리프레시 토큰에 있는 회원의 아이디 조회
+     * @param refreshToken
+     * @return
+     */
+    public String extractMemberId(String refreshToken){
+        Jws<Claims> claimsJws = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(refreshToken);
+        Claims body = claimsJws.getBody();
+        return body.get("mid",String.class);
     }
 
     /**
@@ -160,5 +173,26 @@ public class TokenProvider {
         }catch (ExpiredJwtException e){
             return e.getClaims();
         }
+    }
+
+    public TokenDto reissueToken(String refreshToken){
+        //Jwt 토큰 복호화
+        Claims claims = parseClaims(refreshToken);
+
+        if(claims.get("auth") == null){
+            throw new TokenWithOutCredentials(ExceptionEnum.TOKEN_WITH_OUT_CREDENTIALS);
+        }
+
+        //Claim 에서 권한 정보 가져오기.
+        List<? extends GrantedAuthority> authorities =
+                Arrays.stream(claims.get("auth").toString().split(","))
+                        .map(SimpleGrantedAuthority::new)
+                        .toList();
+
+        String memberId = claims.get("mid", String.class);
+        // UserDetails 객체 생성
+        UserDetails principal = new User(memberId,"",authorities);
+        //생성된 객체를 통해 새로운 토큰 발급
+        return generateToken(new UsernamePasswordAuthenticationToken(principal,"",authorities));
     }
 }

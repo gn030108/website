@@ -88,29 +88,22 @@ public class MemberService {
                             .status("Login fail")
                             .message("아이디 혹은 비밀번호가 다릅니다.")
                             .build());
-
         }catch (NoSuchElementException e){
             throw new LoginException(ExceptionEnum.BAD_LOGIN_TRY_EXCEPTION);
         }
     }
+
     public TokenDto signIn(MemberRequestDto input){
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(input.getMemberId(), input.getPassword());
 
+        // 실제 인증
         Authentication authentication =
                 authenticationManagerBuilder.getObject().authenticate(authenticationToken);
 
         return tokenProvider.generateToken(authentication);
 
     }
-
-
-
-    public void tokenLogin(){
-
-    }
-
-
 
 
 }
