@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.StringUtils;
 
 
 @NoArgsConstructor
@@ -34,6 +35,19 @@ public class MemberInfo extends BaseTimeEntity {
         this.email = email;
         this.age = age;
         this.gender = gender;
+    }
+    public void changeInfo(MemberRequestDto memberRequestDto){
+        if(StringUtils.hasText(memberRequestDto.getAddress())){
+            this.address = memberRequestDto.getAddress();
+        }if(StringUtils.hasText(memberRequestDto.getPhoneNumber())){
+            this.phoneNumber = memberRequestDto.getPhoneNumber();
+        }if(StringUtils.hasText(memberRequestDto.getEmail())){
+            this.email = memberRequestDto.getEmail();
+        }if(StringUtils.hasText(String.valueOf(memberRequestDto.getAge()))){
+            this.age = memberRequestDto.getAge();
+        }if(StringUtils.hasText(memberRequestDto.getGender())){
+            this.gender = memberRequestDto.getGender();
+        }
     }
 }
 

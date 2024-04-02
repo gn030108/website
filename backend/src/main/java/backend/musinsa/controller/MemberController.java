@@ -44,4 +44,10 @@ public class MemberController {
     private ResponseEntity<TokenDto> reissueToken(@RequestHeader("Refresh") String refreshToken){
         return ResponseEntity.ok(managerReissueTokenService.reissueToken(refreshToken));
     }
+
+    @PostMapping("change-info")
+    private ResponseEntity<ApiResult> changeInfo(@RequestBody MemberRequestDto memberRequestDto){
+        return memberService.changeInfo(memberRequestDto);
+    }
+
 }

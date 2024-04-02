@@ -31,4 +31,6 @@ public class MemberRequestDto {
         this.gender = gender;
         this.email = email;
     }
+
+
 }

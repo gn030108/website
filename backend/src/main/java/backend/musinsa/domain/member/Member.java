@@ -97,4 +97,5 @@ public class Member implements UserDetails {
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
+
 }
