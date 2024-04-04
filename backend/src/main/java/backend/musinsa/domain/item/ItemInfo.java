@@ -4,8 +4,11 @@ package backend.musinsa.domain.item;
 import backend.musinsa.domain.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,12 +23,32 @@ public class ItemInfo extends BaseTimeEntity {
 
     private String status;
 
+    private String gender;
+
+    private String itemNumber;
+
     private String itemImageUrl;
 
     private String thumbnailImageUrl;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    private List<String> colorOption;
+
+    private List<String> sizeOption;
+
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id")
     private Item item;
 
+    @Builder
+    public ItemInfo(Integer price, String status, String gender, String itemNumber,
+                    String itemImageUrl, String thumbnailImageUrl, List<String> colorOption, List<String> sizeOption) {
+        this.price = price;
+        this.status = status;
+        this.gender = gender;
+        this.itemNumber = itemNumber;
+        this.itemImageUrl = itemImageUrl;
+        this.thumbnailImageUrl = thumbnailImageUrl;
+        this.colorOption = colorOption;
+        this.sizeOption = sizeOption;
+    }
 }

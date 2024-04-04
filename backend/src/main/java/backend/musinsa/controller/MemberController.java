@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RestController("Member")
+@RestController("member")
 public class MemberController {
 
     private final MemberService memberService;

@@ -36,10 +36,7 @@ public class SecurityConfig {
                                         .requestMatchers("/member/login").permitAll()
                                         .requestMatchers("/member/register").permitAll()
                                         .requestMatchers("/board/**").permitAll()
-
-                                        .requestMatchers("/test/register").permitAll()
-                                        .requestMatchers("/test/login").permitAll()
-                                        .requestMatchers("/test/member").hasRole("MEMBER")
+                                        .requestMatchers("/admin/**").hasRole("ADMIN")
                                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(

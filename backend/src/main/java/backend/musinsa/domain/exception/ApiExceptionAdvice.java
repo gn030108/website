@@ -67,5 +67,25 @@ public class ApiExceptionAdvice {
                         .build());
     }
 
+    @ExceptionHandler({ItemException.class})
+    public ResponseEntity<ApiResult> itemException(ItemException e){
+
+        ApiExceptionEntity apiExceptionEntity = ApiExceptionEntity.builder()
+                .errorCode(ExceptionEnum.ITEM_REGISTRATION_FAIL.getCode())
+                .errorMessage(e.getMessage())
+                .build();
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .status(ExceptionEnum.ITEM_REGISTRATION_FAIL.getStatus())
+                .body(ApiResult
+                        .builder()
+                        .status("error")
+                        .message(ExceptionEnum.ITEM_REGISTRATION_FAIL.getMessage())
+                        .exception(apiExceptionEntity)
+                        .build());
+    }
+
 
 }

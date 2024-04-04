@@ -3,6 +3,7 @@ package backend.musinsa.domain.item;
 import backend.musinsa.domain.board.Board;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -23,7 +24,9 @@ public class Item {
 
     private String tag;
 
-    @OneToOne(mappedBy = "item",fetch = FetchType.LAZY)
+    private String brand;
+
+    @OneToOne(mappedBy = "item",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     private ItemInfo itemInfo;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -35,6 +38,20 @@ public class Item {
 
     @OneToMany(mappedBy = "item")
     private List<Review> reviewList;
-
+    @Builder
+    public Item(String name, String category, String tag, String brand, ItemInfo itemInfo) {
+        this.name = name;
+        this.category = category;
+        this.tag = tag;
+        this.brand = brand;
+        this.itemInfo = itemInfo;
+    }
+    public void updateItem(String name, String category, String tag, String brand, ItemInfo itemInfo) {
+        this.name = name;
+        this.category = category;
+        this.tag = tag;
+        this.brand = brand;
+        this.itemInfo = itemInfo;
+    }
 
 }

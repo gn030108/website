@@ -15,7 +15,9 @@ public enum ExceptionEnum {
     ALREADY_LOGOUT_USER(HttpStatus.UNAUTHORIZED,"E0005","이미 로그아웃한 회원입니다."),
     DIFFERENT_TOKEN_USER(HttpStatus.UNAUTHORIZED,"E0005","로그인한 사용자의 RefreshToken 이 아닙니다."),
     SECURITY_NOT_LOGIN_EXCEPTION(HttpStatus.UNAUTHORIZED,"S0001","로그인이 필요합니다."),
-    ALREADY_EXIST_MEMBER_ID_EXCEPTION(HttpStatus.BAD_REQUEST,"S0002","이미 존재하는 회원 아이디 입니다.");
+    ALREADY_EXIST_MEMBER_ID_EXCEPTION(HttpStatus.BAD_REQUEST,"S0002","이미 존재하는 회원 아이디 입니다."),
+    ITEM_REGISTRATION_FAIL(HttpStatus.BAD_REQUEST,"I0001","상품 등록에 실패하였습니다."),
+    ITEM_UPDATE_FAIL(HttpStatus.BAD_REQUEST,"I0002","상품 정보 변경에 실패하였습니다.");
 
     private final HttpStatus status;
     private final String code;
