@@ -22,12 +22,9 @@ public class ItemRequestDto {
     private Integer price;
     private String status;
     private String itemNumber;
-    private String imageUrl;
-    private String thumbnailImageUrl;
     private List<String> colorOption;
     private List<String> sizeOption;
     private String gender;
-
 
 
 }

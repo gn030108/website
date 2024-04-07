@@ -20,7 +20,7 @@ public class Board {
 
     private String comment;
 
-    @OneToOne(mappedBy = "board",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "board",fetch = FetchType.EAGER)
     private Item item;
 
 

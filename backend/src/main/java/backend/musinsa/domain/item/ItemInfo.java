@@ -27,10 +27,6 @@ public class ItemInfo extends BaseTimeEntity {
 
     private String itemNumber;
 
-    private String itemImageUrl;
-
-    private String thumbnailImageUrl;
-
     private List<String> colorOption;
 
     private List<String> sizeOption;
@@ -41,13 +37,11 @@ public class ItemInfo extends BaseTimeEntity {
 
     @Builder
     public ItemInfo(Integer price, String status, String gender, String itemNumber,
-                    String itemImageUrl, String thumbnailImageUrl, List<String> colorOption, List<String> sizeOption) {
+                    List<String> colorOption, List<String> sizeOption) {
         this.price = price;
         this.status = status;
         this.gender = gender;
         this.itemNumber = itemNumber;
-        this.itemImageUrl = itemImageUrl;
-        this.thumbnailImageUrl = thumbnailImageUrl;
         this.colorOption = colorOption;
         this.sizeOption = sizeOption;
     }
