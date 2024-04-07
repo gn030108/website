@@ -33,4 +33,12 @@ public class Image {
         this.thumbnailImageUrlList = thumbnailImageUrlList;
         this.item = item;
     }
+
+    public void setItemImageUrlList(List<String> itemImageUrlList) {
+        this.itemImageUrlList = itemImageUrlList;
+    }
+
+    public void setThumbnailImageUrlList(List<String> thumbnailImageUrlList) {
+        this.thumbnailImageUrlList = thumbnailImageUrlList;
+    }
 }

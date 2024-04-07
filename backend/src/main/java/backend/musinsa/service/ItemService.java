@@ -3,13 +3,13 @@ package backend.musinsa.service;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.exception.ExceptionEnum;
 import backend.musinsa.domain.exception.ItemException;
-import backend.musinsa.domain.item.Image;
 import backend.musinsa.domain.item.Item;
 import backend.musinsa.domain.item.ItemInfo;
 import backend.musinsa.domain.item.ItemRequestDto;
 import backend.musinsa.repository.ItemInfoRepository;
 import backend.musinsa.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -101,5 +101,17 @@ public class ItemService {
     }
 
 
-
+    public ResponseEntity<ApiResult> updateThumbnailImage(String id, List<MultipartFile> thumbnailImageList) {
+        if(imageService.updateThumbnailImage(getItem(id),thumbnailImageList)){
+            return ResponseEntity.ok().body(ApiResult.builder().status("success").message("썸네일 이미지 변경완료").build());
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiResult.builder().status("error").message("썸네일 이미지 변경실패").build());
+    }
+    public ResponseEntity<ApiResult> updateMainImage(String id, List<MultipartFile> mainImageList){
+        if(imageService.updateMainImage(getItem(id),mainImageList)){
+            return ResponseEntity.ok().body(ApiResult.builder().status("success").message("메인 이미지 변경완료").build());
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiResult.builder().status("error").message("메인 이미지 변경실패").build());
+    }
 }
+

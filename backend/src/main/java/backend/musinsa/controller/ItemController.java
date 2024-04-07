@@ -41,13 +41,16 @@ public class ItemController {
 
     }
 
-    @PostMapping("update/thumbnailImage")
-    public void updateThumbnailImage(){
-
+    @PostMapping("update/{id}/thumbnailImage")
+    public ResponseEntity<ApiResult> updateThumbnailImage(@RequestParam("id") String id,
+                                                          @RequestPart("thumbnail") List<MultipartFile> thumbnailImageList){
+        return itemService.updateThumbnailImage(id,thumbnailImageList);
     }
 
-    @PostMapping("update/mainImage")
-    public void updateMainImage(){
+    @PostMapping("update/{id}/mainImage")
+    public ResponseEntity<ApiResult> updateMainImage(@RequestParam("id") String id,
+                                                     @RequestPart("main") List<MultipartFile> mainImageList){
+        return itemService.updateMainImage(id,mainImageList);
 
     }
 

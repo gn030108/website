@@ -1,6 +1,5 @@
 package backend.musinsa.service;
 
-import backend.musinsa.domain.board.Board;
 import backend.musinsa.domain.item.Image;
 import backend.musinsa.domain.item.Item;
 import backend.musinsa.repository.ImageRepository;
@@ -48,7 +47,7 @@ public class ImageServiceImpl implements ImageService{
 
             Image image = Image.builder()
                     .itemImageUrlList(mainImageStore(mainImageList, storage))
-                    .thumbnailImageUrlList(thumbnailImage(thumbnailImageList, storage))
+                    .thumbnailImageUrlList(thumbnailImageStore(thumbnailImageList, storage))
                     .item(item)
                     .build();
             imageRepository.save(image);
@@ -59,7 +58,7 @@ public class ImageServiceImpl implements ImageService{
         }
     }
 
-    private List<String> thumbnailImage(List<MultipartFile> thumbnailImageList, Storage storage) throws IOException {
+    private List<String> thumbnailImageStore(List<MultipartFile> thumbnailImageList, Storage storage) throws IOException {
         List<String> imageList= new ArrayList<>();
 
         for (MultipartFile multipartFile : thumbnailImageList) {
@@ -96,10 +95,62 @@ public class ImageServiceImpl implements ImageService{
         }
         return imageList;
     }
+    @Override
+    public Boolean updateThumbnailImage(Item item, List<MultipartFile> thumbnailImageList) {
+
+        try {
+            List<String> thumbnailImageUrlList = item.getImage().getThumbnailImageUrlList();
+            InputStream keyFile = ResourceUtils.getURL("classpath:"+keyFileName).openStream();
+            Storage storage = StorageOptions.newBuilder()
+                    .setCredentials(GoogleCredentials.fromStream(keyFile))
+                    .build()
+                    .getService();
+            for (String image : thumbnailImageUrlList) {
+
+                Blob blob = storage.get(bucketName, image);
+
+                if(blob == null){
+                    log.info("The object "+ image + " wasn't fount in "+bucketName);
+                }
+                Storage.BlobSourceOption precondition =
+                        Storage.BlobSourceOption.generationMatch(blob.getGeneration());
+
+                storage.delete(bucketName, image, precondition);
+            }
+            item.getImage().setThumbnailImageUrlList(thumbnailImageStore(thumbnailImageList,storage));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
+    }
 
     @Override
-    public Image updateImage(Item item,List<MultipartFile> mainImageList, List<MultipartFile> thumbnailImageList) {
-        return null;
+    public Boolean updateMainImage(Item item, List<MultipartFile> mainImageList) {
+        try {
+            List<String> itemImageUrlList = item.getImage().getItemImageUrlList();
+            InputStream keyFile = ResourceUtils.getURL("classpath:"+keyFileName).openStream();
+            Storage storage = StorageOptions.newBuilder()
+                    .setCredentials(GoogleCredentials.fromStream(keyFile))
+                    .build()
+                    .getService();
+            for (String image : itemImageUrlList) {
+
+                Blob blob = storage.get(bucketName, image);
+
+                if(blob == null){
+                    log.info("The object "+ image + " wasn't fount in "+bucketName);
+                }
+                Storage.BlobSourceOption precondition =
+                        Storage.BlobSourceOption.generationMatch(blob.getGeneration());
+
+                storage.delete(bucketName, image, precondition);
+            }
+            item.getImage().setItemImageUrlList(mainImageStore(mainImageList,storage));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
     }
 
     @Override

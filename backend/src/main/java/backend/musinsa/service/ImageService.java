@@ -1,7 +1,6 @@
 package backend.musinsa.service;
 
 
-import backend.musinsa.domain.board.Board;
 import backend.musinsa.domain.item.Image;
 import backend.musinsa.domain.item.Item;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,9 @@ public interface ImageService {
 
     public Image storeImage(List<MultipartFile> mainImageList, List<MultipartFile> thumbnailImageList, Item item);
 
-    public Image updateImage(Item item,List<MultipartFile> mainImageList, List<MultipartFile> thumbnailImageList);
+    public Boolean updateThumbnailImage(Item item , List<MultipartFile> thumbnailImageList);
+
+    public Boolean updateMainImage(Item item,List<MultipartFile> mainImageList);
 
     public void deleteImage(long id, Item item);
 }
