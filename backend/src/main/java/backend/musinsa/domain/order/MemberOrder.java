@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class MemberOrder extends BaseTimeEntity {
+
     @Column(name = "member_order_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,6 +37,8 @@ public class MemberOrder extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private OrderState order_state;    //주문상태
+
+
 
 
 }

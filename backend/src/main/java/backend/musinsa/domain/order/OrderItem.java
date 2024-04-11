@@ -22,12 +22,13 @@ public class OrderItem {
     private Integer quantity;
     private Integer price;
     private String itemName;
-    private String itemOption1;
-    private String itemOption2;
+    private String itemColorOption;
+    private String itemSizeOption;
     private Integer savedAmount;
 
-    @Lob
     private String thumbnail;
+
+    private Boolean reviewState;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_order_id")
@@ -40,4 +41,16 @@ public class OrderItem {
     @JoinColumn(name = "item_id")       //단방향
     private Item item;
 
+    public static OrderItem getOrder(List<OrderItem> orderItemList,Long id){
+        for (OrderItem orderItem : orderItemList) {
+            if(orderItem.getId().equals(id)){
+                return orderItem;
+            }
+        }
+        return null;
+    }
+
+    public void setReviewState(Boolean reviewState) {
+        this.reviewState = reviewState;
+    }
 }

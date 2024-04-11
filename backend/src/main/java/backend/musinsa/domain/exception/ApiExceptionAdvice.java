@@ -62,7 +62,7 @@ public class ApiExceptionAdvice {
                 .body(ApiResult
                         .builder()
                         .status("error")
-                        .message("자격 증명이 되지않은 토큰입니다.")
+                        .message(e.getMessage())
                         .exception(apiExceptionEntity)
                         .build());
     }
@@ -86,6 +86,26 @@ public class ApiExceptionAdvice {
                         .exception(apiExceptionEntity)
                         .build());
     }
+    @ExceptionHandler({NotFoundInformationException.class})
+    public ResponseEntity<ApiResult> notFoundInformationException(NotFoundInformationException e){
+
+        ApiExceptionEntity apiExceptionEntity = ApiExceptionEntity.builder()
+                .errorCode(ExceptionEnum.NOT_FOUND_ORDER_INFORMATION.getCode())
+                .errorMessage(e.getMessage())
+                .build();
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .status(ExceptionEnum.NOT_FOUND_ORDER_INFORMATION.getStatus())
+                .body(ApiResult
+                        .builder()
+                        .status("error")
+                        .message(ExceptionEnum.NOT_FOUND_ORDER_INFORMATION.getMessage())
+                        .exception(apiExceptionEntity)
+                        .build());
+    }
+
 
 
 }
