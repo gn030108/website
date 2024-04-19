@@ -1,10 +1,13 @@
 package backend.musinsa.domain.order;
 
 
+import backend.musinsa.domain.cart.CartDto;
+import backend.musinsa.domain.cart.CartItem;
 import backend.musinsa.domain.coupon.CouponHistory;
 import backend.musinsa.domain.item.Item;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,14 +28,12 @@ public class OrderItem {
     private String itemColorOption;
     private String itemSizeOption;
     private Integer savedAmount;
-
     private String thumbnail;
-
     private Boolean reviewState;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_order_id")
-    private MemberOrder memberOrder;
+    @JoinColumn(name = "cart_item")
+    private CartItem cartItem;
 
     @OneToMany(mappedBy = "orderItem",fetch = FetchType.LAZY)
     private List<CouponHistory> usedCouponList;
@@ -53,4 +54,33 @@ public class OrderItem {
     public void setReviewState(Boolean reviewState) {
         this.reviewState = reviewState;
     }
+    @Builder
+    public OrderItem(Integer quantity, Integer price, String itemName, String itemColorOption,
+                     String itemSizeOption, Integer savedAmount, String thumbnail, Boolean reviewState,
+                     CartItem cart, List<CouponHistory> usedCouponList, Item item) {
+        this.quantity = quantity;
+        this.price = price;
+        this.itemName = itemName;
+        this.itemColorOption = itemColorOption;
+        this.itemSizeOption = itemSizeOption;
+        this.savedAmount = savedAmount;
+        this.thumbnail = thumbnail;
+        this.reviewState = reviewState;
+        this.cartItem = cart;
+        this.usedCouponList = usedCouponList;
+        this.item = item;
+    }
+
+    public static CartDto toCartDto(OrderItem orderItem){
+        return CartDto.builder()
+                .id(orderItem.getId())
+                .quantity(orderItem.getQuantity())
+                .price(orderItem.getPrice())
+                .itemName(orderItem.getItemName())
+                .itemColorOption(orderItem.getItemColorOption())
+                .itemSizeOption(orderItem.getItemSizeOption())
+                .thumbnail(orderItem.getThumbnail())
+                .build();
+    }
+
 }

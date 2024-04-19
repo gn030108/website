@@ -1,8 +1,8 @@
 package backend.musinsa.domain.member;
 
+import backend.musinsa.domain.cart.CartItem;
 import backend.musinsa.domain.item.Favorite;
 import backend.musinsa.domain.item.Review;
-import backend.musinsa.domain.cart.Cart;
 import backend.musinsa.domain.coupon.Coupon;
 import backend.musinsa.domain.order.MemberOrder;
 import jakarta.persistence.*;
@@ -41,9 +41,9 @@ public class Member implements UserDetails {
     @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
     private List<Review> reviewList;
 
-    @OneToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_item_id")
+    private CartItem cart;
 
     @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
     private List<Coupon> couponList;
