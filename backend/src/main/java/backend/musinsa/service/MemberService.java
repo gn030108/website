@@ -94,4 +94,5 @@ public class MemberService {
         return ResponseEntity.ok(new ApiResult("success","정상적으로 변경"));
 
     }
+    //비밀번호 변경
 }

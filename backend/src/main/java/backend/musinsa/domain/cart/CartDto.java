@@ -1,5 +1,6 @@
 package backend.musinsa.domain.cart;
 
+import backend.musinsa.domain.coupon.CouponDto;
 import lombok.*;
 
 @Getter
@@ -18,6 +19,11 @@ public class CartDto {
     private Integer savedAmount;
     private String thumbnail;
     private Boolean reviewState;
+    private String memo;
+
+    private String orderCheck;
+    private String couponId;
+
 
 }
 

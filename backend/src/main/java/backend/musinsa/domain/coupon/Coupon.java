@@ -20,7 +20,7 @@ public class Coupon {
 
     private Boolean usable;
 
-    private LocalDateTime expiredTime;
+    private LocalDateTime expiredTime;  //만료기간
 
     @ManyToOne
     @JoinColumn(name = "member_id")
