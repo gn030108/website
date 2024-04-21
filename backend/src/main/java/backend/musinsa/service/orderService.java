@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Transactional
@@ -45,6 +46,7 @@ public class orderService {
             for (OrderItem orderItem : orderItemList) {
                 if(orderItem.getId().equals(itemId)){
                     memberCheckdOrderItemList.add(orderItem);
+                    orderItemList.remove(orderItem);
                 }
             }
         }
@@ -84,8 +86,14 @@ public class orderService {
         }
     }
 
-    public void cancelMemberOrder(){
-
+    public void cancelMemberOrder(Long id){
+        String username = SecurityUtil.getCurrentUsername();
+        Member member = memberRepository.findByMemberId(username).orElseThrow();
+        MemberOrder memberOrder = member.getMemberOrderList().stream()
+                .filter(order -> order.getId().equals(id))
+                .findFirst()
+                .orElseThrow();
+        orderRepository.delete(memberOrder);
     }
 
 
