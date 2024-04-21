@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './page/Home';
+import Login from './page/Login';
+import SignIn from './page/SignIn';
+import List from './page/List';
+import Item from './page/Item'
+import Like from './page/Like'
+import Basket from './page/Basket'
+import MyPage from './page/MyPage'
+import AddGoods from './page/AddGoods'
+import AdminLogin from './page/AdminLogin'
+import LoginSelect from './page/LoginSelect'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/Login" element={<Login/>} />
+          <Route path="/AdminLogin" element={<AdminLogin/>} />
+          <Route path="/LoginSelect" element={<LoginSelect/>} />
+          <Route path="/SignIn" element={<SignIn/>} />
+          <Route path="/List" element={<List/>} />
+          <Route path="/Item" element={<Item/>} />
+          <Route path="/Like" element={<Like/>} />
+          <Route path="/Basket" element={<Basket/>} />
+          <Route path="/MyPage" element={<MyPage/>} />
+          <Route path="/AddGoods" element={<AddGoods/>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

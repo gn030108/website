@@ -1,0 +1,53 @@
+@import '../color';
+
+.layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+.ul{
+    width: auto;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0;
+}
+.li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    // border-bottom: 1px solid $Gray;
+    border-radius: 30px;
+    margin: 5px;
+}
+.li:hover{
+    background-color: $Gray;
+    color: white;
+    transition: all 0.4s 0s;
+}
+.arrow{
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    // border-bottom: 1px solid $lightNavy;
+    border-radius: 30px;
+    margin: 5px;
+}
+.arrow:hover{
+    background-color: $Gray;
+    color: white;
+    transition: all 0.4s 0s;
+}
+.active{
+    color: #aaa;
+}
+.invisible{
+    display: none;
+}

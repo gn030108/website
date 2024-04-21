@@ -1,0 +1,35 @@
+@import '../color';
+
+.layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 77vh;
+    div{
+        width: 25%;
+        height: 50%;
+        border: 1px solid #cdcdcd;
+        border-radius: 75px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        p{
+            width: 100px;
+            font-size: 26px;
+            font-weight: 500;
+        }
+        &:hover{
+            color: white;
+            background-color: #E5E5E5;
+        }
+    }
+    div:nth-of-type(1){
+        margin-right: 50px;
+
+    }
+    div:nth-of-type(2){
+        margin-left: 50px;
+
+    }
+}

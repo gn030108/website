@@ -1,0 +1,122 @@
+@import '../color';
+
+.body{
+    width: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    transition: transform 1s;
+    z-index: 10;
+}
+.body_down{
+    transform: translateY(-100%);
+}
+.NavBar{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+header{
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: $whiteGray;
+    span{
+        margin-right: 20px;
+        width: auto;
+    }
+    :first-child,:last-child{
+        cursor: pointer;
+    }
+}
+main{
+    width: auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding : 0 7% ;
+    background-color: white;
+    span{
+        margin : 0 2%;
+    }
+}
+.left{
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    width:auto;
+    height:50px;
+    cursor:pointer;
+}
+.search{
+    position: absolute;
+    right: 90px;
+    bottom: -20%;
+    width: auto;
+}
+.search_input{
+    width: 90px;
+    height: 25px;
+    padding: 8px 48px;
+    outline: none;
+    border : none;
+    border-radius: 10px;
+    background-color: $whiteGray;
+}
+.search_input:hover{
+    background-color: #E5E5E5;
+}
+.search_icon{
+    display: none;
+}
+.info{
+    position: relative;
+    width: auto;
+}
+.icon{
+    font-size: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 786px) {
+    header{
+        padding-right:20px;
+    }
+    .menu{
+        width: calc(100vw - 300px);
+    }
+    .search_input{
+        display: none;
+    }
+    .search_icon{
+        display: block;
+        font-size: 25px;
+        padding: 11px 0px;
+        cursor: pointer;
+    }
+}
+@media screen and (max-width: 480px) {  
+    header{
+        padding-right: 0;
+        span{
+            margin-right: 10px;
+        }
+    }
+    main{
+        justify-content: space-between;
+        padding: 0;
+    }
+    .menu{
+        display: none;
+    }
+    .left{
+        margin-left: 55px;
+    }
+}

@@ -1,0 +1,92 @@
+@import '../color';
+
+.container{
+    width: auto;
+    height: auto;
+    min-height: calc(85.9vh - 200px);
+    padding-bottom: 50px;
+    margin: 50px 100px 0px 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.category{
+    border: 1px solid $Gray;
+    margin-bottom: 30px;
+}
+.title{
+    width: auto;
+    min-height: 30px;
+    text-align: start;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px 0px 18px 14px;
+    border-bottom: 1px solid $Gray;
+}
+.contents_box{
+    display:flex;
+    margin: 0;
+    background-color: white;
+    border-bottom: 1px solid $Gray;
+    &:hover{
+        background-color: $whiteGray;
+    }
+}
+.subheader{
+    width: 100px;
+    font-size: 16px;
+    text-align: start;
+    padding: 10px 0px 9px 14px;
+    // border: 1px solid blueviolet;
+}
+.contents{
+    max-width: 90%;
+    min-height: 30px;
+    padding-top: 12px;
+    ul{
+        display: flex;
+        flex-wrap: wrap;//자리없을경우 아래줄 추가 배치
+        li{
+            width: 160px;
+            padding-bottom: 15px;
+            a{
+                width: auto;
+                float: left;
+                font-size: 13px;
+                text-align: start;
+                color: #888;
+                &:hover{
+                    color: black;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+.search_box{
+    display:flex;
+    margin: 0;
+    background-color: white;
+    &:hover{
+        background-color: $whiteGray;
+    }
+    dd{
+        display: flex;
+        align-items: center;
+        input{
+            width: 200px;
+            height: 25px;
+            outline: none;
+            border: 1px solid $Gray;
+            padding: 0 8px;
+            font-size: 16px;
+        }
+        button{
+            width: 50px;
+            height: 27px;
+            outline: none;
+            border: 1px solid $Gray;
+            background-color: white;
+        }
+    }
+}
