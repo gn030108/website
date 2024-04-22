@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RequiredArgsConstructor
-@RestController("review")
+@RestController
+@RequestMapping("review")
 public class ReviewController {
 
     private final ReviewService reviewService;
@@ -20,7 +21,7 @@ public class ReviewController {
         return reviewService.createReview(reviewDto);
     }
 
-    @PostMapping("{id}/delete")
+    @GetMapping("{id}/delete")
     public ResponseEntity<ApiResult> deleteReview(@PathVariable("id") String id){
         return reviewService.deleteReview(id);
     }

@@ -1,19 +1,17 @@
-package backend.musinsa.domain.item;
-
+package backend.musinsa.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-
-@NoArgsConstructor
-@Builder
-@AllArgsConstructor
 @Getter
-public class ItemRequestDto {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class SearchCond {
 
     private String name;
     private List<String> category;
@@ -21,10 +19,8 @@ public class ItemRequestDto {
     private List<String> tag;
     private Integer price;
     private String status;
-    private String itemNumber;
     private List<String> colorOption;
     private List<String> sizeOption;
     private String gender;
-
 
 }

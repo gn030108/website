@@ -24,9 +24,6 @@ public class MemberOrder extends BaseTimeEntity {
 
     private Integer quantity;   //주문 총수량
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderNumber;    //주문번호
-
     private String deliveryAddress;     //배송받을 주소
     private String memo;        //메모
     private Integer savedAmount;        //할인받은 총가격

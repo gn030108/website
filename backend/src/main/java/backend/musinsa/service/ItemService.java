@@ -62,24 +62,24 @@ public class ItemService {
         itemRepository.deleteById(Long.parseLong(id));
 
     }
-    public ResponseEntity<ApiResult> updateItem(ItemRequestDto input, String id){
-        //상품 정보 변경 메서드
-        try {
-            Item item = getItem(id);
-            item.updateItem(input.getName(), input.getCategory(), input.getTag(), input.getBrand(),
-                    ItemInfo.builder()
-                            .itemNumber(input.getItemNumber())
-                            .price(input.getPrice())
-                            .status(input.getStatus())
-                            .gender(input.getGender())
-                            .colorOption(input.getColorOption())
-                            .sizeOption(input.getSizeOption())
-                            .build());
-        } catch (Exception e){
-            throw new ItemException(ExceptionEnum.ITEM_UPDATE_FAIL);
-        }
-        return ResponseEntity.ok().body(ApiResult.builder().status("success").message("상품정보 변경 완료").build());
-    }
+//    public ResponseEntity<ApiResult> updateItem(ItemRequestDto input, String id){
+//        //상품 정보 변경 메서드
+//        try {
+//            Item item = getItem(id);
+//            item.updateItem(input.getName(), input.getCategory(), input.getTag(), input.getBrand(),
+//                    ItemInfo.builder()
+//                            .itemNumber(input.getItemNumber())
+//                            .price(input.getPrice())
+//                            .status(input.getStatus())
+//                            .gender(input.getGender())
+//                            .colorOption(input.getColorOption())
+//                            .sizeOption(input.getSizeOption())
+//                            .build());
+//        } catch (Exception e){
+//            throw new ItemException(ExceptionEnum.ITEM_UPDATE_FAIL);
+//        }
+//        return ResponseEntity.ok().body(ApiResult.builder().status("success").message("상품정보 변경 완료").build());
+//    }
     public Item getItem(String id){
         //상품 단일 조회 메서드
         return itemRepository.findById(Long.parseLong(id)).orElseGet(Item::new);

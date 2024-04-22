@@ -20,9 +20,9 @@ public class Item {
 
     private String name;
 
-    private String category;
+    private List<String> category;
 
-    private String tag;
+    private List<String> tag;
 
     private String brand;
 
@@ -42,7 +42,7 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<Review> reviewList;
     @Builder
-    public Item(String name, String category, String tag, String brand, ItemInfo itemInfo,Image image) {
+    public Item(String name, List<String> category, List<String> tag, String brand, ItemInfo itemInfo,Image image) {
         this.name = name;
         this.category = category;
         this.tag = tag;
@@ -50,7 +50,7 @@ public class Item {
         this.itemInfo = itemInfo;
         this.image = image;
     }
-    public void updateItem(String name, String category, String tag, String brand, ItemInfo itemInfo) {
+    public void updateItem(String name, List<String> category, List<String> tag, String brand, ItemInfo itemInfo) {
         this.name = name;
         this.category = category;
         this.tag = tag;

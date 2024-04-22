@@ -33,13 +33,13 @@ public class ItemController {
         return itemService.getItemRequestDto(id);
     }
 
-    @PostMapping("update/{id}")
-    public ResponseEntity<ApiResult> itemUpdate(@RequestParam("id") String id,
-                                                @RequestBody ItemRequestDto input){
-
-        return itemService.updateItem(input,id);
-
-    }
+//    @PostMapping("update/{id}")
+//    public ResponseEntity<ApiResult> itemUpdate(@RequestParam("id") String id,
+//                                                @RequestBody ItemRequestDto input){
+//
+//        return itemService.updateItem(input,id);
+//
+//    }
 
     @PostMapping("update/{id}/thumbnailImage")
     public ResponseEntity<ApiResult> updateThumbnailImage(@RequestParam("id") String id,
