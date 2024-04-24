@@ -115,3 +115,43 @@
         font-weight: 700;
     }
 }
+
+@media screen and (max-width:1440px) {
+    
+}
+
+@media screen and (max-width:1024px) {
+    .option_box{
+        span{
+            width: 100px;
+        }
+        span:nth-of-type(1){
+            margin: 0;
+        }
+        span:nth-of-type(2){
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 10px;
+        }
+        span:nth-of-type(6){
+            margin: 0px 20px;
+        }
+    }
+    .content_box{
+        span{
+            width: 100px;
+        }
+        span:nth-of-type(1){
+            margin-left: 0px;
+        }
+        span:nth-of-type(2){
+            padding-left: 10px;
+        }
+        span:nth-of-type(6){
+            margin: 0px 20px;
+
+        }
+    }
+}

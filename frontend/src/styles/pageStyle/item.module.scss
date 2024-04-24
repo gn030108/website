@@ -218,3 +218,17 @@
     border: 2px solid $Gray;
     border-top: none;
 }
+
+@media screen and (max-width:1024px) {
+    .itemTop_box{
+        justify-content: center;
+    }
+    .top_image_box{
+        width: 400px;
+        height: 500px;
+        margin-right: 30px;
+    }
+    .imgList{
+        width: 400px;
+    }
+}

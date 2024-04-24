@@ -6,13 +6,15 @@ import styles from '../styles/pageStyle/login.module.scss'
 import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
+import useAxiosInstance from '../api/axiosInstance'
 
 const Login = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const axiosInstance = useAxiosInstance()
 
-  const id = useSelector((state)=>state.login.id)
+  const memberId = useSelector((state)=>state.login.id)
   const password = useSelector((state)=>state.login.password)
 
   const handleInputChange = (e) => {
@@ -27,8 +29,21 @@ const Login = () => {
 }
 
   const Login = ()=>{
-    dispatch(loginActions.LogIn('public'))
-    navigate('/')
+    axiosInstance.post('/login',{
+      memberId,password
+    })
+    .then(response =>{
+      //accessToken 저장 (리덕스)
+      dispatch(loginActions.getAccessToken(response.data.accessToken))
+      //refreshToken 저장 (세션스토리지)
+      window.sessionStorage.setItem('refreshToken',response.data.refreshToken)
+      dispatch(loginActions.LogIn('public'))
+      navigate('/')
+    })
+    .catch(error=>{
+      console.log('아이디 비번 :',memberId,password)
+      console.log(error)
+    })
   }
   
 
@@ -39,7 +54,7 @@ const Login = () => {
       <SideBar/>
       <div className={styles.layout}>
         <form>
-          <input  placeholder='아이디' name='id' value={id} onChange={handleInputChange} autoComplete='off'/>
+          <input  placeholder='아이디' name='id' value={memberId} onChange={handleInputChange} autoComplete='off'/>
           <input  placeholder='비밀번호' name='pw' value={password} type='password' onChange={handleInputChange} autoComplete='off'/>
           <button onClick={()=>{Login()}}>로그인</button>
         </form>

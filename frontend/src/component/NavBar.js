@@ -12,10 +12,18 @@ const NavBar = () => {
 
   const isLogin = useSelector((state)=>state.login.isLogin)
   const loginType = useSelector((state)=>state.login.loginType)
+  const accessToken = useSelector((state) => state.login.accessToken);
 
   //스크롤 감지 변수
   const [up,setUp] = useState(true);
   const [preScroll,setPreScroll] = useState(0)
+
+  //로그인 감지 함수 
+  useEffect (()=>{
+    if (accessToken!==''){
+      dispatch(loginActions.setLogin())
+    }
+  })
 
 
   //스크롤 감지 함수
@@ -69,10 +77,10 @@ const NavBar = () => {
     <div className={`${up ? styles.body : styles.body_down}`}>
         {isLogin?(
           <header>
-            {loginType=='public' &&(
+            {loginType==='public' &&(
               <span className={styles.header_button} onClick={()=>{goMyPage()}}>마이페이지</span>
             )}
-            {loginType=='admin' &&(
+            {loginType==='admin' &&(
               <span className={styles.header_button} onClick={()=>{goAddGoods()}}>상품등록</span>
             )}
             <span style={{width:'auto',cursor:'default'}}>ㅣ</span>

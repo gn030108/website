@@ -6,6 +6,7 @@ let initialState = {
     password:'',
     isLogin: false,
     loginType:'',
+    accessToken:''
 };
 const loginSlice = createSlice({
     name:"login",
@@ -25,8 +26,15 @@ const loginSlice = createSlice({
         },
         LogOut(state,action){
             state.isLogin=false
+            state.accessToken=''
             state.loginType=''
         },
+        getAccessToken(state,action){
+            state.accessToken=action.payload
+        },
+        setLogin(state,action){
+            state.isLogin=true
+        }
     }
 })
 

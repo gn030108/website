@@ -7,11 +7,13 @@ import styles from '../styles/pageStyle/login.module.scss'
 import { signInActions } from '../redux/reducer/pageReducer/signInReducer'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useAxiosInstance from '../api/axiosInstance'
 
 const SignIn = () => {
 
   const dispatch = useDispatch()
-  const navigate = useNavigate
+  const navigate = useNavigate()
+  const axiosInstance= useAxiosInstance()
 
   const memberId = useSelector((state)=>state.signIn.memberId)
   const password = useSelector((state)=>state.signIn.password)
@@ -41,17 +43,39 @@ const SignIn = () => {
     }
     else if (name==='name'){
       dispatch(signInActions.getName(value))
-  }
+    }
     else if (name==='email'){
       dispatch(signInActions.getEmail(value))
-  }
+    }
     else if (name==='address'){
       dispatch(signInActions.getAddress(value))
+    }
+    else if (name==='phoneNumber'){
+      dispatch(signInActions.getPhoneNumber(value))
+    }
   }
-  else if (name==='phoneNumber'){
-    dispatch(signInActions.getPhoneNumber(value))
+  const handleSignIn = (e)=>{
+
+    e.preventDefault();
+
+    axiosInstance.post('/member/register',{
+      memberId,
+      password,
+      name,
+      age,
+      email,
+      phoneNumber,
+      gender,
+      address
+    })
+    .then(response =>{
+      console.log(response)
+      navigate('/login')
+    })
+    .catch(error=>{
+      console.log(error)
+    })
   }
-}
   
 
   return (
@@ -62,7 +86,7 @@ const SignIn = () => {
       <div className={styles.layout}>
         <form>
           <input placeholder='아이디' name='id' value={memberId} type='text' onChange={handleInputChange}/>
-          <input placeholder='비밀번호' name='pw' value={password} type='password' onChange={handleInputChange}/>
+          <input placeholder='비밀번호' name='pw' value={password} type='password' autoComplete="off"  onChange={handleInputChange}/>
           <input placeholder='닉네임' name='name'value={name} type='text' onChange={handleInputChange}/>
           <input placeholder='이메일' name='email'value={email} type='email' onChange={handleInputChange}/>
           <input placeholder='주소' name='address'value={address} type='address' onChange={handleInputChange}/>
@@ -81,7 +105,7 @@ const SignIn = () => {
             type={'gender'}
             />
           </div>
-          <button>회원가입</button>
+          <button onClick={(e)=>{handleSignIn(e)}}>회원가입</button>
         </form>
       </div>
     </div>

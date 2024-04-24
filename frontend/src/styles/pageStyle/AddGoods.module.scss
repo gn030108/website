@@ -115,43 +115,55 @@
     }
 }
 
-.Info_bot{
-    .info{
-        display: flex;
-        margin-bottom: 7px;
-    }
-    .infoBrand{
-        p:nth-of-type(1){
-            &:after{
-                content: '/';
-                color: #444;
-                margin-left: 3px;
-                margin-right: 3px;
-            }
-        }
-    }
-    .infoTitle{
-        display: flex;
-        width: 110px;
-        align-items: center;
-        p{
-            width: auto;
-            margin: 0;
-            font-size: 14px;
-        }
-    }
-    .infoContent{
-        display: flex;
-        width: auto;
-        align-items: center;
-        p{
-            width: auto;
-            margin: 0;
-            font-size: 14px;
-            font-weight: 600;
+.info{
+    display: flex;
+    margin-bottom: 7px;
+}
+.infoBrand{
+    p:nth-of-type(1){
+        &:after{
+            content: '/';
+            color: #444;
+            margin-left: 3px;
+            margin-right: 3px;
         }
     }
 }
+.infoTitle{
+    display: flex;
+    width: 110px;
+    align-items: center;
+    p{
+        width: auto;
+        margin: 0;
+        font-size: 14px;
+    }
+}
+.infoContent{
+    display: flex;
+    width: auto;
+    align-items: center;
+    p{
+        width: auto;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+.colors{
+    display: flex;
+    li{
+        margin: 2px;
+        position: relative;
+    }
+    a{
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid black;
+    }
+}
+
 
 .selectBox{
     width: 350px;

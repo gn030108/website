@@ -23,10 +23,8 @@ const PaymentModal = ({modal,setModal}) => {
 
 
   //선택박스 변수
-  const optionData1 = useSelector((state)=>state.selectBox.optionData1)
-  const optionData2 = useSelector((state)=>state.selectBox.optionData2)
-  const option1 = useSelector((state)=>state.selectBox.option1)
-  const option2 = useSelector((state)=>state.selectBox.option2)
+  const discountData = useSelector((state)=>state.selectBox.optionData1)
+  const discount = useSelector((state)=>state.selectBox.option1)
 
 
   return (
@@ -55,8 +53,8 @@ const PaymentModal = ({modal,setModal}) => {
 
         <div className={styles.selectBox}>
           <SelectBox
-            optionData={optionData1}
-            currentValue={option1}
+            optionData={discountData}
+            currentValue={discount}
             type={'option1'}
           />
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import styles from '../styles/componentStyle/selectBox.module.scss'
-import { loginActions } from "../redux/reducer/pageReducer/loginReducer";
+import { signInActions } from "../redux/reducer/pageReducer/signInReducer";
 import { selectBoxActions } from "../redux/reducer/componentReducer/selectBoxReducer";
 
 const SelectBox = ({optionData,type,currentValue}) => {
@@ -13,10 +13,10 @@ const SelectBox = ({optionData,type,currentValue}) => {
     const handleSelectValue = (e) => {
         const { innerText } = e.target;
         if (type==='gender'){
-            dispatch(loginActions.getGender(innerText))
+            dispatch(signInActions.getGender(innerText))
         }
         else if (type==='age'){
-            dispatch(loginActions.getAge(innerText))
+            dispatch(signInActions.getAge(innerText))
         }
         else if (type==='option1'){
             dispatch(selectBoxActions.getOption1(innerText))

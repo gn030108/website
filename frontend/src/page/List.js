@@ -15,7 +15,6 @@ const List = () => {
       <SideMenu/>
       <SideBar/>
       <div className={styles.container}>
-        <div style={{width:'fit-content'}}>
             <div className={styles.category}>
 
               <div className={styles.title}>Top</div>
@@ -88,7 +87,6 @@ const List = () => {
               setPage={setPage}
             />
         </div>
-      </div>
     </div>
   )
 }

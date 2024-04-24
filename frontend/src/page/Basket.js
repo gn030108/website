@@ -17,10 +17,10 @@ const Basket = () => {
 
   //체크리스트 데이터 가정
   const items = [
-    {id:1,img:김민주,name:'김민주사진',option:'M', cost :'10000', count:'2'},
-    {id:2,img:김민주,name:'김민주사진',option:'M', cost :'10000', count:'2'},
-    {id:3,img:김민주,name:'김민주사진',option:'M', cost :'10000', count:'2'},
-    {id:4,img:김민주,name:'김민주사진',option:'M', cost :'10000', count:'2'},
+    {id:1,img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {id:2,img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {id:3,img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {id:4,img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
   ]
 
   const checkItems = useSelector((state)=>state.basket.checkItems)
@@ -104,12 +104,12 @@ const Basket = () => {
                   <img src={item.img} alt='이미지'/>
                   <div>
                     <p>{item.name}</p>
-                    <p>옵션 : {item.option}</p>
+                    <p>옵션 : {item.option1} / {item.option2}</p>
                   </div>
                 </span>
-                <span>{item.cost}원</span>
+                <span>{item.price}원</span>
                 <span>{item.count}</span>
-                <span>{item.cost * item.count}원</span>
+                <span>{item.price * item.count}원</span>
                 <span>
                   <button>삭제</button>
                 </span>
