@@ -18,6 +18,9 @@ const NavBar = () => {
   const [up,setUp] = useState(true);
   const [preScroll,setPreScroll] = useState(0)
 
+  //top메뉴 작동함수
+  const [handleMenu, setHandleMenu] = useState(false)
+
   //로그인 감지 함수 
   useEffect (()=>{
     if (accessToken!==''){
@@ -75,26 +78,53 @@ const NavBar = () => {
 
   return (
     <div className={`${up ? styles.body : styles.body_down}`}>
-        {isLogin?(
-          <header>
-            {loginType==='public' &&(
-              <span className={styles.header_button} onClick={()=>{goMyPage()}}>마이페이지</span>
-            )}
-            {loginType==='admin' &&(
-              <span className={styles.header_button} onClick={()=>{goAddGoods()}}>상품등록</span>
-            )}
-            <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
-            <span className={styles.header_button} onClick={()=>{logout()}}>로그아웃</span>
-          </header>
-        ):(
-          <header>
-            <span className={styles.header_button} onClick={()=>{goSignIn()}}>회원가입</span>
-            <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
-            <span className={styles.header_button} onClick={()=>{goLoginSelect()}}>로그인</span>
-          </header>
+      {isLogin?(
+        <header>
+          {loginType==='public' &&(
+            <span className={styles.header_button} onClick={()=>{goMyPage()}}>마이페이지</span>
+          )}
+          {loginType==='admin' &&(
+            <span className={styles.header_button} onClick={()=>{goAddGoods()}}>상품등록</span>
+          )}
+          <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
+          <span className={styles.header_button} onClick={()=>{logout()}}>로그아웃</span>
+        </header>
+      ):(
+        <header>
+          <span className={styles.header_button} onClick={()=>{goSignIn()}}>회원가입</span>
+          <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
+          <span className={styles.header_button} onClick={()=>{goLoginSelect()}}>로그인</span>
+        </header>
+      )}
+      {handleMenu && (
+      <div className={styles.topMenu_layout}>
+        <div className={styles.topMenu_first}>
+          <span>
+            outer
+          </span>
+          <span>
+            <a href='#'>아우터 전체</a>
+            <a href='#'>슈트/블레이저</a>
+            <a href='#'>코트</a>
+            <a href='#'>패딩</a>
+            <a href='#'>가디건</a>
+            <a href='#'>블루종/MA-1</a>
+            <a href='#'>후드집업</a>
+          </span>
+        </div>
+        <div className={styles.topMenu_first}>top</div>
+        <div className={styles.topMenu_first}>pants</div>
+        <div className={styles.topMenu_first}>eto</div>
+      </div>
         )}
-
       <main>
+        <div className={styles.iconBox} onClick={()=>{setHandleMenu(!handleMenu)}}>
+          <section>
+            <div></div>
+            <div></div>
+            <div></div>
+          </section>
+        </div>
         <div className={styles.left}>
           <span>
             <img src={logo} onClick={()=>{goHome()}} className={styles.logo} alt='로고'/>

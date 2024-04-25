@@ -84,7 +84,7 @@ const Review = () => {
           <div className={styles.comment_layout}>
             <div className={styles.comment_box}>
               <input/>
-              <button>댓글작성</button>
+              <button>작성</button>
             </div>
             <Comment/>
           </div>

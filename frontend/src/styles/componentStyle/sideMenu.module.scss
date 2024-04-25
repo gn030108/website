@@ -13,7 +13,7 @@ a{
 
 //css
 .sideMenu{
-    width: 270px;
+    width: 200px;
     height: 80vh;
     position: fixed; //화면을 따라오게 
     -webkit-transform: translateZ(0);
@@ -23,7 +23,7 @@ a{
     background-color:  $whiteGray;
     z-index: 20;
     border-radius: 20px;
-    transform: translate( -220px , 0);  /* X축 이동, Y축 고정 */
+    transform: translate( -150px , 0);  /* X축 이동, Y축 고정 */
     transition: .5s;
     &:hover{
         transform: translate(-20px, 0);   /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
@@ -116,7 +116,7 @@ section{
 }
 .sideMenu:hover{
     section{
-        transform: translate(-198px,0);
+        transform: translate(-125px,0);
         
         div:nth-of-type(1){
             left: 41%;
@@ -144,3 +144,16 @@ section{
     }
 }
   /* 아이콘 끝 */
+
+
+//미디어쿼리 
+@media screen and (max-width:768px) {
+    .sideMenu{
+        display: none;
+    }
+}
+@media screen and (max-width:425px) {
+    .sideMenu{
+        display: none;
+    }
+}

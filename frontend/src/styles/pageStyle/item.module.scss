@@ -35,7 +35,7 @@
 //상품 이미지 (여러장, 아래)
 .imgList{
     width: 500px;
-    padding:15px;
+    padding:20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,5 +230,59 @@
     }
     .imgList{
         width: 400px;
+    }
+}
+@media screen and (max-width:768px) {
+    .itemTop_box{
+        flex-direction: column;
+    }
+    .top_image_box{
+        margin: 0;
+    }
+    .Info_box{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0 10px 0px;
+    }
+    .top_info_box{
+        width: 525px;
+    }
+    .Info_top{
+        width: 370px;
+        padding-left: 20px;
+    }
+    .Info_bot{
+        padding-left: 30px;
+    }
+    .itemBot_box{
+        img{
+            width: 550px;
+        }
+    }
+    .review_box{
+        width: 650px;
+    }
+}
+@media screen and (max-width:425px) {
+    .top_image_box{
+        width: 300px;
+        height: 400px;
+        margin: 0;
+    }
+    .imgList{
+        width: 300px;
+    }
+    .top_info_box{
+        width: 400px;
+    }
+    .itemBot_box{
+        img{
+            width: 375px;
+        }
+    }
+    .review_box{
+        width: 400px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -86,7 +86,7 @@ const SignIn = () => {
       <div className={styles.layout}>
         <form>
           <input placeholder='아이디' name='id' value={memberId} type='text' onChange={handleInputChange}/>
-          <input placeholder='비밀번호' name='pw' value={password} type='password' autoComplete="off"  onChange={handleInputChange}/>
+          <input placeholder='비밀번호' name='pw' value={password} type='password'   onChange={handleInputChange}/> {/*autoComplete="off"*/}
           <input placeholder='닉네임' name='name'value={name} type='text' onChange={handleInputChange}/>
           <input placeholder='이메일' name='email'value={email} type='email' onChange={handleInputChange}/>
           <input placeholder='주소' name='address'value={address} type='address' onChange={handleInputChange}/>

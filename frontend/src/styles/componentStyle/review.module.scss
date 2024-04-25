@@ -96,6 +96,7 @@
     padding-left: 60px;
     width: auto;
     display: flex;
+    flex-wrap: wrap;
     div{
         border-radius: 5px;
         width: fit-content;
@@ -184,5 +185,26 @@
         color: #b2b2b2;
         font-size: 12px;
         font-weight: bold;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .itemImgName{
+        padding-left: 20px;
+    }
+    .stars{
+        padding-left: 20px;
+    }
+    .tags_box{
+        padding-left: 20px;
+    }
+    .review_box{
+        padding-left: 20px;
+    }
+    .comment_box{
+        button{
+            margin-left: 40px;
+            width: 90px;
+        }
     }
 }

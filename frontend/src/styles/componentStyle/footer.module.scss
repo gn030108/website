@@ -2,8 +2,8 @@
 
 
 .container{
-    position : relative;
-    transform : translateY(0%);
+    // position : relative;
+    // transform : translateY(0%);
     height: 200px;
     background-color: black;
     color: white;
@@ -16,10 +16,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 10%;
+}
+.box_center{
+    display: flex;
+    justify-content: center;
+    width: 20vw;
 }
 .box_first{
-    width: 20vw;
     text-align: start;
     p:nth-of-type(1){
         font-size: 20px;
@@ -27,13 +30,31 @@
     }
 }
 .box_second{
-    width: 20vw;
     text-align: start;
     p:nth-of-type(1){
         margin-bottom: 10px;
     }
     p:nth-of-type(2){
-        font-size: 10px;
         margin: 0;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .box_center{
+        width: 30vw;
+    }
+}
+@media screen and (max-width:425px) {
+    .container{
+        height: 300px;
+    }
+    .boxLayout{
+        flex-direction: column;
+    }
+    .box_center{
+        width: 100%;
+    }
+    .box_first{
+        width: 100%;
     }
 }

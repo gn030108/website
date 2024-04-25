@@ -83,7 +83,7 @@ const Item = () => {
                 <ul className={styles.Info_bot}>
                   <li className={styles.info}>
                     <div className={`${styles.infoTitle} ${styles.infoBrand}`}>
-                      <p>브렌드</p>
+                      <p>브랜드</p>
                       <p>품번</p>
                     </div>
                     <div className={`${styles.infoContent} ${styles.infoBrand}`}>
