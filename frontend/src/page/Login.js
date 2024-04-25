@@ -28,8 +28,10 @@ const Login = () => {
     }
 }
 
-  const Login = ()=>{
-    axiosInstance.post('/login',{
+  const Login = (e)=>{
+    e.preventDefault();
+
+    axiosInstance.post('/member/login',{
       memberId,password
     })
     .then(response =>{
@@ -56,7 +58,7 @@ const Login = () => {
         <form>
           <input  placeholder='아이디' name='id' value={memberId} onChange={handleInputChange} autoComplete='off'/>
           <input  placeholder='비밀번호' name='pw' value={password} type='password' onChange={handleInputChange} autoComplete='off'/>
-          <button onClick={()=>{Login()}}>로그인</button>
+          <button onClick={(e)=>{Login(e)}}>로그인</button>
         </form>
       </div>
     </div>
