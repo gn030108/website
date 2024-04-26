@@ -11,7 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController("admin/item")
+@RestController
+@RequestMapping("admin/item")
 public class ItemController {
 
     private final ItemService itemService;
