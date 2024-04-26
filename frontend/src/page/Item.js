@@ -26,6 +26,7 @@ const Item = () => {
     {id:5, img:아리},
     {id:6, img:카리나},
   ]
+  const imgList = [{img:김민주},{img:카리나}]
   const handleHover = (img,index)=>{
     setMain(img)
     setHover(index)
@@ -50,7 +51,7 @@ const Item = () => {
   return (
     <div>
       <div style={{height:'100px'}}><NavBar/></div>
-      {loginType != 'admin' && (
+      {loginType !== 'admin' && (
         <SideMenu/>
       )}
       <SideBar/>
@@ -65,7 +66,7 @@ const Item = () => {
               </div>
               <ul className={styles.imgList}>
                 {itemImg.map((item,index)=>(
-                  <li className={hover==index ? styles.hoverImg : ''} key={index}>
+                  <li className={hover===index ? styles.hoverImg : ''} key={index}>
                     <img src={item.img} alt='이미지' onMouseOver={()=>{handleHover(item.img,index)}}/>
                   </li>
                 ))}
@@ -158,7 +159,7 @@ const Item = () => {
               </div>
 
               {/* 옵션 선택 및 구매 버튼 */}
-              {loginType != 'admin' && (
+              {loginType !== 'admin' && (
                 <div className={styles.Info_box} style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
                   {/* 옵션 선택 */}
                   <div className={styles.selectBox}> 
@@ -184,7 +185,7 @@ const Item = () => {
                 </div>
               )}
               {/* 판매자 */}
-              {loginType == 'admin' && (
+              {loginType === 'admin' && (
                 <div className={styles.Info_box} style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
                   {/* 옵션 선택 */}
                   <div className={styles.selectBox}> 
@@ -211,8 +212,11 @@ const Item = () => {
           </div>
           {/* 상품 설명 이미지 */}
           <div className={styles.itemBot_box}>
-              <div className={!isView && styles.beforeImg }> 
-                <img src={상품2} alt='이미지'/>
+              <div className={!isView ? styles.beforeImg :styles.afterImg }> 
+              {imgList.map((item,index)=>(
+                <img src={item.img} key={index} alt='이미지'/>
+              ))}
+                
                 {/* 더보기 누르기 전 => 하양 흐림 효과 부여 */}
                 {isView === false &&(
                   <div className={styles.whiteGradientOverlay}></div>
@@ -229,7 +233,7 @@ const Item = () => {
               }
               
           </div>
-          {loginType != 'admin' && (
+          {loginType !== 'admin' && (
             <div className={styles.review_box}>
               <Review/>
             </div>

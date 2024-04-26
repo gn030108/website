@@ -147,12 +147,12 @@ section{
 
 
 //미디어쿼리 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .sideMenu{
         display: none;
     }
 }
-@media screen and (max-width:425px) {
+@media screen and (max-width:479px) {
     .sideMenu{
         display: none;
     }

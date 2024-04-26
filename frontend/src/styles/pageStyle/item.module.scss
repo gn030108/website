@@ -200,6 +200,14 @@
     position: relative;
     max-height: 500px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.afterImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .whiteGradientOverlay{
     position: absolute;
@@ -232,7 +240,7 @@
         width: 400px;
     }
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
     .itemTop_box{
         flex-direction: column;
     }
@@ -263,7 +271,7 @@
         width: 650px;
     }
 }
-@media screen and (max-width:425px) {
+@media screen and (max-width:479px) {
     .top_image_box{
         width: 300px;
         height: 400px;

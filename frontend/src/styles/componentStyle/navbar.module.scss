@@ -144,7 +144,6 @@ main{
 }
 .topMenu_first{
     height: 48px;
-    
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -154,7 +153,11 @@ main{
         font-size: 17px;
     }
     span:nth-of-type(2){
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
         a{
+            padding: 5px 0px;
             margin-right: 20px;
             font-size: 15px;
             font-weight: 400;
@@ -163,12 +166,7 @@ main{
     }
 }
 
-
-
-
-
-
-@media screen and (max-width: 786px) {
+@media screen and (max-width: 767px) {
     header{
         padding-right:20px;
     }
@@ -188,7 +186,7 @@ main{
         display: flex;
     }
 }
-@media screen and (max-width: 425px) {  
+@media screen and (max-width: 479px) {  
     header{
         padding-right: 0;
         span{
@@ -208,5 +206,11 @@ main{
     }
     .iconBox{
         display: flex;
+    }
+    .topMenu_layout{
+        height: 265px;
+    }
+    .topMenu_first{
+        height: 65px;
     }
 }

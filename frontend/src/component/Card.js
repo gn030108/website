@@ -5,6 +5,7 @@ import 김민주3 from '../image/김민주3.png'
 import { useNavigate } from 'react-router-dom';
 
 import styles from '../styles/componentStyle/card.module.scss'
+import { useEffect, useState } from 'react';
 
 // 리스트를 한 줄에 표시할 수 있는 그룹으로 나누는 함수
 const groupItems = (data, itemsPerRow) => {
@@ -36,14 +37,6 @@ const Card = () => {
     {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
     {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
     {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-    // {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    // {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    // {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    // {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-    // {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    // {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    // {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    // {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
   ]
   
   const navigate = useNavigate()
@@ -52,7 +45,27 @@ const Card = () => {
     navigate("/Item")
   }
 
-  const itemsPerRow = 6; // 한 줄에 표시할 아이템의 수
+  useEffect(()=>{
+    const handleItemPreRow =()=>{
+
+      if (window.innerWidth <= 479){
+        setItemsPerRow(2);
+      }
+      else if (window.innerWidth <= 767){
+        setItemsPerRow(4);
+      }
+    }
+    handleItemPreRow()
+
+    window.addEventListener("resize", handleItemPreRow);
+
+    return ()=>{
+      window.removeEventListener("resize", handleItemPreRow);
+    }
+  })
+
+  const [itemsPerRow,setItemsPerRow] = useState(6)
+  // let itemsPerRow = 6; // 한 줄에 표시할 아이템의 수
   const groupedItems = groupItems(list, itemsPerRow);
 
 
@@ -63,7 +76,9 @@ const Card = () => {
           {group.map((item, groupIndex)=>(
             <div className={styles.card} key={groupIndex} onClick={()=>(goItem())}>
               <div className={styles.imgArea}>
-                <img src={item.image} alt='이미지'/>
+                <div className={styles.img_box}>
+                  <img src={item.image} alt='이미지'/>
+                </div>
               </div>
 
               <div className={styles.infoArea}> {/* 브랜드, 상품이름, 가격 */}
