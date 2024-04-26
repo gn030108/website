@@ -21,7 +21,7 @@ const SignIn = () => {
   const email = useSelector((state)=>state.signIn.email)
   const address = useSelector((state)=>state.signIn.address)
   const phoneNumber = useSelector((state)=>state.signIn.phoneNumber)
-  const age = useSelector((state)=>state.signIn.age)
+  const ageData = useSelector((state)=>state.signIn.age)
   const gender = useSelector((state)=>state.signIn.gender)
   
 
@@ -57,6 +57,8 @@ const SignIn = () => {
   const handleSignIn = (e)=>{
 
     e.preventDefault();
+
+    const age = parseInt(ageData)
 
     axiosInstance.post('/member/register',{
       memberId,
@@ -94,7 +96,7 @@ const SignIn = () => {
           <div className={styles.selectBox}>
             <SelectBox
             optionData={ageOption}
-            currentValue={age}
+            currentValue={ageData}
             type={'age'}
             />
           </div>
