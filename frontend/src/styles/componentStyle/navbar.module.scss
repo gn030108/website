@@ -162,6 +162,9 @@ main{
             font-size: 15px;
             font-weight: 400;
             color: #cdcdcd;
+            &:hover{
+                color: #888;
+            }
         }
     }
 }

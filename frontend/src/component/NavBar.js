@@ -110,6 +110,7 @@ const NavBar = () => {
             <a href='#'>가디건</a>
             <a href='#'>블루종/MA-1</a>
             <a href='#'>후드집업</a>
+            <a href='#'>더보기</a>
           </span>
         </div>
         <div className={styles.topMenu_first}>top</div>

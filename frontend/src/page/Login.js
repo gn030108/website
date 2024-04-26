@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate()
   const axiosInstance = useAxiosInstance()
 
-  const memberId = useSelector((state)=>state.login.id)
+  const memberId = useSelector((state)=>state.login.memberId)
   const password = useSelector((state)=>state.login.password)
 
   const handleInputChange = (e) => {
