@@ -10,6 +10,7 @@ import backend.musinsa.domain.member.*;
 import backend.musinsa.repository.MemberInfoRepository;
 import backend.musinsa.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Transactional
 @Service
@@ -33,8 +35,9 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
 
     public ResponseEntity<ApiResult> register(MemberRequestDto input){
-
+        
         if(memberRepository.existsByMemberId(input.getMemberId())){
+            log.info("예외발생");
             throw new ExistIdException(ExceptionEnum.ALREADY_EXIST_MEMBER_ID_EXCEPTION);
         }
         Member newMember = Member.builder()

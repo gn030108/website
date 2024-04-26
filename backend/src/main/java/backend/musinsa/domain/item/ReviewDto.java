@@ -17,7 +17,7 @@ public class ReviewDto {
     private String reviewId;
 
     private String name;
-    //부모님 사준거 애기 입힌거
+
     private String gender;
     private Integer height;
     private Integer weight;

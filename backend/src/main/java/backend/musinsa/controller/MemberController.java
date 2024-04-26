@@ -8,11 +8,14 @@ import backend.musinsa.service.ManagerLogoutService;
 import backend.musinsa.service.ManagerReissueTokenService;
 import backend.musinsa.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RequiredArgsConstructor
-@RestController("member")
+@RestController
+@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
@@ -28,9 +31,13 @@ public class MemberController {
 
     @PostMapping("register")
     private ResponseEntity<ApiResult> register(@RequestBody MemberRequestDto input){
-
+        log.info("memberId = "+input.getMemberId());
+        log.info("password = "+input.getPassword());
+        log.info("Name = "+input.getName());
+        log.info("Email = "+input.getEmail());
+        log.info("Address = "+input.getAddress());
+        log.info("Gender = "+input.getGender());
         return memberService.register(input);
-
     }
 
     @PostMapping("logout")
