@@ -18,9 +18,9 @@ const Basket = () => {
   //체크리스트 데이터 가정
   const items = [
     {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    // {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    // {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    // {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
   ]
 
   const checkItems = useSelector((state)=>state.basket.checkItems)
@@ -71,8 +71,9 @@ const Basket = () => {
           </div>
           {/* 장바구니 내역 */}
           <div className={styles.basket_box}>
-             {/* 전체x개 상품명(옵션) 판매가 수량 주문금액 주문관리(삭제버튼) */}
-            <div className={styles.header_box}>
+            
+             {/* 모바일 x */}
+            {/* <div className={styles.header_box}>
               <div>전체 x개</div>
               <input type='checkbox' name='select-all'
                 onChange={(e) => handleAllCheck(e.target.checked)}
@@ -83,9 +84,9 @@ const Basket = () => {
               <div>수량</div>
               <div>주문금액</div>
               <div>주문관리</div>
-            </div>
+            </div> */}
             {/* 장바구니 아이탬 */}
-            {items.map((item,index)=>(
+            {/* {items.map((item,index)=>(
               <div className={styles.content_box}>
                 <div>{index+1}</div>
                 <input 
@@ -111,7 +112,48 @@ const Basket = () => {
                 </div>
                 
               </div>
-            ))}
+            ))} */}
+            {/* 모바일 화면  */}
+            <div>
+              <div>전체 x개</div>
+              <input type='checkbox' name='select-all'
+                onChange={(e) => handleAllCheck(e.target.checked)}
+                // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
+                checked={checkItems.length === items.length ? true : false} />
+              <div>상품명(옵션)</div>
+              <div>판매가</div>
+              <div>수량</div>
+              <div>주문금액</div>
+              <div>주문관리</div>
+            </div>
+            {/* 장바구니 아이탬 */}
+            {/* {items.map((item,index)=>(
+              <div>
+                <div>{index+1}</div>
+                <input 
+                  type='checkbox' name={`select-${item.id}`}
+                  onChange={(e) => handleSingleCheck(e.target.checked, index+1)}
+                  // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제, 장바구니에서 미리 선택했던 상품에 대해 체크를 해두기 위함
+                  checked={checkItems.includes(item.id) ? true : false} 
+                />
+                <div>
+                  <div >
+                    <img src={item.img}/>
+                  </div>
+                  <div >
+                    <p>[무신사스텐다드]{item.name}</p>
+                    <p>옵션 : {item.option1} / {item.option2}</p>
+                  </div>
+                </div>
+                <div>{item.price}원</div>
+                <div>{item.count}개</div>
+                <div>{item.price * item.count}원</div>
+                <div>
+                  <button>삭제</button>
+                </div>
+                
+              </div>
+            ))} */}
 
 
           </div>
