@@ -37,13 +37,19 @@ const PaymentModal = ({modal,setModal}) => {
         <div className={styles.item_box}>
           {payment.map((item,index)=>(
             <div className={styles.item_content} key={index}>
-              <div className={styles.item_content_img}>
-                <img src={item.img}/>
+              <div style={{display:'flex'}}>
+                <div className={styles.item_content_img}>
+                  <img src={item.img}/>
+                </div>
+                <div className={styles.item_content_info}>
+                  <p>{item.itemName}</p>
+                  <p>옵션 : {item.option}</p>
+                  <p>수량 : {item.count}</p>
+                </div>
               </div>
-              <div className={styles.item_content_info}>
-                <p>{item.itemName}</p>
-                <p>옵션 : {item.option}</p>
-                <p>수량 : {item.count}</p>
+              
+              <div className={styles.item_content_price}>
+                <p>{item.price}원</p>
               </div>
             </div>
           ))}

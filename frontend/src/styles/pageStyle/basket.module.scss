@@ -1,3 +1,11 @@
+.navbar{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .container{
     width: auto;
     height: auto;
@@ -132,54 +140,80 @@
     }
 }
 
-// @media screen and (max-width:1440px) {
+// 모바일 div 
+
+.header_box_mobile{
+    display: none;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: #f6f6f6;
+}
+.header_div_mobile{
+    display: flex;
+    align-items: center;
+}
+.content_box_mobile{
+    display: none;
+    justify-content: space-between;
+    padding: 10px 0px 10px 10px;
+    img{
+        width: 70px;
+        height: 70px;
+        margin: 0px 10px;
+    }
+}
+.content_info_mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    p{
+        margin: 0;
+    }
+    p:nth-of-type(1){
+        font-size: 13px;
+    }
+    p:nth-of-type(2){
+        font-size: 14px;
+        font-weight: 500;
+    }
+    div{
+        display: flex;
+        font-size: 12px;
+        color: #bcbcbc;
+    }
+}
+.content_price_mobile{
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 7px;
+}
+
+
+
+@media screen and (max-width:1330px) {
+    .header_box{
+        display: none;
+    }
+    .content_box{
+        display: none;
+    }
+    .header_box_mobile{
+        display: flex
+    }
+    .content_box_mobile{
+        display: flex;
+    }
+}
+
+@media screen and (max-width:768px) {
     
-// }
+}
 
-// @media screen and (max-width:1024px) {
-//     .option_box{
-//         span{
-//             width: 100px;
-//         }
-//         span:nth-of-type(1){
-//             margin: 0;
-//         }
-//         span:nth-of-type(2){
-//             width: 500px;
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-//             padding-left: 10px;
-//         }
-//         span:nth-of-type(6){
-//             margin: 0px 20px;
-//         }
-//     }
-//     .content_box{
-//         span{
-//             width: 100px;
-//         }
-//         span:nth-of-type(1){
-//             margin-left: 0px;
-//         }
-//         span:nth-of-type(2){
-//             padding-left: 10px;
-//         }
-//         span:nth-of-type(6){
-//             margin: 0px 20px;
 
-//         }
-//     }
-// }
-// @media screen and (max-width:768px) {
-//     .option_box{
-//         span:nth-of-type(2){
-//             width: 350px;
-//         }
-//     }
-//     .content_box{
-//         span:nth-of-type(2){
-//             width: 350px;
-//         }
-//     }
-// }
+@media screen and (max-width:480px){
+    .button_box{
+        button{
+            width: 300px;
+        }
+    }
+}

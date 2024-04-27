@@ -11,7 +11,7 @@ const List = () => {
 
   return (
     <div>
-      <div style={{height:'100px'}}><NavBar/></div>
+      <div className={styles.navbar}><NavBar/></div>
       <SideMenu/>
       <SideBar/>
       <div className={styles.container}>

@@ -311,17 +311,12 @@
     .view_close{
         width: 380px;
         &::after{
-            content: "⌵";
             right: 95px;
         }
     }
     .view_open{
         width: 380px;
         &::after{
-            content: "⌵";
-            transform: rotate(-180deg);
-            position: absolute;
-            top: 23px;
             right: 95px;
         }
     }

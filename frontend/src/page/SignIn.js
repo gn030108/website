@@ -82,7 +82,7 @@ const SignIn = () => {
 
   return (
     <div>
-      <div style={{height:'100px'}}><NavBar/></div>
+      <div className={styles.navbar}><NavBar/></div>
       <div className={styles.SideMenu}><SideMenu/></div>
       <SideBar/>
       <div className={styles.layout}>

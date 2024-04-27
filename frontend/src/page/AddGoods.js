@@ -68,7 +68,7 @@ const AddGoods = () => {
 
   return (
     <div>
-      <div style={{height:'100px'}}><NavBar/></div>
+      <div className={styles.navbar}><NavBar/></div>
       <SideBar/>
       <div className={styles.container}>
         <div style={{width:'fit-content'}}>

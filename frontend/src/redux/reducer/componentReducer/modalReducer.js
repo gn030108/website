@@ -14,9 +14,9 @@ let initialState = {
     email:'',
     age:'',
     payment:[
-        {img:김민주, itemName:'김민주사진', option:'M', count:'1'},
-        {img:김민주1, itemName:'김민주사진', option:'M', count:'1'},
-        {img:김민주2, itemName:'김민주사진', option:'M', count:'1'},
+        {img:김민주, itemName:'김민주사진', option:'M', count:'1',price:'10000'},
+        {img:김민주1, itemName:'김민주사진', option:'M', count:'1',price:'10000'},
+        {img:김민주2, itemName:'김민주사진', option:'M', count:'1',price:'10000'},
     ],
     reviewInfo:[],
     reviewSubmit:{

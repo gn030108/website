@@ -98,21 +98,23 @@ const NavBar = () => {
       )}
       {handleMenu && (
       <div className={styles.topMenu_layout}>
-        <div className={styles.topMenu_first}>
-          <span>
+        <dl className={styles.topMenu_first}>
+          <dt>
             outer
-          </span>
-          <span>
-            <a href='#'>아우터 전체</a>
-            <a href='#'>슈트/블레이저</a>
-            <a href='#'>코트</a>
-            <a href='#'>패딩</a>
-            <a href='#'>가디건</a>
-            <a href='#'>블루종/MA-1</a>
-            <a href='#'>후드집업</a>
-            <a href='#'>더보기</a>
-          </span>
-        </div>
+          </dt>
+          <dd>
+            <ul>
+              <li><a href='#'>아우터 전체</a></li>
+              <li><a href='#'>슈트/블레이저</a></li>
+              <li><a href='#'>코트</a></li>
+              <li><a href='#'>패딩</a></li>
+              <li><a href='#'>가디건</a></li>
+              <li><a href='#'>블루종/MA-1</a></li>
+              <li><a href='#'>후드집업</a></li>
+              <li><a href='#'>더보기</a></li>
+            </ul>
+          </dd>
+        </dl>
         <div className={styles.topMenu_first}>top</div>
         <div className={styles.topMenu_first}>pants</div>
         <div className={styles.topMenu_first}>eto</div>

@@ -37,21 +37,24 @@ const MyPage = () => {
           modal = {infoModal}
           setModal = {setInfoModal}
         />
-      }{/* modal이 참이 되면 열리는 modal컴포넌트 */}
+      }
+      {/* modal이 참이 되면 열리는 modal컴포넌트 */}
       {passwordModal && 
         <PasswordModal
           modal = {passwordModal}
           setModal = {setPasswordModal}
         />
-      }{/* modal이 참이 되면 열리는 modal컴포넌트 */}
+      }
+      {/* modal이 참이 되면 열리는 modal컴포넌트 */}
       {reviewModal && 
         <ReviewModal
           modal = {reviewModal}
           setModal = {setReviewModal}
         />
-      }{/* modal이 참이 되면 열리는 modal컴포넌트 */}
+      }
+      {/* modal이 참이 되면 열리는 modal컴포넌트 */}
       <div>
-        <div style={{height:'100px'}}><NavBar/></div>
+      <div className={styles.navbar}><NavBar/></div>
         <SideMenu/>
         <SideBar/>
         <div className={styles.container}>
