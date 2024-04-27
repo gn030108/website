@@ -1,5 +1,12 @@
 @import '../color';
 
+.navbar{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container{
     width: auto;
     height: auto;
@@ -289,6 +296,9 @@
         width: 400px;
     }
     .itemBot_box{
+        padding: 30px 0;
+        margin-top: 0;
+        border-top: 0;
         img{
             width: 375px;
         }

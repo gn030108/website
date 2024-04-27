@@ -50,7 +50,7 @@ const Item = () => {
 
   return (
     <div>
-      <div style={{height:'100px'}}><NavBar/></div>
+      <div className={styles.navbar}><NavBar/></div>
       {loginType !== 'admin' && (
         <SideMenu/>
       )}
