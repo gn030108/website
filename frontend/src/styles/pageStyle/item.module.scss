@@ -273,6 +273,10 @@
     }
 }
 @media screen and (max-width:480px) {
+    .container{
+        margin-left: 0;
+        margin-right: 0;
+    }
     .top_image_box{
         width: 300px;
         height: 400px;
@@ -293,5 +297,22 @@
         width: 400px;
         margin-left: auto;
         margin-right: auto;
+    }
+    .view_close{
+        width: 380px;
+        &::after{
+            content: "⌵";
+            right: 95px;
+        }
+    }
+    .view_open{
+        width: 380px;
+        &::after{
+            content: "⌵";
+            transform: rotate(-180deg);
+            position: absolute;
+            top: 23px;
+            right: 95px;
+        }
     }
 }
