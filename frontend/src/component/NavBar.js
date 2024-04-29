@@ -4,11 +4,14 @@ import {useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
 import styles from '../styles/componentStyle/navbar.module.scss'
+import useAxiosInstance from '../api/axiosInstance';
+
 
 const NavBar = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const axiosInstance=useAxiosInstance()
 
   const isLogin = useSelector((state)=>state.login.isLogin)
   const loginType = useSelector((state)=>state.login.loginType)
@@ -27,7 +30,6 @@ const NavBar = () => {
       dispatch(loginActions.setLogin())
     }
   })
-
 
   //스크롤 감지 함수
   useEffect(()=>{
@@ -74,6 +76,19 @@ const NavBar = () => {
   }
   const logout = ()=>{
     dispatch(loginActions.LogOut())
+    // const refreshToken = sessionStorage.getItem('refreshToken');
+
+    // axiosInstance.post('/member/logout',null,{
+    //   Refresh : refreshToken
+    // })
+    // .then(response =>{
+    //   dispatch(loginActions.LogOut())
+    //   sessionStorage.removeItem('refreshToken')
+    //   navigate('/')
+    // })
+    // .catch(error=>{
+    //   console.log(error)
+    // })
   }
 
   return (

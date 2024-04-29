@@ -17,7 +17,7 @@ const useAxiosInstance = () => {
     const instance = axios.create({
         baseURL: 'http://localhost:8080',
         headers: {
-            // 'Authorization': `Bearer ${accessToken}` // 액세스 토큰을 요청 헤더에 포함
+            'Authorization': `Bearer ${accessToken}` // 액세스 토큰을 요청 헤더에 포함
         }
     });
 
