@@ -104,7 +104,26 @@ public class ApiExceptionAdvice {
                         .message(ExceptionEnum.NOT_FOUND_ORDER_INFORMATION.getMessage())
                         .exception(apiExceptionEntity)
                         .build());
+    }@ExceptionHandler({FailFavoriteItemAddException.class})
+    public ResponseEntity<ApiResult> failFavoriteItemAddException(FailFavoriteItemAddException e){
+
+        ApiExceptionEntity apiExceptionEntity = ApiExceptionEntity.builder()
+                .errorCode(ExceptionEnum.FAIL_FAVORITE_ITEM_ADD.getCode())
+                .errorMessage(e.getMessage())
+                .build();
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .status(ExceptionEnum.FAIL_FAVORITE_ITEM_ADD.getStatus())
+                .body(ApiResult
+                        .builder()
+                        .status("error")
+                        .message(ExceptionEnum.FAIL_FAVORITE_ITEM_ADD.getMessage())
+                        .exception(apiExceptionEntity)
+                        .build());
     }
+
 
 
 

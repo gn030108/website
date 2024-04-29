@@ -5,8 +5,9 @@ import backend.musinsa.config.SecurityUtil;
 import backend.musinsa.domain.jwt.TokenProvider;
 import backend.musinsa.repository.BlackListRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class RefreshTokenValidator {

@@ -43,7 +43,8 @@ public class MemberController {
     @PostMapping("logout")
     private void logout(
             @RequestHeader("Refresh") String refreshToken,
-            MemberRequestDto memberRequestDto){
+            @RequestBody MemberRequestDto memberRequestDto){
+        log.info("로그아웃 요청이 들어옴. => "+memberRequestDto.getMemberId());
         managerLogoutService.logout(memberRequestDto.getMemberId(),refreshToken);
     }
 
