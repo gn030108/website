@@ -3,6 +3,7 @@ import {useDispatch, useSelector } from "react-redux";
 import styles from '../styles/componentStyle/selectBox.module.scss'
 import { signInActions } from "../redux/reducer/pageReducer/signInReducer";
 import { selectBoxActions } from "../redux/reducer/componentReducer/selectBoxReducer";
+import { modalActions } from "../redux/reducer/componentReducer/modalReducer";
 
 const SelectBox = ({optionData,type,currentValue}) => {
 
@@ -23,6 +24,9 @@ const SelectBox = ({optionData,type,currentValue}) => {
         }
         else if (type==='option2'){
             dispatch(selectBoxActions.getOption2(innerText))
+        }
+        else if (type === 'age-select'){
+            dispatch(modalActions.getAge(innerText))
         }
     };
 return (

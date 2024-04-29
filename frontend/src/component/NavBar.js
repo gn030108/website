@@ -26,14 +26,17 @@ const NavBar = () => {
 
   //로그인 감지함수
   useEffect (()=>{
-    // 세션 스토리지에서 리프레시 토큰 가져오기
-    const refreshToken = sessionStorage.getItem('refreshToken');
-  
-    if (!refreshToken || refreshToken === '') {
-      dispatch(loginActions.setLogOut());
-    } else {
-      dispatch(loginActions.setLogin());
+    if (accessToken!==''){
+      dispatch(loginActions.setLogin)
     }
+    // // 세션 스토리지에서 리프레시 토큰 가져오기
+    // const refreshToken = sessionStorage.getItem('refreshToken');
+  
+    // if (!refreshToken || refreshToken === '') {
+    //   dispatch(loginActions.setLogOut());
+    // } else {
+    //   dispatch(loginActions.setLogin());
+    // }
   }, [isLogin]);
 
   //스크롤 감지 함수
