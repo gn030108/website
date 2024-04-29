@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { modalActions } from '../redux/reducer/componentReducer/modalReducer'
 import styles from '../styles/componentStyle/InfoModal.module.scss'
+import useAxiosInstance from '../api/axiosInstance'
 
 const InfoModal = ({modal,setModal}) => {
   
   const dispatch = useDispatch()
+  const axiosInstance=useAxiosInstance()
 
+  const memberId=useSelector((state)=>state.login.memberId)
   const address = useSelector((state)=>state.modal.address)
   const phoneNumber = useSelector((state)=>state.modal.phoneNumber)
   const email = useSelector((state)=>state.modal.email)
@@ -17,10 +20,22 @@ const InfoModal = ({modal,setModal}) => {
     dispatch(modalActions.reset())
   }
 
-  const handleSubmit = () =>{
-    dispatch(modalActions.reset())
-    setModal(!modal)
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+
+
+    axiosInstance.post('/member/change-info',{
+      memberId,phoneNumber,email,age,address
+    })
+    .then(response =>{
+      dispatch(modalActions.reset())
+      setModal(!modal)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
   }
+
 
 
   return (
@@ -46,7 +61,7 @@ const InfoModal = ({modal,setModal}) => {
           <label>나이</label>
           <input value={age} onChange={(e)=>{dispatch(modalActions.getAge(e.target.value))}}/>
         </div>
-        <button className={styles.submitBtn} onClick={()=>{handleSubmit()}}>변경</button>
+        <button className={styles.submitBtn} onClick={(e)=>{handleSubmit(e)}}>변경</button>
       </div>
     </div>
   )

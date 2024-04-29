@@ -49,8 +49,11 @@ const useAxiosInstance = () => {
 
                 try {
                     // 새로운 액세스 토큰 요청
-                    const response = await axios.post('/api/refreshToken', { refreshToken: refreshToken });
+                    const response = await axios.get('/reissue-token', { Refresh : refreshToken });
                     const newAccessToken = response.data.accessToken;
+                    const newRefreshToken = response.data.refreshToken
+                    //새로운 refreshToken 세션스토리지에 저장
+                    window.sessionStorage.setItem('refreshToken',response.data.refreshToken)
 
                     // 새로 받은 액세스 토큰으로 기존 요청 재시도
                     originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;

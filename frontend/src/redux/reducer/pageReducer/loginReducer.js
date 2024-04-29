@@ -34,6 +34,9 @@ const loginSlice = createSlice({
         },
         setLogin(state,action){
             state.isLogin=true
+        },
+        setLogOut(state,action){
+            state.isLogin=false
         }
     }
 })
