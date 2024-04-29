@@ -28,15 +28,16 @@ public class MemberController {
         return memberService.signIn(input);
 
     }
+    @PostMapping("login/admin")
+    private void adminLogin(){
 
+    }
+    @PostMapping("register/admin")
+    private void adminRegister(){
+
+    }
     @PostMapping("register")
     private ResponseEntity<ApiResult> register(@RequestBody MemberRequestDto input){
-        log.info("memberId = "+input.getMemberId());
-        log.info("password = "+input.getPassword());
-        log.info("Name = "+input.getName());
-        log.info("Email = "+input.getEmail());
-        log.info("Address = "+input.getAddress());
-        log.info("Gender = "+input.getGender());
         return memberService.register(input);
     }
 
@@ -57,5 +58,6 @@ public class MemberController {
     private ResponseEntity<ApiResult> changeInfo(@RequestBody MemberRequestDto memberRequestDto){
         return memberService.changeInfo(memberRequestDto);
     }
+
 
 }
