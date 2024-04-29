@@ -1,13 +1,7 @@
-package backend.musinsa.domain.member;
+package backend.musinsa.domain.admin;
 
-import backend.musinsa.domain.cart.CartItem;
-import backend.musinsa.domain.item.Favorite;
-import backend.musinsa.domain.item.Review;
-import backend.musinsa.domain.coupon.Coupon;
-import backend.musinsa.domain.order.MemberOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,48 +13,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Member implements UserDetails {
+public class Admin implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String memberId;
+
     private String password;
+
     private String name;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
-
-    @OneToOne
-    @JoinColumn(name = "member_info_id")
-    private MemberInfo memberInfo;
-
-    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
-    private List<Review> reviewList;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cart_item_id")
-    private CartItem cart;
-
-    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
-    private List<Coupon> couponList;
-
-    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
-    private List<MemberOrder> memberOrderList;
-
-    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY)
-    private List<Favorite> favoriteList;
-
-    @Builder
-    public Member(String memberId, String password, String name, MemberInfo memberInfo) {
-        this.memberId = memberId;
-        this.password = password;
-        this.name = name;
-        this.memberInfo = memberInfo;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -68,7 +36,6 @@ public class Member implements UserDetails {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
-
     @Override
     public String getUsername() {
         return getMemberId();
@@ -93,9 +60,4 @@ public class Member implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
 }
