@@ -4,6 +4,7 @@ package backend.musinsa.controller;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.jwt.TokenDto;
 import backend.musinsa.domain.member.MemberRequestDto;
+import backend.musinsa.service.AdminService;
 import backend.musinsa.service.ManagerLogoutService;
 import backend.musinsa.service.ManagerReissueTokenService;
 import backend.musinsa.service.MemberService;
@@ -21,6 +22,7 @@ public class MemberController {
     private final MemberService memberService;
     private final ManagerReissueTokenService managerReissueTokenService;
     private final ManagerLogoutService managerLogoutService;
+    private final AdminService adminService;
 
     @PostMapping("login")
     private TokenDto normalLogin(@RequestBody MemberRequestDto input){
