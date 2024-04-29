@@ -21,7 +21,6 @@ const loginSlice = createSlice({
         LogIn(state,action){
             state.isLogin=true
             state.loginType=action.payload
-            state.memberId=''
             state.password=''
         },
         LogOut(state,action){

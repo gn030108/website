@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios';
 import logo from '../image/로고.png'
 import {useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
 import styles from '../styles/componentStyle/navbar.module.scss'
-import useAxiosInstance from '../api/axiosInstance';
 
 
 const NavBar = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const axiosInstance=useAxiosInstance()
 
+  const memberId = useSelector((state)=>state.login.memberId)
   const isLogin = useSelector((state)=>state.login.isLogin)
   const loginType = useSelector((state)=>state.login.loginType)
   const accessToken = useSelector((state) => state.login.accessToken);
@@ -74,21 +74,29 @@ const NavBar = () => {
   const goAddGoods=()=>{
     navigate('/AddGoods')
   }
-  const logout = ()=>{
-    dispatch(loginActions.LogOut())
-    // const refreshToken = sessionStorage.getItem('refreshToken');
+  const  logout = (e)=>{
 
-    // axiosInstance.post('/member/logout',null,{
-    //   Refresh : refreshToken
-    // })
-    // .then(response =>{
-    //   dispatch(loginActions.LogOut())
-    //   sessionStorage.removeItem('refreshToken')
-    //   navigate('/')
-    // })
-    // .catch(error=>{
-    //   console.log(error)
-    // })
+    e.preventDefault();
+
+    const refreshToken = sessionStorage.getItem('refreshToken');
+
+    axios.post('http://localhost:8080/member/logout',
+    {
+      'memberId':memberId
+    },
+    {headers: {
+      'Authorization': `Bearer ${accessToken}`, // 액세스 토큰을 요청 헤더에 포함
+      'Refresh' : refreshToken
+    }})
+    .then(response =>{
+      console.log(response)
+      dispatch(loginActions.LogOut())
+      sessionStorage.removeItem('refreshToken')
+      navigate('/')
+    })
+    .catch(error=>{
+      console.log(error)
+    })
   }
 
   return (
@@ -102,7 +110,7 @@ const NavBar = () => {
             <span className={styles.header_button} onClick={()=>{goAddGoods()}}>상품등록</span>
           )}
           <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
-          <span className={styles.header_button} onClick={()=>{logout()}}>로그아웃</span>
+          <span className={styles.header_button} onClick={(e)=>{logout(e)}}>로그아웃</span>
         </header>
       ):(
         <header>
