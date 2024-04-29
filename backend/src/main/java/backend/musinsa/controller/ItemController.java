@@ -41,19 +41,19 @@ public class ItemController {
 //        return itemService.updateItem(input,id);
 //
 //    }
-
-    @PostMapping("update/{id}/thumbnailImage")
-    public ResponseEntity<ApiResult> updateThumbnailImage(@RequestParam("id") String id,
-                                                          @RequestPart("thumbnail") List<MultipartFile> thumbnailImageList){
-        return itemService.updateThumbnailImage(id,thumbnailImageList);
-    }
-
-    @PostMapping("update/{id}/mainImage")
-    public ResponseEntity<ApiResult> updateMainImage(@RequestParam("id") String id,
-                                                     @RequestPart("main") List<MultipartFile> mainImageList){
-        return itemService.updateMainImage(id,mainImageList);
-
-    }
+//
+//    @PostMapping("update/{id}/thumbnailImage")
+//    public ResponseEntity<ApiResult> updateThumbnailImage(@RequestParam("id") String id,
+//                                                          @RequestPart("thumbnail") List<MultipartFile> thumbnailImageList){
+//        return itemService.updateThumbnailImage(id,thumbnailImageList);
+//    }
+//
+//    @PostMapping("update/{id}/mainImage")
+//    public ResponseEntity<ApiResult> updateMainImage(@RequestParam("id") String id,
+//                                                     @RequestPart("main") List<MultipartFile> mainImageList){
+//        return itemService.updateMainImage(id,mainImageList);
+//
+//    }
 
 
 }

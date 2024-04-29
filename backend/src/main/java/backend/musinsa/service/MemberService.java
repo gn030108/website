@@ -4,6 +4,7 @@ import backend.musinsa.config.SecurityUtil;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.exception.ExceptionEnum;
 import backend.musinsa.domain.exception.ExistIdException;
+import backend.musinsa.domain.exception.LoginException;
 import backend.musinsa.domain.jwt.TokenDto;
 import backend.musinsa.domain.jwt.TokenProvider;
 import backend.musinsa.domain.member.*;
@@ -11,11 +12,14 @@ import backend.musinsa.repository.MemberInfoRepository;
 import backend.musinsa.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +36,6 @@ public class MemberService {
     private final MemberInfoRepository memberInfoRepository;
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
-    private final PasswordEncoder passwordEncoder;
 
     public ResponseEntity<ApiResult> register(MemberRequestDto input){
         
@@ -42,7 +45,7 @@ public class MemberService {
         }
         Member newMember = Member.builder()
                 .memberId(input.getMemberId())
-                .password(passwordEncoder.encode(input.getPassword()))
+                .password(input.getPassword())
                 .name(input.getName())
                 .memberInfo(memberInfoSave(input))
                 .build();
@@ -50,6 +53,7 @@ public class MemberService {
 
         Member savedMember = memberRepository.save(newMember);
 
+        log.info(savedMember.getRoles().toString());
         return ResponseEntity.status(HttpStatus.OK)
                 .body(ApiResult.builder()
                         .status("Register success")
@@ -69,15 +73,21 @@ public class MemberService {
     }
 
     public TokenDto signIn(MemberRequestDto input){
+        log.info("memberId = "+input.getMemberId());
+        log.info("password = "+input.getPassword());
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(input.getMemberId(), input.getPassword());
 
         // 실제 인증
-        Authentication authentication =
-                authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-
-        return tokenProvider.generateToken(authentication);
-
+        try {
+            Authentication authentication =
+                    authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+            return tokenProvider.generateToken(authentication);
+        }catch (AuthenticationException e){
+            log.info("authentication Exception !!");
+            e.printStackTrace();
+        }
+        throw new LoginException(ExceptionEnum.BAD_LOGIN_TRY_EXCEPTION);
     }
 
     /**
