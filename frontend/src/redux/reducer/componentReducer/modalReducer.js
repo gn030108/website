@@ -12,7 +12,7 @@ let initialState = {
     address:'',
     phoneNumber:'',
     email:'',
-    age:'',
+    age:'나이 선택',
     payment:[
         {img:김민주, itemName:'김민주사진', option:'M', count:'1',price:'10000'},
         {img:김민주1, itemName:'김민주사진', option:'M', count:'1',price:'10000'},
