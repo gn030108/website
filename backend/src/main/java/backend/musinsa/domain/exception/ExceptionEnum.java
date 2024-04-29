@@ -18,7 +18,8 @@ public enum ExceptionEnum {
     ALREADY_EXIST_MEMBER_ID_EXCEPTION(HttpStatus.BAD_REQUEST,"S0002","이미 존재하는 회원 아이디 입니다."),
     ITEM_REGISTRATION_FAIL(HttpStatus.BAD_REQUEST,"I0001","상품 등록에 실패하였습니다."),
     ITEM_UPDATE_FAIL(HttpStatus.BAD_REQUEST,"I0002","상품 정보 변경에 실패하였습니다."),
-    NOT_FOUND_ORDER_INFORMATION(HttpStatus.BAD_REQUEST,"I0003","상품 정보 조회에 실패하였습니다.");
+    NOT_FOUND_ORDER_INFORMATION(HttpStatus.BAD_REQUEST,"I0003","상품 정보 조회에 실패하였습니다."),
+    FAIL_FAVORITE_ITEM_ADD(HttpStatus.BAD_REQUEST,"F0001","좋아요 상품 추가에 실패하였습니다.");
 
     private final HttpStatus status;
     private final String code;
