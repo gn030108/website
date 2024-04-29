@@ -27,6 +27,7 @@ const loginSlice = createSlice({
             state.isLogin=false
             state.accessToken=''
             state.loginType=''
+            state.memberId=''
         },
         getAccessToken(state,action){
             state.accessToken=action.payload
