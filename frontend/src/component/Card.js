@@ -46,6 +46,17 @@ const Card = () => {
   }
 
   useEffect(()=>{
+    
+    if (window.innerWidth <= 480){
+      setItemsPerRow(2);
+    }
+    else if (window.innerWidth <= 768){
+      setItemsPerRow(4);
+    }
+    else if (window.innerWidth <= 1024){
+      setItemsPerRow(6);
+    }
+
     const handleItemPreRow =()=>{
 
       if (window.innerWidth <= 480){
