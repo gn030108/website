@@ -186,6 +186,8 @@
     display: flex;
     align-items: flex-end;
     padding-bottom: 7px;
+    min-width: 50px;
+
 }
 
 
@@ -214,6 +216,14 @@
     .button_box{
         button{
             width: 300px;
+        }
+    }
+    .content_price_mobile{
+        font-size: 13px;
+    }
+    .content_info_mobile{
+        p:nth-of-type(2){
+            font-size: 12px;
         }
     }
 }

@@ -5,12 +5,14 @@ import {useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
 import styles from '../styles/componentStyle/navbar.module.scss'
+import useAxiosInstance from '../api/axiosInstance';
 
 
 const NavBar = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const axiosInstance=useAxiosInstance()
 
   const memberId = useSelector((state)=>state.login.memberId)
   const isLogin = useSelector((state)=>state.login.isLogin)
@@ -26,18 +28,18 @@ const NavBar = () => {
 
   //로그인 감지함수
   useEffect (()=>{
-    if (accessToken!==''){
-      dispatch(loginActions.setLogin)
-    }
-    // // 세션 스토리지에서 리프레시 토큰 가져오기
-    // const refreshToken = sessionStorage.getItem('refreshToken');
+    // 세션 스토리지에서 리프레시 토큰 가져오기
+    const refreshToken = sessionStorage.getItem('refreshToken');
+    const type = sessionStorage.getItem('loginType')
   
-    // if (!refreshToken || refreshToken === '') {
-    //   dispatch(loginActions.setLogOut());
-    // } else {
-    //   dispatch(loginActions.setLogin());
-    // }
-  }, [isLogin]);
+    if (!refreshToken || refreshToken === '') {
+      dispatch(loginActions.setLogOut());
+    } 
+    else {
+      dispatch(loginActions.setLogin());
+      dispatch(loginActions.setLoginType(type))
+    }
+  }, []);
 
   //스크롤 감지 함수
   useEffect(()=>{
@@ -88,14 +90,13 @@ const NavBar = () => {
 
     const refreshToken = sessionStorage.getItem('refreshToken');
 
-    axios.post('http://localhost:8080/member/logout',
-    {
-      'memberId':memberId
-    },
-    {headers: {
-      'Authorization': `Bearer ${accessToken}`, // 액세스 토큰을 요청 헤더에 포함
-      'Refresh' : refreshToken
-    }})
+    axiosInstance.post('/member/logout', {
+      memberId: memberId
+    }, {
+        headers: {
+            Refresh: refreshToken
+        }
+    })
     .then(response =>{
       console.log(response)
       dispatch(loginActions.LogOut())
