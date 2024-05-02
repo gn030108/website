@@ -47,12 +47,12 @@ public class TokenProvider {
      * @return
      */
     public TokenDto generateToken(Authentication authentication){
-
+        log.info("토큰 생성중");
         //권한 가져오기
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining());
-
+        log.info("권한 = "+authorities);
         long now = new Date().getTime();
 
         // Access Token 생성

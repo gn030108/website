@@ -2,6 +2,7 @@ package backend.musinsa.domain.admin;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -26,6 +28,8 @@ public class Admin implements UserDetails {
     private String password;
 
     private String name;
+
+    private String brand;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;

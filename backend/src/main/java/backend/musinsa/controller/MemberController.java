@@ -1,6 +1,7 @@
 package backend.musinsa.controller;
 
 
+import backend.musinsa.domain.admin.AdminDto;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.jwt.TokenDto;
 import backend.musinsa.domain.member.MemberRequestDto;
@@ -26,17 +27,17 @@ public class MemberController {
 
     @PostMapping("login")
     private TokenDto normalLogin(@RequestBody MemberRequestDto input){
-
+        log.info("memberId = "+input.getMemberId());
+        log.info("password = "+input.getPassword());
         return memberService.signIn(input);
-
     }
-    @PostMapping("login/admin")
-    private void adminLogin(){
-
-    }
+//    @PostMapping("login/admin")
+//    private void adminLogin(){
+//
+//    }
     @PostMapping("register/admin")
-    private void adminRegister(){
-
+    private ResponseEntity<ApiResult> adminRegister(@RequestBody AdminDto adminDto){
+        return adminService.adminRegister(adminDto);
     }
     @PostMapping("register")
     private ResponseEntity<ApiResult> register(@RequestBody MemberRequestDto input){

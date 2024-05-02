@@ -19,5 +19,7 @@ public class AdminDto {
 
     private String name;
 
+    private String brand;
+
 
 }
