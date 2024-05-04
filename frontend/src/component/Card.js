@@ -46,26 +46,14 @@ const Card = () => {
   }
 
   useEffect(()=>{
-
-    if (window.innerWidth <= 480){
-      setItemsPerRow(3);
-    }
-    else if (480 < window.innerWidth <= 768){
-      setItemsPerRow(4);
-    }
-    else if (768 < window.innerWidth <= 1024){
-      setItemsPerRow(6);
-    }
-    
     const handleItemPreRow =()=>{
-      
       if (window.innerWidth <= 480){
         setItemsPerRow(3);
       }
-      else if (480 < window.innerWidth <= 768){
+      else if (480 < window.innerWidth && window.innerWidth <= 768){
         setItemsPerRow(4);
       }
-      else if (768 < window.innerWidth <= 1024){
+      else if (768 < window.innerWidth && window.innerWidth <= 1024){
         setItemsPerRow(6);
       }
     }
@@ -77,9 +65,7 @@ const Card = () => {
       window.removeEventListener("resize", handleItemPreRow);
     }
   },[])
-
-  const [itemsPerRow,setItemsPerRow] = useState(6)
-  // let itemsPerRow = 6; // 한 줄에 표시할 아이템의 수
+  const [itemsPerRow,setItemsPerRow] = useState(0)
   const groupedItems = groupItems(list, itemsPerRow);
 
 
