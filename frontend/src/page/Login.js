@@ -39,6 +39,7 @@ const Login = () => {
       dispatch(loginActions.getAccessToken(response.data.accessToken))
       //refreshToken 저장 (세션스토리지)
       window.sessionStorage.setItem('refreshToken',response.data.refreshToken)
+      window.sessionStorage.setItem('loginType','public')
       dispatch(loginActions.LogIn('public'))
       navigate('/')
     })

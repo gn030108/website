@@ -42,14 +42,18 @@ const useAxiosInstance = () => {
         async error => {
             //기존의 요청 저장 
             const originalRequest = error.config;
-
+            originalRequest._retry=false;
             // 응답 에러가 401(인증 실패)이고 요청이 이미 리프레시 토큰을 포함하여 보내진 경우
-            if (error.response.status === 401 && !originalRequest._retry) {
+            if (originalRequest._retry===false) {
                 originalRequest._retry = true;
-
+                console.log('시도함')
                 try {
                     // 새로운 액세스 토큰 요청
-                    const response = await axios.get('/reissue-token', { Refresh : refreshToken });
+                    const response = await axios.get('/member/reissue-token', {
+                        headers: {
+                            Refresh : refreshToken
+                        }
+                    });
                     const newAccessToken = response.data.accessToken;
                     const newRefreshToken = response.data.refreshToken
                     //새로운 refreshToken 세션스토리지에 저장
