@@ -46,6 +46,18 @@ const Card = () => {
   }
 
   useEffect(()=>{
+
+    if (window.innerWidth <= 480){
+      setItemsPerRow(3);
+    }
+    else if (480 < window.innerWidth && window.innerWidth <= 768){
+      setItemsPerRow(4);
+    }
+    else if (768 < window.innerWidth && window.innerWidth <= 1024){
+      setItemsPerRow(6);
+    }
+
+
     const handleItemPreRow =()=>{
       if (window.innerWidth <= 480){
         setItemsPerRow(3);
@@ -57,7 +69,6 @@ const Card = () => {
         setItemsPerRow(6);
       }
     }
-    handleItemPreRow()
 
     window.addEventListener("resize", handleItemPreRow);
 
@@ -65,7 +76,7 @@ const Card = () => {
       window.removeEventListener("resize", handleItemPreRow);
     }
   },[])
-  const [itemsPerRow,setItemsPerRow] = useState(0)
+  const [itemsPerRow,setItemsPerRow] = useState()
   const groupedItems = groupItems(list, itemsPerRow);
 
 
