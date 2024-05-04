@@ -56,6 +56,7 @@ const NavBar = () => {
       //스크롤 아래쪽 
       else if (nowScroll>preScroll){
         setUp(false)
+        setHandleMenu(false)
       }
       setPreScroll(nowScroll)
     }

@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     transition: transform 1s;
-    z-index: 10;
+    z-index: 25;
 }
 .body_down{
     transform: translateY(-100%);
@@ -129,7 +129,6 @@ main{
 .topMenu_layout{
     width: 100%;
     background-color: white;
-    z-index: 10;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -223,5 +222,14 @@ main{
     }
     .topMenu_first{
         min-height: 65px;
+        padding: 10px 0px 10px 55px;
+        dd{
+            ul{
+                li{
+                    width: 140px;
+                    padding-bottom: 10px;
+                }
+            }
+        }
     }
 }

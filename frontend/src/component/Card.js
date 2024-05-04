@@ -60,7 +60,7 @@ const Card = () => {
     const handleItemPreRow =()=>{
 
       if (window.innerWidth <= 480){
-        setItemsPerRow(2);
+        setItemsPerRow(3);
       }
       else if (window.innerWidth <= 768){
         setItemsPerRow(4);
