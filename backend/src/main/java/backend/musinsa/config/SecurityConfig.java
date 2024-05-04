@@ -49,6 +49,7 @@ public class SecurityConfig {
                                 authorizationRequest
                                         .requestMatchers("/member/register").permitAll()
                                         .requestMatchers("/member/login").permitAll()
+                                        .requestMatchers("/member/reissue-token").permitAll()
                                         .requestMatchers("/").permitAll()
                                         .requestMatchers("/admin").hasRole("ADMIN")
                                         .anyRequest().authenticated()
