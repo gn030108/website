@@ -23,7 +23,7 @@ const groupItems = (data, itemsPerRow) => {
 
 const Card = () => {
 
-  {/* 사진, 브랜드 , 상품이름, 가격, 평점, 좋아요 */}
+  //사진, 브랜드 , 상품이름, 가격, 평점, 좋아요
   const list = [
     {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
     {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
@@ -48,7 +48,7 @@ const Card = () => {
   useEffect(()=>{
     
     if (window.innerWidth <= 480){
-      setItemsPerRow(2);
+      setItemsPerRow(3);
     }
     else if (window.innerWidth <= 768){
       setItemsPerRow(4);
@@ -76,7 +76,7 @@ const Card = () => {
     return ()=>{
       window.removeEventListener("resize", handleItemPreRow);
     }
-  })
+  },[])
 
   const [itemsPerRow,setItemsPerRow] = useState(6)
   // let itemsPerRow = 6; // 한 줄에 표시할 아이템의 수

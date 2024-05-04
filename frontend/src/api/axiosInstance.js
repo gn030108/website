@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { loginActions } from '../redux/reducer/pageReducer/loginReducer';
 
 
 const useAxiosInstance = () => {
 
+    const dispatch=useDispatch()
     const navigate = useNavigate()
 
     // Redux 스토어에서 액세스 토큰 가져오기
@@ -44,18 +46,22 @@ const useAxiosInstance = () => {
             const originalRequest = error.config;
             originalRequest._retry=false;
             // 응답 에러가 401(인증 실패)이고 요청이 이미 리프레시 토큰을 포함하여 보내진 경우
-            if (originalRequest._retry===false) {
+            // if (error.response.status === 401 && originalRequest._retry===false && refreshToken) {
+            if (!accessToken && refreshToken && originalRequest._retry===false) {
                 originalRequest._retry = true;
                 console.log('시도함')
                 try {
                     // 새로운 액세스 토큰 요청
-                    const response = await axios.get('/member/reissue-token', {
+                    const response = await axios.get('/member/reissue-token', 
+                    {
                         headers: {
                             Refresh : refreshToken
                         }
                     });
                     const newAccessToken = response.data.accessToken;
-                    const newRefreshToken = response.data.refreshToken
+                    dispatch(loginActions.getAccessToken(newAccessToken))
+                    dispatch(loginActions.getRefreshToken(response.data.refreshToken))
+                    
                     //새로운 refreshToken 세션스토리지에 저장
                     window.sessionStorage.setItem('refreshToken',response.data.refreshToken)
 

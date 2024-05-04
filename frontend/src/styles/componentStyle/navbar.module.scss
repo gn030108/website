@@ -146,19 +146,21 @@ main{
     min-height: 48px;
     display: flex;
     align-items: center;
-    padding-left: 55px;
+    padding: 15px 0px 15px 55px;
+    border-bottom: 1px solid #e8e8e8;
     margin: 0;
     dt{
+        width: 45px;
         margin-right: 50px;
         font-size: 17px;
     }
     dd{
-        max-width: 70%;
+        max-width: 80%;
         ul{
             display: flex;
             flex-wrap: wrap;
             li{
-                width: 110px;
+                width: 140px;
                 padding-bottom: 15px;
                 a{
                     padding: 5px 0px;
