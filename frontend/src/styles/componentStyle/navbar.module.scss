@@ -221,11 +221,32 @@ main{
     }
     .topMenu_first{
         min-height: 65px;
-        padding: 10px 0px 10px 55px;
+        padding: 10px 0px 10px 30px;
+        margin: 0;
+        dt{
+            width: 30px;
+            margin-right: 50px;
+            font-size: 17px;
+        }
         dd{
+            max-width: 80%;
+            margin-inline-start: 20px;
             ul{
+                display: flex;
+                flex-wrap: wrap;
                 li{
+                    width: 115px;
                     padding-bottom: 10px;
+                    a{
+                        padding: 5px 0px;
+                        margin-right: 20px;
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #cdcdcd;
+                        &:hover{
+                            color: #888;
+                        }
+                    }
                 }
             }
         }
