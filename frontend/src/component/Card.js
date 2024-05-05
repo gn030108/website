@@ -45,38 +45,35 @@ const Card = () => {
     navigate("/Item")
   }
 
-  useEffect(()=>{
+  useEffect(() => {
+    const handleItemPreRow = () => {
 
-    if (window.innerWidth <= 480){
-      setItemsPerRow(3);
-    }
-    else if (480 < window.innerWidth && window.innerWidth <= 768){
-      setItemsPerRow(4);
-    }
-    else if (768 < window.innerWidth && window.innerWidth <= 1024){
-      setItemsPerRow(6);
-    }
+      let width = document.documentElement.clientWidth
 
-
-    const handleItemPreRow =()=>{
-      if (window.innerWidth <= 480){
+      if (width <= 480) {
         setItemsPerRow(3);
-      }
-      else if (480 < window.innerWidth && window.innerWidth <= 768){
+        console.log('3');
+      } 
+      else if (width > 480 && width <= 768) {
         setItemsPerRow(4);
+        console.log('4');
       }
-      else if (768 < window.innerWidth && window.innerWidth <= 1024){
+      else if (width > 768) {
         setItemsPerRow(6);
+        console.log('6');
       }
-    }
-
+    };
+  
+    handleItemPreRow();
+  
     window.addEventListener("resize", handleItemPreRow);
-
-    return ()=>{
+  
+    return () => {
       window.removeEventListener("resize", handleItemPreRow);
-    }
-  },[])
-  const [itemsPerRow,setItemsPerRow] = useState()
+    };
+  }, []);
+
+  const [itemsPerRow,setItemsPerRow] = useState(6)
   const groupedItems = groupItems(list, itemsPerRow);
 
 
