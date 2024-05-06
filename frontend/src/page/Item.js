@@ -1,7 +1,6 @@
 import Footer from '../component/Footer'
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import SelectBox from '../component/SelectBox'
 import Review from '../component/Review'
 import { useSelector } from 'react-redux'
@@ -51,9 +50,6 @@ const Item = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      {loginType !== 'admin' && (
-        <SideMenu/>
-      )}
       <SideBar/>
       <div className={styles.container}>
         <div style={{width:'fit-content'}}>

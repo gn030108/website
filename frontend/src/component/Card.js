@@ -50,11 +50,11 @@ const Card = () => {
 
       let width = document.documentElement.clientWidth
 
-      if (width <= 480) {
+      if (width <= 550) {
         setItemsPerRow(3);
         console.log('3');
       } 
-      else if (width > 480 && width <= 768) {
+      else if (width > 550 && width <= 768) {
         setItemsPerRow(4);
         console.log('4');
       }

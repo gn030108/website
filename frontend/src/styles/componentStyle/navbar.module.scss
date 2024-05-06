@@ -89,7 +89,7 @@ main{
 
 /* 아이콘 시작 */
 .iconBox{
-    display: none;
+    display: flex;
     justify-content: flex-end;
     height: fit-content;
         section{
@@ -182,6 +182,9 @@ main{
     .menu{
         width: calc(100vw - 300px);
     }
+    .logo{
+        height: 45px;
+    }
     .search_input{
         display: none;
     }
@@ -195,7 +198,7 @@ main{
         display: flex;
     }
 }
-@media screen and (max-width: 480px) {  
+@media screen and (max-width: 480px) { 
     header{
         padding-right: 0;
         span{
@@ -209,9 +212,12 @@ main{
     .menu{
         display: none;
     }
+    .logo{
+        height: 40px;
+    }
     .left{
-        margin-left: 15px;
-        margin-right: 40px;
+        // margin-left: 15px;
+        // margin-right: 40px;
     }
     .iconBox{
         display: flex;
@@ -230,7 +236,7 @@ main{
         }
         dd{
             max-width: 80%;
-            margin-inline-start: 20px;
+            margin-inline-start: 0px;
             ul{
                 display: flex;
                 flex-wrap: wrap;

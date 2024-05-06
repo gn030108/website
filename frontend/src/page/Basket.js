@@ -1,7 +1,6 @@
 import Footer from '../component/Footer'
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/pageStyle/basket.module.scss'
@@ -63,7 +62,6 @@ const Basket = () => {
 
       <div>
         <div className={styles.navbar}><NavBar/></div>
-        <SideMenu/>
         <SideBar/>
         <div className={styles.container}>
           <div className={styles.title_box}>

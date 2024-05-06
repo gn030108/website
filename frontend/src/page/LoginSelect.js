@@ -1,6 +1,5 @@
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import styles from '../styles/pageStyle/loginSelect.module.scss'
 import Footer from '../component/Footer'
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,6 @@ const LoginSelect = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      <SideMenu/>
       <SideBar/>
       <div className={styles.layout}>
         <div onClick={()=>{goLogin()}}>

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import SelectBox from '../component/SelectBox'
 import styles from '../styles/pageStyle/login.module.scss'
 import { signInActions } from '../redux/reducer/pageReducer/signInReducer'
@@ -83,7 +82,6 @@ const SignIn = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      <div className={styles.SideMenu}><SideMenu/></div>
       <SideBar/>
       <div className={styles.layout}>
         <form>

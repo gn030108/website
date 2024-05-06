@@ -1,7 +1,6 @@
 import Footer from '../component/Footer'
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import Card from '../component/Card'
 import Paging from '../component/Paging'
 import { useEffect, useState } from 'react';
@@ -14,7 +13,6 @@ const Like = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      <SideMenu/>
       <SideBar/>
       <div className={styles.container}>
         <div className={styles.title_box}>

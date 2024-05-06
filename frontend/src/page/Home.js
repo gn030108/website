@@ -1,6 +1,5 @@
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import Card from '../component/Card'
 import { useSelector } from 'react-redux'
 import styles from '../styles/pageStyle/home.module.scss'
@@ -15,9 +14,6 @@ const Home = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      {loginType != 'admin' && (
-        <SideMenu/>
-      )}
       <SideBar/>
       <div className={styles.container}>
         <div style={{width:'fit-content'}}>
