@@ -59,8 +59,8 @@ const Card = () => {
         console.log('4');
       }
       else if (width > 768) {
-        setItemsPerRow(6);
-        console.log('6');
+        setItemsPerRow(5);
+        console.log('5');
       }
     };
   
