@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import styles from '../styles/pageStyle/login.module.scss'
 import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import useAxiosInstance from '../api/axiosInstance'
 
@@ -39,6 +37,7 @@ const Login = () => {
       dispatch(loginActions.getAccessToken(response.data.accessToken))
       //refreshToken 저장 (세션스토리지)
       window.sessionStorage.setItem('refreshToken',response.data.refreshToken)
+      window.sessionStorage.setItem('memberId',memberId)
       window.sessionStorage.setItem('loginType','public')
       dispatch(loginActions.LogIn('public'))
       navigate('/')
@@ -53,7 +52,6 @@ const Login = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      <SideMenu/>
       <SideBar/>
       <div className={styles.layout}>
         <form>

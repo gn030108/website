@@ -50,8 +50,9 @@ public class SecurityConfig {
                                         .requestMatchers("/member/register").permitAll()
                                         .requestMatchers("/member/login").permitAll()
                                         .requestMatchers("/member/reissue-token").permitAll()
+                                        .requestMatchers("/").permitAll()
                                         .requestMatchers("/admin").hasRole("ADMIN")
-                                        .anyRequest().permitAll()
+                                        .anyRequest().authenticated()
                 )
                 .addFilterBefore(
                         new TokenAuthenticationFilter(tokenProvider),

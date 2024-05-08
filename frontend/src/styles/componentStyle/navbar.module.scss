@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     transition: transform 1s;
-    z-index: 10;
+    z-index: 25;
 }
 .body_down{
     transform: translateY(-100%);
@@ -89,7 +89,7 @@ main{
 
 /* 아이콘 시작 */
 .iconBox{
-    display: none;
+    display: flex;
     justify-content: flex-end;
     height: fit-content;
         section{
@@ -129,12 +129,10 @@ main{
 .topMenu_layout{
     width: 100%;
     background-color: white;
-    z-index: 10;
     position: absolute;
     bottom: 0;
     left: 0;
     transform: translateY(100%);
-    padding-top: 10px;
     div{
         border-top: 1px solid #E5E5E5;
     }
@@ -146,19 +144,21 @@ main{
     min-height: 48px;
     display: flex;
     align-items: center;
-    padding-left: 55px;
+    padding: 15px 0px 15px 55px;
+    border-bottom: 1px solid #e8e8e8;
     margin: 0;
     dt{
+        width: 45px;
         margin-right: 50px;
         font-size: 17px;
     }
     dd{
-        max-width: 70%;
+        max-width: 80%;
         ul{
             display: flex;
             flex-wrap: wrap;
             li{
-                width: 110px;
+                width: 140px;
                 padding-bottom: 15px;
                 a{
                     padding: 5px 0px;
@@ -182,6 +182,9 @@ main{
     .menu{
         width: calc(100vw - 300px);
     }
+    .logo{
+        height: 45px;
+    }
     .search_input{
         display: none;
     }
@@ -195,7 +198,7 @@ main{
         display: flex;
     }
 }
-@media screen and (max-width: 480px) {  
+@media screen and (max-width: 480px) { 
     header{
         padding-right: 0;
         span{
@@ -209,9 +212,12 @@ main{
     .menu{
         display: none;
     }
+    .logo{
+        height: 40px;
+    }
     .left{
-        margin-left: 15px;
-        margin-right: 40px;
+        // margin-left: 15px;
+        // margin-right: 40px;
     }
     .iconBox{
         display: flex;
@@ -221,5 +227,34 @@ main{
     }
     .topMenu_first{
         min-height: 65px;
+        padding: 10px 0px 10px 30px;
+        margin: 0;
+        dt{
+            width: 30px;
+            margin-right: 50px;
+            font-size: 17px;
+        }
+        dd{
+            max-width: 80%;
+            margin-inline-start: 0px;
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                li{
+                    width: 115px;
+                    padding-bottom: 10px;
+                    a{
+                        padding: 5px 0px;
+                        margin-right: 20px;
+                        font-size: 12px;
+                        font-weight: 400;
+                        color: #cdcdcd;
+                        &:hover{
+                            color: #888;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

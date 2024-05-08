@@ -14,19 +14,20 @@ a{
 //css
 .sideMenu{
     width: 200px;
-    height: 80vh;
+    min-height: 350px;
+    height: 40vh;
     position: fixed; //화면을 따라오게 
     -webkit-transform: translateZ(0);
-    margin-top: calc((100vh - 80vh)/2);
-    top: 0;
+    // margin-top: calc((100vh - 80vh)/2);
+    top: 50%;
     left: 0;
     background-color:  $whiteGray;
     z-index: 20;
-    border-radius: 20px;
-    transform: translate( -150px , 0);  /* X축 이동, Y축 고정 */
+    // border-radius: 20px;
+    transform: translate( -150px , -50%);  /* X축 이동, Y축 고정 */
     transition: .5s;
     &:hover{
-        transform: translate(-20px, 0);   /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
+        transform: translate(-20px, -50%);   /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
     }
 }
 /* 2차 이상의 메뉴 숨기기 */
@@ -37,12 +38,13 @@ a{
         }
         //firstLi
         li{
-            position: relative;
+            
             padding-top: 20px;
             padding-bottom: 20px;
             a{
+                height: 32px;
                 color: #888;
-                font-size: 1.4rem;
+                font-size: 23px;
                 font-weight: bold;
             }
             //firstLi:hover
@@ -63,6 +65,13 @@ a{
                             background-color:  white;
                             border-bottom: 1px solid #999;
                         }
+                        a{
+                            display: block;
+                            height: 33px;
+                            color: #888;
+                            font-size: 17px;
+                            font-weight: bold;
+                        }
                     }
                 }
             }
@@ -70,7 +79,8 @@ a{
     }
 }
 .firstUl{
-    margin-top: calc((90vh - 80vh)/2);
+    // margin-top: calc((90vh - 80vh)/2);
+    margin-top: 21.6px;
 }
 
 
@@ -147,13 +157,19 @@ section{
 
 
 //미디어쿼리 
-@media screen and (max-width:767px) {
+@media screen and (max-width:768px) {
     .sideMenu{
         display: none;
     }
 }
-@media screen and (max-width:479px) {
+@media screen and (max-width:480px) {
     .sideMenu{
         display: none;
     }
 }
+//     /* 터치가능한 디바이스(스마트폰, 터치스크린) */
+// @media (hover: none) and (pointer: coarse) {
+//     .sideMenu{
+//         display: none;
+//     }
+// }

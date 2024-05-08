@@ -1,6 +1,5 @@
 import NavBar from '../component/NavBar'
 import SideBar from '../component/SideBar'
-import SideMenu from '../component/SideMenu'
 import Card from '../component/Card'
 import { useEffect, useState } from 'react';
 import styles from '../styles/pageStyle/list.module.scss'
@@ -12,7 +11,6 @@ const List = () => {
   return (
     <div>
       <div className={styles.navbar}><NavBar/></div>
-      <SideMenu/>
       <SideBar/>
       <div className={styles.container}>
             <div className={styles.category}>
