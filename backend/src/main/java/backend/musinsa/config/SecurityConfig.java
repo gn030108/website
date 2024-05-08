@@ -52,7 +52,7 @@ public class SecurityConfig {
                                         .requestMatchers("/member/reissue-token").permitAll()
                                         .requestMatchers("/").permitAll()
                                         .requestMatchers("/admin").hasRole("ADMIN")
-                                        .anyRequest().authenticated()
+                                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(
                         new TokenAuthenticationFilter(tokenProvider),
