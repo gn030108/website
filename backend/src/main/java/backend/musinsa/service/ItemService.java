@@ -1,14 +1,19 @@
 package backend.musinsa.service;
 
+import backend.musinsa.domain.SearchCond;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.exception.ExceptionEnum;
 import backend.musinsa.domain.exception.ItemException;
 import backend.musinsa.domain.item.Item;
 import backend.musinsa.domain.item.ItemInfo;
 import backend.musinsa.domain.item.ItemRequestDto;
+import backend.musinsa.domain.item.ItemResponseDto;
+import backend.musinsa.repository.CustomSearchRepository;
 import backend.musinsa.repository.ItemInfoRepository;
 import backend.musinsa.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,6 +30,7 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final ItemInfoRepository itemInfoRepository;
     private final ImageService imageService;
+    private final CustomSearchRepository customSearchRepository;
 
     public ResponseEntity<ApiResult> storeItem(ItemRequestDto input, List<MultipartFile> mainImageList,
                                                List<MultipartFile> thumbnailImageList){
@@ -40,7 +46,6 @@ public class ItemService {
                             .itemInfo(
                                     itemInfoRepository.save(
                                             ItemInfo.builder()
-                                                    .itemNumber(input.getItemNumber())
                                                     .price(input.getPrice())
                                                     .gender(input.getGender())
                                                     .status(input.getStatus())
@@ -62,24 +67,6 @@ public class ItemService {
         itemRepository.deleteById(Long.parseLong(id));
 
     }
-//    public ResponseEntity<ApiResult> updateItem(ItemRequestDto input, String id){
-//        //상품 정보 변경 메서드
-//        try {
-//            Item item = getItem(id);
-//            item.updateItem(input.getName(), input.getCategory(), input.getTag(), input.getBrand(),
-//                    ItemInfo.builder()
-//                            .itemNumber(input.getItemNumber())
-//                            .price(input.getPrice())
-//                            .status(input.getStatus())
-//                            .gender(input.getGender())
-//                            .colorOption(input.getColorOption())
-//                            .sizeOption(input.getSizeOption())
-//                            .build());
-//        } catch (Exception e){
-//            throw new ItemException(ExceptionEnum.ITEM_UPDATE_FAIL);
-//        }
-//        return ResponseEntity.ok().body(ApiResult.builder().status("success").message("상품정보 변경 완료").build());
-//    }
     public Item getItem(String id){
         //상품 단일 조회 메서드
         return itemRepository.findById(Long.parseLong(id)).orElseGet(Item::new);
@@ -91,8 +78,8 @@ public class ItemService {
                 .name(item.getName())
                 .tag(item.getTag())
                 .category(item.getCategory())
+                .id(item.getId())
                 .price(item.getItemInfo().getPrice())
-                .itemNumber(item.getItemInfo().getItemNumber())
                 .colorOption(item.getItemInfo().getColorOption())
                 .sizeOption(item.getItemInfo().getSizeOption())
                 .gender(item.getItemInfo().getGender())
@@ -113,5 +100,12 @@ public class ItemService {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiResult.builder().status("error").message("메인 이미지 변경실패").build());
     }
+
+    public Page<ItemResponseDto> searchItemDto(SearchCond searchCond, Pageable pageable){
+        return customSearchRepository.searchItem(searchCond,pageable);
+    }
+
+
+
 }
 

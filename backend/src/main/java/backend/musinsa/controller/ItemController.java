@@ -1,9 +1,13 @@
 package backend.musinsa.controller;
 
+import backend.musinsa.domain.SearchCond;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.item.ItemRequestDto;
+import backend.musinsa.domain.item.ItemResponseDto;
 import backend.musinsa.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,6 +37,10 @@ public class ItemController {
     public ItemRequestDto getItemInfo(@RequestParam("id") String id){
         return itemService.getItemRequestDto(id);
     }
+
+
+
+
 
 //    @PostMapping("update/{id}")
 //    public ResponseEntity<ApiResult> itemUpdate(@RequestParam("id") String id,

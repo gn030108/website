@@ -31,10 +31,6 @@ public class MemberController {
         log.info("password = "+input.getPassword());
         return memberService.signIn(input);
     }
-//    @PostMapping("login/admin")
-//    private void adminLogin(){
-//
-//    }
     @PostMapping("register/admin")
     private ResponseEntity<ApiResult> adminRegister(@RequestBody AdminDto adminDto){
         return adminService.adminRegister(adminDto);
