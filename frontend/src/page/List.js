@@ -4,9 +4,33 @@ import Card from '../component/Card'
 import { useEffect, useState } from 'react';
 import styles from '../styles/pageStyle/list.module.scss'
 import Paging from '../component/Paging';
+import { useSelector } from 'react-redux';
 const List = () => {
 
   const [page,setPage] = useState(1)
+  const [title,setTitle] = useState('')
+  const [subheader,setSubheader] = useState([])
+  const [brand,setBrand] = useState([])
+  const type = useSelector((state)=>state.navbar.type)
+
+  useEffect(()=>{
+    if (type === 'top') {
+      setTitle('Top')
+      setSubheader(['전체','맨투맨/스웨트셔츠', '니트/스웨터', '긴소매 티셔츠', '반소매 티셔츠', '셔츠/블라우스', '후드 티셔츠','기타 상의', '민소매 티셔츠', '스포츠 상의'])
+      setBrand(['무신사 스탠다드', '예일', '커버낫', '닉앤니콜', '디스이스네버댓', '와릿이즌', '오아이오아이컬렉션','꼼파뇨','리', '디스커버리 익스페디션', '폴로 랄프 로렌', '어반드레스'])
+    }
+    else if (type ==='outer'){
+      setTitle('Outer')
+      setSubheader(['전체','슈트/블레이저', '코트', '패딩', '가디건', '블루종/MA-1', '후드집업', '베스트','기타 아우터', '트레이닝 재킷'])
+      setBrand(['무신사 스탠다드', '예일', '커버낫', '닉앤니콜', '디스이스네버댓', '와릿이즌', '오아이오아이컬렉션','노스페이스','리', '굿라이프웍스', '코드그라피', '디스이즈네버댓'])
+    }
+    else if (type ==='pants'){
+      setTitle('Pants')
+      setSubheader(['전체','데님 팬츠', '코튼 팬츠', '슈트 팬츠/슬랙스', '트레이닝/조거팬츠', '숏 팬츠', '레깅스', '점프 슈트/오버올', '기타 바지', '스포츠 하의',])
+      setBrand(['무신사 스탠다드', '노스페이스', '디스이즈네버댓', '아디다스', '커버낫', '오아이오아이컬렉션', '토피','리','굿라이프웍스', '에이치 덱스', '브라운브레스', '어반드레스'])
+    }
+
+  },[type])
 
   return (
     <div>
@@ -14,23 +38,17 @@ const List = () => {
       <SideBar/>
       <div className={styles.container}>
             <div className={styles.category}>
+              
 
-              <div className={styles.title}>Top</div>
+              <div className={styles.title}>{title}</div>
 
               <dl className={styles.contents_box}>
                 <dt className={styles.subheader}>분류</dt>
                 <dd className={styles.contents}>
                   <ul>
-                    <li><a href='#'>맨투맨/스웨트셔츠</a></li>
-                    <li><a href='#'>니트/스웨터</a></li>
-                    <li><a href='#'>긴소메 티셔츠</a></li>
-                    <li><a href='#'>반소메 티셔츠</a></li>
-                    <li><a href='#'>셔츠/블라우스</a></li>
-                    <li><a href='#'>후드 티셔츠</a></li>
-                    <li><a href='#'>피케/카라 티셔츠</a> </li>
-                    <li><a href='#'>기타 상의</a></li>
-                    <li><a href='#'>민소메 티셔츠</a></li>
-                    <li><a href='#'>스포츠 상의</a></li>
+                    {subheader.map((item,index)=>(
+                      <li key={index}><a href='#'>{item}</a></li>
+                    ))}
                   </ul>
                 </dd>
               </dl>
@@ -39,18 +57,9 @@ const List = () => {
                 <dt className={styles.subheader}>브랜드</dt>
                 <dd className={styles.contents}>
                   <ul>
-                    <li><a href='#'>무신사 스탠다드</a></li>
-                    <li><a href='#'>예일</a></li>
-                    <li><a href='#'>커버낫</a></li>
-                    <li><a href='#'>닉앤니콜</a></li>
-                    <li><a href='#'>디스이즈네버댓</a></li>
-                    <li><a href='#'>와릿이즌</a></li>
-                    <li><a href='#'>오아이오아이컬렉션</a></li>
-                    <li><a href='#'>꼼파뇨</a></li>
-                    <li><a href='#'>리</a></li>
-                    <li><a href='#'>디스커버리 익스페디션</a></li>
-                    <li><a href='#'>폴로 랄프 로렌</a></li>
-                    <li><a href='#'>어반드레스</a></li>
+                    {brand.map((item,index)=>(
+                        <li key={index}><a href='#'>{item}</a></li>
+                      ))}
                   </ul>
                 </dd>
               </dl>
@@ -60,11 +69,11 @@ const List = () => {
                 <dd className={styles.contents}>
                   <ul>
                     <li><a href='#'>전체보기</a></li>
-                    <li><a href='#'>~ 50,000원</a></li>
-                    <li><a href='#'>50,000원 ~ 100,000원</a></li>
-                    <li><a href='#'>100,000원 ~ 200,000원</a></li>
-                    <li><a href='#'>200,000원 ~ 300,000원</a></li>
-                    <li><a href='#'> 300,000원 ~ </a></li>
+                    <li><a href='#'>~ 50,000</a></li>
+                    <li><a href='#'>50,000 ~ 100,000</a></li>
+                    <li><a href='#'>100,000 ~ 200,000</a></li>
+                    <li><a href='#'>200,000 ~ 300,000</a></li>
+                    <li><a href='#'> 300,000 ~ </a></li>
                   </ul>
                 </dd>
               </dl>

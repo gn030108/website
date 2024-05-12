@@ -10,6 +10,7 @@ import addGoodsReducer from './reducer/pageReducer/addGoodsReducer';
 import signInReducer from './reducer/pageReducer/signInReducer';
 import selectBoxReducer from './reducer/componentReducer/selectBoxReducer';
 import modalReducer from './reducer/componentReducer/modalReducer';
+import navbarReducer from './reducer/componentReducer/navbarReducer';
 
 
 
@@ -30,6 +31,7 @@ const store = configureStore({
         review:reviewReducer,
         selectBox:selectBoxReducer,
         modal:modalReducer,
+        navbar:navbarReducer
     
     }
 })

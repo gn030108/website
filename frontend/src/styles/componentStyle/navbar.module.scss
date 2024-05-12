@@ -92,6 +92,7 @@ main{
     display: flex;
     justify-content: flex-end;
     height: fit-content;
+    margin: 0px 10px;
         section{
         position: relative;
         width: 23px;
@@ -217,12 +218,9 @@ main{
     .logo{
         height: 40px;
     }
-    .left{
-        // margin-left: 15px;
-        // margin-right: 40px;
-    }
     .iconBox{
         display: flex;
+        margin: 0;
     }
     .topMenu_layout{
         width: 100%;

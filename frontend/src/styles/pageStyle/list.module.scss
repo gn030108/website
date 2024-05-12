@@ -46,7 +46,7 @@
     // border: 1px solid blueviolet;
 }
 .contents{
-    max-width: 90%;
+    max-width: 85%;
     min-height: 30px;
     padding-top: 12px;
     ul{
@@ -106,6 +106,13 @@
 }
 
 @media screen and (max-width:479px) {
+    .container{
+        margin: 0;
+        width: 100%;
+    }
+    .category{
+        width: inherit;
+    }
     .title{
         padding: 20px 0px 18px 20px;
     }
@@ -115,6 +122,13 @@
     .contents{
         max-width: 77%;
         margin-left: 0;
+        ul{
+            li{
+                width: 133px;
+                padding-bottom: 15px;
+                list-style-type: none;
+            }
+        }
     }
     .search_box{
         dd{

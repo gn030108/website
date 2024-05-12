@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
 import styles from '../styles/componentStyle/navbar.module.scss'
 import useAxiosInstance from '../api/axiosInstance';
+import { navbarActions } from '../redux/reducer/componentReducer/navbarReducer';
 
 
 const NavBar = () => {
@@ -87,7 +88,9 @@ const NavBar = () => {
   const goAddGoods=()=>{
     navigate('/AddGoods')
   }
-  const goList = ()=>{
+  const goList = (type)=>{
+    console.log(type)
+    dispatch(navbarActions.getType(type))
     navigate("/List")
   }
   const  logout = (e)=>{
@@ -141,14 +144,14 @@ const NavBar = () => {
           </dt>
           <dd>
             <ul>
-              <li onClick={()=>(goList())}><a href='#!'>아우터 전체</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>슈트/블레이저</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>코트</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>패딩</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>가디건</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>블루종/MA-1</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>후드집업</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>더보기</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>아우터 전체</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>슈트/블레이저</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>코트</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>패딩</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>가디건</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>블루종/MA-1</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>후드집업</a></li>
+              <li onClick={()=>(goList('outer'))}><a href='#!'>더보기</a></li>
             </ul>
           </dd>
         </dl>
@@ -158,14 +161,14 @@ const NavBar = () => {
           </dt>
           <dd>
             <ul>
-              <li onClick={()=>(goList())}><a href='#!'>상의 전체</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>맨투맨/스웨트셔츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>긴소메 티셔츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>반소메 티셔츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>셔츠/블라우스</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>후드 티셔츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>피케/카라 티셔츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>더보기</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>상의 전체</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>맨투맨/스웨트셔츠</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>긴소매 티셔츠</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>반소매 티셔츠</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>셔츠/블라우스</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>후드 티셔츠</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>피케/카라 티셔츠</a></li>
+              <li onClick={()=>(goList('top'))}><a href='#!'>더보기</a></li>
             </ul>
           </dd>
         </dl>
@@ -175,28 +178,28 @@ const NavBar = () => {
           </dt>
           <dd>
             <ul>
-              <li onClick={()=>(goList())}><a href='#!'>하의 전체</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>데님 팬츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>코튼 팬츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>슈트 팬츠/슬랙스</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>트레이닝/조거팬츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>숏 팬츠</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>레깅스</a></li>
-              <li onClick={()=>(goList())}><a href='#!'>더보기</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>하의 전체</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>데님 팬츠</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>코튼 팬츠</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>슈트 팬츠/슬랙스</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>트레이닝/조거팬츠</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>숏 팬츠</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>레깅스</a></li>
+              <li onClick={()=>(goList('pants'))}><a href='#!'>더보기</a></li>
             </ul>
           </dd>
         </dl>
       </div>
         )}
       <main>
-        <div className={styles.iconBox} onClick={()=>{setHandleMenu(!handleMenu)}}>
-          <section>
-            <div></div>
-            <div></div>
-            <div></div>
-          </section>
-        </div>
         <div className={styles.left}>
+          <div className={styles.iconBox} onClick={()=>{setHandleMenu(!handleMenu)}}>
+            <section>
+              <div></div>
+              <div></div>
+              <div></div>
+            </section>
+          </div>
           <span>
             <img src={logo} onClick={()=>{goHome()}} className={styles.logo} alt='로고'/>
           </span>
