@@ -11,7 +11,6 @@ import MyPage from './page/MyPage'
 import AddGoods from './page/AddGoods'
 import AdminLogin from './page/AdminLogin'
 import LoginSelect from './page/LoginSelect'
-import NavBar from './component/NavBar';
 
 
 function App() {
