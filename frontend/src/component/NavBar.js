@@ -203,7 +203,7 @@ const NavBar = () => {
           <span>
             <img src={logo} onClick={()=>{goHome()}} className={styles.logo} alt='로고'/>
           </span>
-        </div>
+        </div>  
 
         <div className={styles.info}>
           <span className={styles.search}>
@@ -223,3 +223,14 @@ const NavBar = () => {
 }
 
 export default NavBar
+
+// <div>
+//           {/* outer */}
+//           <div>
+            
+//           </div>
+//           {/* top */}
+//           <div></div>
+//           {/* pants */}
+//           <div></div>
+//         </div>

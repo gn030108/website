@@ -21,23 +21,23 @@ const groupItems = (data, itemsPerRow) => {
       return groups;
 }
 
-const Card = () => {
+const Card = ({list}) => {
 
   //사진, 브랜드 , 상품이름, 가격, 평점, 좋아요
-  const list = [
-    {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-    {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-    {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-  ]
+  // const list = [
+  //   {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
+  //   {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
+  //   {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
+  //   {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
+  //   {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
+  //   {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
+  //   {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
+  //   {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
+  //   {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
+  //   {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
+  //   {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
+  //   {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
+  // ]
   
   const navigate = useNavigate()
 
