@@ -17,12 +17,12 @@ public class SearchController {
 
     private final ItemService itemService;
 
-    @GetMapping("get")
+    @GetMapping("search")
     public Page<ItemResponseDto> searchItem(@RequestBody SearchCond searchCond, Pageable pageable){
         return itemService.searchItemDto(searchCond,pageable);
     }
     @GetMapping("get/{id}")
-    public ItemRequestDto getItemInfo(@RequestParam("id") String id){
+    public ItemRequestDto getItemInfo(@PathVariable("id") String id){
         return itemService.getItemRequestDto(id);
     }
 

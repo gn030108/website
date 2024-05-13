@@ -86,10 +86,67 @@ main{
     cursor: pointer;
 }
 
+.category{
+    width: 500px;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    .category_Top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: inherit;
+        position: relative;
+        span{
+            width: 125px;
+            font-weight: 500;
+        }
+    }
+    .category_Top_drop{
+        width: 100vw;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateY(60px);
+        justify-content: center;
+        align-items: center;
+        padding-left: 33px;
+        ul{
+            padding: 0px 0px 0px 30px;
+            margin: 0px 10px ;
+            li{
+                list-style-type: none;
+                a{
+                    display: block;
+                    width: 125px;
+                    height: 20px;
+                    padding: 10px 0px;
+                    text-align: start;
+                    text-decoration-line: none;
+                    color: #cdcdcd;
+                    &:hover{
+                        color: black;
+                    }
+                }
+            }
+        }
+        &:hover{
+            display: flex;
+        }
+    }
+    &:hover{
+        .category_Top_drop{
+            display: flex;
+        }
+    }
+}
+
+
 
 /* 아이콘 시작 */
 .iconBox{
-    display: flex;
+    display: none;
     justify-content: flex-end;
     height: fit-content;
     margin: 0px 10px;

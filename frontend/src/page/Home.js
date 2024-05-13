@@ -17,7 +17,10 @@ const Home = () => {
   const itemList = useSelector((state)=>state.home.itemList)
 
   useEffect(()=>{
-    axiosInstance.get('/item/get')
+
+    const id = 1
+
+    axiosInstance.get(`/item/get/${id}`)
     .then(response =>{
       dispatch(homeActions.getItemList(response.data))
       console.log(response)
@@ -35,7 +38,7 @@ const Home = () => {
       <div className={styles.container}>
         <div style={{width:'fit-content'}}>
             <Card
-              list={itemList}
+              // list={itemList}
             />
         </div>
       </div>
