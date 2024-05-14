@@ -117,9 +117,10 @@ main{
     align-items: center;
     background-color: white;
     opacity: 1;
-    height: auto; /* 내용의 높이에 따라 자동 조절되도록 설정 */
-    overflow: hidden; /* 내용이 넘치는 경우를 대비하여 오버플로우를 숨김 */
+    height: 350px;
+    overflow: hidden;
     transition: opacity 0.3s ease-in-out, height 0.5s ease-in-out; /* 트랜지션 설정 */
+    border-bottom: 1px solid #E5E5E5;
     ul{
         margin: 0px 10px ;
         li{
@@ -145,13 +146,45 @@ main{
             }
         }
     }
-
 }
 .category_Top_drop_before{
-    opacity: 0; /* 처음에는 투명도를 0으로 설정하여 숨겨진 상태 */
-    height: 0; /* 처음에는 높이를 0으로 설정하여 숨겨진 상태 */
-    overflow: hidden; /* 내용이 넘치는 경우를 대비하여 오버플로우를 숨김 */
-    transition: opacity 0.3s ease-in-out, height 0.5s ease-in-out; /* 높이 변화에 대한 트랜지션 추가 */
+    width: 100%;
+    position: sticky;
+    display: flex;
+    top: 60px;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, height 0.3s ease-in-out; /* 트랜지션 설정 추가 */
+    ul{
+        margin: 0px 10px ;
+        li{
+            list-style-type: none;
+            a{
+                display: block;
+                width: 125px;
+                height: 20px;
+                padding: 10px 0px;
+                font-size: 12px;
+                text-align: start;
+                text-decoration-line: none;
+                color: #cdcdcd;
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+        li:nth-of-type(1){
+            a{
+                color: black;
+                font-size: 16px;
+            }
+        }
+    }
 }
 
 /* 아이콘 시작 */
