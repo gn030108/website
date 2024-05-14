@@ -24,6 +24,7 @@ const Home = () => {
     .then(response =>{
       dispatch(homeActions.getItemList(response.data))
       console.log(response)
+      console.log('성공!')
     })
     .catch(error=>{
       console.log(error)

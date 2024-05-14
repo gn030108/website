@@ -87,65 +87,75 @@ main{
 }
 
 .category{
-    width: 500px;
-    height: inherit;
     display: flex;
+    justify-content: center;
     align-items: center;
-    .category_Top{
+    width: 330px;
+    height: inherit;
+    div{
+        height: inherit;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: inherit;
-        position: relative;
-        span{
-            width: 125px;
-            font-weight: 500;
-        }
+        padding: 0px 20px;
     }
-    .category_Top_drop{
-        width: 100vw;
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translateY(60px);
-        justify-content: center;
-        align-items: center;
-        padding-left: 33px;
-        ul{
-            padding: 0px 0px 0px 30px;
-            margin: 0px 10px ;
-            li{
-                list-style-type: none;
-                a{
-                    display: block;
-                    width: 125px;
-                    height: 20px;
-                    padding: 10px 0px;
-                    text-align: start;
-                    text-decoration-line: none;
-                    color: #cdcdcd;
-                    &:hover{
-                        color: black;
-                    }
-                }
-            }
-        }
+    span{
+        padding: 3px 5px;
+        font-weight: 500;
+        cursor: pointer;
         &:hover{
-            display: flex;
-        }
-    }
-    &:hover{
-        .category_Top_drop{
-            display: flex;
+            border-bottom: 2px solid black;
         }
     }
 }
+.category_Top_drop_after{
+    width: 100%;
+    position: sticky;
+    display: flex;
+    top: 60px;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 1;
+    height: auto; /* 내용의 높이에 따라 자동 조절되도록 설정 */
+    overflow: hidden; /* 내용이 넘치는 경우를 대비하여 오버플로우를 숨김 */
+    transition: opacity 0.3s ease-in-out, height 0.5s ease-in-out; /* 트랜지션 설정 */
+    ul{
+        margin: 0px 10px ;
+        li{
+            list-style-type: none;
+            a{
+                display: block;
+                width: 125px;
+                height: 20px;
+                padding: 10px 0px;
+                font-size: 12px;
+                text-align: start;
+                text-decoration-line: none;
+                color: #cdcdcd;
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+        li:nth-of-type(1){
+            a{
+                color: black;
+                font-size: 16px;
+            }
+        }
+    }
 
-
+}
+.category_Top_drop_before{
+    opacity: 0; /* 처음에는 투명도를 0으로 설정하여 숨겨진 상태 */
+    height: 0; /* 처음에는 높이를 0으로 설정하여 숨겨진 상태 */
+    overflow: hidden; /* 내용이 넘치는 경우를 대비하여 오버플로우를 숨김 */
+    transition: opacity 0.3s ease-in-out, height 0.5s ease-in-out; /* 높이 변화에 대한 트랜지션 추가 */
+}
 
 /* 아이콘 시작 */
-.iconBox{
+.menuIconBox{
     display: none;
     justify-content: flex-end;
     height: fit-content;
@@ -235,6 +245,18 @@ main{
     }
 }
 
+@media screen and (max-width: 1024px) {
+    .search_input{
+        display: none;
+    }
+    .search_icon{
+        display: block;
+        font-size: 25px;
+        padding: 11px 0px;
+        cursor: pointer;
+    }
+}
+
 @media screen and (max-width: 768px) {
     header{
         padding-right:20px;
@@ -254,7 +276,7 @@ main{
         padding: 11px 0px;
         cursor: pointer;
     }
-    .iconBox{
+    .menuIconBox{
         display: flex;
     }
 }
@@ -275,7 +297,7 @@ main{
     .logo{
         height: 40px;
     }
-    .iconBox{
+    .menuIconBox{
         display: flex;
         margin: 0;
     }
