@@ -47,4 +47,5 @@ public class ItemResponseDto {
         this.sizeOption = sizeOption;
         this.gender = gender;
     }
+
 }

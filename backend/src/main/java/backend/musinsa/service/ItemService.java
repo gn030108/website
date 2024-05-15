@@ -4,16 +4,15 @@ import backend.musinsa.domain.SearchCond;
 import backend.musinsa.domain.exception.ApiResult;
 import backend.musinsa.domain.exception.ExceptionEnum;
 import backend.musinsa.domain.exception.ItemException;
-import backend.musinsa.domain.item.Item;
-import backend.musinsa.domain.item.ItemInfo;
-import backend.musinsa.domain.item.ItemRequestDto;
-import backend.musinsa.domain.item.ItemResponseDto;
+import backend.musinsa.domain.item.*;
 import backend.musinsa.repository.CustomSearchRepository;
 import backend.musinsa.repository.ItemInfoRepository;
 import backend.musinsa.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional
@@ -105,7 +105,13 @@ public class ItemService {
         return customSearchRepository.searchItem(searchCond,pageable);
     }
 
-
+    public List<CardItemDto> getHomeItemDto(){
+        Pageable pageable = PageRequest.of(0, 12, Sort.by("id").descending());
+        Page<Item> page = itemRepository.findAll(pageable);
+        return page.getContent().stream()
+                .map(CardItemDto::toDto)
+                .collect(Collectors.toList());
+    }
 
 }
 
