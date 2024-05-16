@@ -29,7 +29,7 @@ public class SearchController {
         return itemService.getItemRequestDto(id);
     }
 
-    @GetMapping("get/home")
+    @GetMapping("gewwt/home")
     public List<CardItemDto> getHome(){
         return itemService.getHomeItemDto();
     }
