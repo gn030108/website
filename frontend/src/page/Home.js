@@ -39,9 +39,7 @@ const Home = () => {
       <SideBar/>
       <div className={styles.container}>
         <div style={{width:'fit-content'}}>
-            <Card
-              // list={itemList}
-            />
+            <Card/>
         </div>
       </div>
       <Footer/>

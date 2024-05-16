@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from '../styles/componentStyle/card.module.scss'
 import { useEffect, useState } from 'react';
+import useAxiosInstance from '../api/axiosInstance';
 
 // 리스트를 한 줄에 표시할 수 있는 그룹으로 나누는 함수
 const groupItems = (data, itemsPerRow) => {
@@ -40,9 +41,27 @@ const Card = () => {
   ]
   
   const navigate = useNavigate()
+  const axiosInstance = useAxiosInstance()
 
-  const goItem = ()=>{
+  const goItem = (index,groupIndex)=>{
+    // const id = itemsPerRow*index+(groupIndex+1)
+    // console.log(id)
+
+    const id = 1
+
+    axiosInstance.get(`/item/get/${id}`)
+    .then(response =>{
+      console.log(response)
+      console.log('성공!')
+    })
+    .catch(error=>{
+      console.log(error)
+      console.log('실패')
+    })
+
+
     navigate("/Item")
+    
   }
 
   useEffect(() => {
@@ -82,7 +101,7 @@ const Card = () => {
       {groupedItems.map((group, index)=>(
         <div className={styles.layout} key={index}>
           {group.map((item, groupIndex)=>(
-            <div className={styles.card} key={groupIndex} onClick={()=>(goItem())}>
+            <div className={styles.card} key={groupIndex} onClick={()=>(goItem(index,groupIndex))}>
               <div className={styles.imgArea}>
                 <div className={styles.img_box}>
                   <img src={item.image} alt='이미지'/>
