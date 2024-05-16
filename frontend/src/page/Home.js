@@ -20,7 +20,7 @@ const Home = () => {
 
     const id = 1
 
-    axiosInstance.get(`/item/get/${id}`)
+    axiosInstance.get('/item/get/home')
     .then(response =>{
       dispatch(homeActions.getItemList(response.data))
       console.log(response)
@@ -28,6 +28,7 @@ const Home = () => {
     })
     .catch(error=>{
       console.log(error)
+      console.log('실패')
     })
   })
 
