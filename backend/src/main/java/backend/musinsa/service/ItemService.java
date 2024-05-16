@@ -106,7 +106,7 @@ public class ItemService {
     }
 
     public List<CardItemDto> getHomeItemDto(){
-        Pageable pageable = PageRequest.of(0, 12, Sort.by("id").descending());
+        Pageable pageable = PageRequest.of(0, 3, Sort.by("id").descending());
         Page<Item> page = itemRepository.findAll(pageable);
         return page.getContent().stream()
                 .map(CardItemDto::toDto)
