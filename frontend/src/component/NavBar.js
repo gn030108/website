@@ -27,7 +27,7 @@ const NavBar = () => {
   const [handleMenu, setHandleMenu] = useState(false)
 
   //카테고리 드롭 작동 함수
-  const [handleDrop, setHandleDrop] = useState(true);
+  const [handleDrop, setHandleDrop] = useState(false);
 
 
   //로그인 감지함수
@@ -237,40 +237,40 @@ const NavBar = () => {
           onMouseEnter={() => setHandleDrop(true)} 
           onMouseLeave={() => setHandleDrop(false)}
         >
-            <ul>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>Outer</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>아우터 전체</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>슈트/블레이저</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>코트</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>패딩</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>가디건</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>블루종/MA-1</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>후드집업</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>더보기</a></li>
-            </ul>
-            <ul>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>Top</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>상의 전체</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>맨투맨/스웨트셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>긴소매 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>반소매 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>셔츠/블라우스</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>후드 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>피케/카라 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>더보기</a></li>
-            </ul>
-            <ul>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>Pants</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>하의 전체</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>데님 팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>코튼 팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>슈트 팬츠/슬랙스</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>트레이닝/조거팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>숏 팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>레깅스</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>더보기</a></li>
-            </ul>
-        </div>
+        <ul>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>Outer</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>아우터 전체</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>슈트/블레이저</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>코트</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>패딩</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>가디건</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>블루종/MA-1</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>후드집업</a></li>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>더보기</a></li>
+        </ul>
+        <ul>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>Top</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>상의 전체</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>맨투맨/스웨트셔츠</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>긴소매 티셔츠</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>반소매 티셔츠</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>셔츠/블라우스</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>후드 티셔츠</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>피케/카라 티셔츠</a></li>
+          <li onClick={()=>(goList('top'))}><a href='#!'>더보기</a></li>
+        </ul>
+        <ul>
+          <li onClick={()=>(goList('outer'))}><a href='#!'>Pants</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>하의 전체</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>데님 팬츠</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>코튼 팬츠</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>슈트 팬츠/슬랙스</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>트레이닝/조거팬츠</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>숏 팬츠</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>레깅스</a></li>
+          <li onClick={()=>(goList('pants'))}><a href='#!'>더보기</a></li>
+        </ul>
+      </div>
     </div>
   )
 }
