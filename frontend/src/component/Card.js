@@ -1,7 +1,6 @@
-import 김민주 from '../image/김민주.png'
-import 김민주1 from '../image/김민주1.png'
-import 김민주2 from '../image/김민주2.png'
-import 김민주3 from '../image/김민주3.png'
+import 상의 from '../image/상의.jpg'
+import 바지 from '../image/바지.jpg'
+import 신발 from '../image/신발.jpg'
 import { useNavigate } from 'react-router-dom';
 
 import styles from '../styles/componentStyle/card.module.scss'
@@ -26,18 +25,19 @@ const Card = () => {
 
   // 사진, 브랜드 , 상품이름, 가격, 평점, 좋아요
   const list = [
-    {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-    {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
-    {image : 김민주,  brand : '인스타',  name : '김민주'  ,price:'000000', star:'5', heart:'588'},
-    {image : 김민주1, brand : '트위터',  name : '김민주1' ,price:'000000', star:'5', heart:'88'},
-    {image : 김민주2, brand : '아이즈원',name : '김민주2' ,price:'000000', star:'5', heart:'128'},
-    {image : 김민주3, brand : '카톡',    name : '김민주3' ,price:'000000', star:'5', heart:'568'},
+
+    {image : 상의, brand : '수아레',  name : '반팔 니트' ,price:'000000', star:'5', heart:'88'},
+    {image : 바지, brand : '디미트리블랙',name : '버뮤다 팬츠' ,price:'000000', star:'5', heart:'128'},
+    {image : 신발, brand : '반스',    name : '스니커즈' ,price:'000000', star:'5', heart:'568'},
+    {image : 상의, brand : '수아레',  name : '반팔 니트' ,price:'000000', star:'5', heart:'88'},
+    {image : 바지, brand : '디미트리블랙',name : '버뮤다 팬츠' ,price:'000000', star:'5', heart:'128'},
+    {image : 신발, brand : '반스',    name : '스니커즈' ,price:'000000', star:'5', heart:'568'},
+    {image : 상의, brand : '수아레',  name : '반팔 니트' ,price:'000000', star:'5', heart:'88'},
+    {image : 바지, brand : '디미트리블랙',name : '버뮤다 팬츠' ,price:'000000', star:'5', heart:'128'},
+    {image : 신발, brand : '반스',    name : '스니커즈' ,price:'000000', star:'5', heart:'568'},
+    {image : 상의, brand : '수아레',  name : '반팔 니트' ,price:'000000', star:'5', heart:'88'},
+    {image : 바지, brand : '디미트리블랙',name : '버뮤다 팬츠' ,price:'000000', star:'5', heart:'128'},
+    {image : 신발, brand : '반스',    name : '스니커즈' ,price:'000000', star:'5', heart:'568'},
   ]
   
   const navigate = useNavigate()
@@ -79,7 +79,7 @@ const Card = () => {
       }
       else if (width > 768) {
         setItemsPerRow(5);
-        console.log('5');
+        console.log('6');
       }
     };
   

@@ -4,7 +4,7 @@ import SideBar from '../component/SideBar'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/pageStyle/basket.module.scss'
-import 김민주 from '../image/김민주.png'
+import 상의 from '../image/상의.jpg'
 import PaymentModal from '../component/PaymentModal'
 import { basketActions } from '../redux/reducer/pageReducer/basketReducer'
 
@@ -16,10 +16,10 @@ const Basket = () => {
 
   //체크리스트 데이터 가정
   const items = [
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
-    {img:김민주,name:'김민주사진',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {img:상의,name:'반팔 니트',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {img:상의,name:'반팔 니트',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {img:상의,name:'반팔 니트',option1:'M',option2:'린넨', price :'10000', count:'2'},
+    {img:상의,name:'반팔 니트',option1:'M',option2:'린넨', price :'10000', count:'2'},
   ]
 
   const checkItems = useSelector((state)=>state.basket.checkItems)

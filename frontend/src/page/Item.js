@@ -11,7 +11,6 @@ import 김민주2 from '../image/김민주2.png'
 import 김민주3 from '../image/김민주3.png'
 import 카리나 from '../image/카리나.png'
 import 아리 from '../image/아리.jpg'
-import 상품2 from '../image/상품2.jpg'
 import { useState } from 'react'
 
 const Item = () => {
