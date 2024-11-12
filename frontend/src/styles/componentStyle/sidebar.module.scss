@@ -1,21 +1,21 @@
-@import '../color';
+@import "../color";
 
-.sidebar{
-    position: fixed;
-    bottom: 10%;
-    right: 5%;
-    width: auto;
-    z-index: 20;
+.sidebar {
+  position: fixed;
+  bottom: 10%;
+  right: 17%;
+  width: auto;
+  z-index: 20;
 }
-.button{
-    width: fit-content;
-    padding: 3px 5px;
-    margin: 5px;
-    background-color: white;
-    border: 1px solid #CCCCCC;
-    border-radius: 30px;
-    cursor: pointer;
+.button {
+  width: fit-content;
+  padding: 3px 5px;
+  margin: 5px;
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-radius: 30px;
+  cursor: pointer;
 }
-.icon{
-    font-size: 30px;
+.icon {
+  font-size: 30px;
 }
