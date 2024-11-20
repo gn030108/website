@@ -1,171 +1,171 @@
-@import '../color';
+@import "../color";
 
 //노멀라이즈
-ul,li{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-a{
-    text-decoration: none;  
-    color: inherit; //부모 속성 
+a {
+  text-decoration: none;
+  color: inherit; //부모 속성
 }
 
 //css
-.sideMenu{
-    width: 200px;
-    min-height: 350px;
-    height: 40vh;
-    position: fixed; //화면을 따라오게 
-    -webkit-transform: translateZ(0);
-    // margin-top: calc((100vh - 80vh)/2);
-    top: 50%;
-    left: 0;
-    background-color:  $whiteGray;
-    z-index: 20;
-    // border-radius: 20px;
-    transform: translate( -150px , -50%);  /* X축 이동, Y축 고정 */
-    transition: .5s;
-    &:hover{
-        transform: translate(-20px, -50%);   /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
-    }
+.sideMenu {
+  width: 200px;
+  min-height: 350px;
+  height: 40vh;
+  position: fixed; //화면을 따라오게
+  -webkit-transform: translateZ(0);
+  // margin-top: calc((100vh - 80vh)/2);
+  top: 50%;
+  left: 0;
+  background-color: $whiteGray;
+  z-index: 20;
+  // border-radius: 20px;
+  transform: translate(-150px, -50%); /* X축 이동, Y축 고정 */
+  transition: 0.5s;
+  &:hover {
+    transform: translate(
+      -20px,
+      -50%
+    ); /* 둥근 모서리의 너비만큼 X축 이동, Y축 고정 */
+  }
 }
 /* 2차 이상의 메뉴 숨기기 */
-.sideMenu{
-    ul{
-        ul{
-            display: none;
-        }
-        //firstLi
-        li{
-            
-            padding-top: 20px;
-            padding-bottom: 20px;
-            a{
-                height: 32px;
-                color: #888;
-                font-size: 23px;
-                font-weight: bold;
-            }
-            //firstLi:hover
-            &:hover{
-                background-color: white;
-                border-bottom: 1px solid #999;
-                ul{ //2차 메뉴
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    left: 100%;
-                    width: 100%;
-                    background-color: $whiteGray;
-                    //secondLi
-                    li{ 
-                        cursor: pointer;
-                        &:hover{
-                            background-color:  white;
-                            border-bottom: 1px solid #999;
-                        }
-                        a{
-                            display: block;
-                            height: 33px;
-                            color: #888;
-                            font-size: 17px;
-                            font-weight: bold;
-                        }
-                    }
-                }
-            }
-        }
+.sideMenu {
+  ul {
+    ul {
+      display: none;
     }
+    //firstLi
+    li {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      a {
+        height: 32px;
+        color: #888;
+        font-size: 23px;
+        font-weight: bold;
+      }
+      //firstLi:hover
+      &:hover {
+        background-color: white;
+        border-bottom: 1px solid #999;
+        ul {
+          //2차 메뉴
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 100%;
+          width: 100%;
+          background-color: $whiteGray;
+          //secondLi
+          li {
+            cursor: pointer;
+            &:hover {
+              background-color: white;
+              border-bottom: 1px solid #999;
+            }
+            a {
+              display: block;
+              height: 33px;
+              color: #888;
+              font-size: 17px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-.firstUl{
-    // margin-top: calc((90vh - 80vh)/2);
-    margin-top: 21.6px;
+.firstUl {
+  // margin-top: calc((90vh - 80vh)/2);
+  margin-top: 21.6px;
 }
-
 
 /* 아이콘 시작 */
-.iconBox{
-    display: flex;
-    justify-content: flex-end;
-    height: fit-content;
+.iconBox {
+  display: flex;
+  justify-content: flex-end;
+  height: fit-content;
 }
 
-section{
-    position: relative;
-    width: 23px;
-    height: 17px;
-    margin: 15px;
-    margin-top: 20px;
-    transition: .5s;
-    div {
-        position: absolute;
-        width: 100%;
-        height: 20%;
-        background-color: #888;
-        transition: all 0.5s;
-    }
-    div:nth-of-type(1){
-        top: 0;
-        width: auto;
-        left: 0;
-        right: 0;
-        /* 커서를 인식하지 않을 때는 높이를 먼저 조절 후 너비 조절 */
-        transition: all 0.5s, left 0.25s 0.25s, right 0.25 0.25, height .0.25s 0s;
+section {
+  position: relative;
+  width: 23px;
+  height: 17px;
+  margin: 15px;
+  margin-top: 20px;
+  transition: 0.5s;
+  div {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background-color: #888;
+    transition: all 0.5s;
+  }
+  div:nth-of-type(1) {
+    top: 0;
+    width: auto;
+    left: 0;
+    right: 0;
+    /* 커서를 인식하지 않을 때는 높이를 먼저 조절 후 너비 조절 */
+    transition: all 0.5s, left 0.25s 0.25s, right 0.25 0.25, height 0.25s 0s;
+  }
+  div:nth-of-type(2) {
+    top: 40%;
+    transition: all 1s, width 0.5s 0s, rotate 0s 0.5s;
+  }
+  div:nth-of-type(3) {
+    top: 80%;
+    right: 0;
+    transition: all 1s, width 0.5s 0s, rotate 0s 0.5s;
+  }
+}
+.sideMenu:hover {
+  section {
+    transform: translate(-125px, 0);
 
+    div:nth-of-type(1) {
+      left: 41%;
+      right: 41%;
+      height: 100%;
+      /* 커서를 인식할 때는 너비를 먼저 조절 후 높이 조절 */
+      transition: all 0.5s, left 0.25s 0s, right 0.25s 0s, height 0.25s 0.25s;
     }
     div:nth-of-type(2) {
-        top: 40%;
-        transition:all 1s, width .5s 0s, rotate 0s .5s;
+      transform-origin: left bottom; /* transform-origin: 0% 100% */
+      transform: rotate(45deg);
+      transition: all 1s, width 0.5s 0s, rotate 0s 0.5s;
+      width: 70.5%;
+      height: 25%;
     }
     div:nth-of-type(3) {
-        top: 80%;
-        right: 0;
-        transition:all 1s, width .5s 0s, rotate 0s .5s;
+      transform-origin: right bottom; /* transform-origin: 0% 100% */
+      transform: rotate(-45deg);
+      transition: all 1s, width 0.5s 0s, rotate 0s 0.5s;
+      top: 40%;
+      width: 70.5%;
+      height: 25%;
     }
+  }
 }
-.sideMenu:hover{
-    section{
-        transform: translate(-125px,0);
-        
-        div:nth-of-type(1){
-            left: 41%;
-            right: 41%;
-            height: 100%;
-            /* 커서를 인식할 때는 너비를 먼저 조절 후 높이 조절 */
-            transition: all 0.5s, left 0.25s 0s, right 0.25s 0s, height 0.25s 0.25s;
-    
-        }
-        div:nth-of-type(2) {
-            transform-origin: left bottom;   /* transform-origin: 0% 100% */
-            transform: rotate(45deg);
-            transition:all 1s, width .5s 0s, rotate 0s .5s;
-            width: 70.5%;
-            height: 25%;
-        }
-        div:nth-of-type(3) {
-            transform-origin: right bottom;   /* transform-origin: 0% 100% */
-            transform: rotate(-45deg);
-            transition:all 1s, width .5s 0s, rotate 0s .5s;
-            top: 40%;
-            width: 70.5%;
-            height: 25%;
-        }
-    }
-}
-  /* 아이콘 끝 */
+/* 아이콘 끝 */
 
-
-//미디어쿼리 
-@media screen and (max-width:768px) {
-    .sideMenu{
-        display: none;
-    }
+//미디어쿼리
+@media screen and (max-width: 768px) {
+  .sideMenu {
+    display: none;
+  }
 }
-@media screen and (max-width:480px) {
-    .sideMenu{
-        display: none;
-    }
+@media screen and (max-width: 480px) {
+  .sideMenu {
+    display: none;
+  }
 }
 //     /* 터치가능한 디바이스(스마트폰, 터치스크린) */
 // @media (hover: none) and (pointer: coarse) {

@@ -1,66 +1,63 @@
-@import '../color';
-.navbar{
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import "../color";
+.navbar {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.layout{
+.layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 77vh;
+  div {
+    width: 25%;
+    height: 50%;
+    border: 1px solid #cdcdcd;
+    border-radius: 75px;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 77vh;
-    div{
-        width: 25%;
-        height: 50%;
-        border: 1px solid #cdcdcd;
-        border-radius: 75px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        p{
-            width: 100px;
-            font-size: 26px;
-            font-weight: 500;
-        }
-        &:hover{
-            color: white;
-            background-color: #E5E5E5;
-        }
+    p {
+      width: 100px;
+      font-size: 26px;
+      font-weight: 500;
     }
-    div:nth-of-type(1){
-        margin-right: 50px;
-
+    &:hover {
+      color: white;
+      background-color: #e5e5e5;
     }
-    div:nth-of-type(2){
-        margin-left: 50px;
-    }
+  }
+  div:nth-of-type(1) {
+    margin-right: 50px;
+  }
+  div:nth-of-type(2) {
+    margin-left: 50px;
+  }
 }
 
-@media screen and (max-width:480px) {
-    .layout{
-        flex-direction: column;
-        div{
-            width: 50%;
-            height: 25%;
-            border-radius: 25px;
-            p{
-                width: 100px;
-                font-size: 20px;
-                font-weight: 500;
-            }
-        }
-        div:nth-of-type(1){
-            margin-bottom: 50px;
-            margin-right: 0px;
-    
-        }
-        div:nth-of-type(2){
-            margin-left: 0px;
-        }
-        
+@media screen and (max-width: 480px) {
+  .layout {
+    flex-direction: column;
+    div {
+      width: 50%;
+      height: 25%;
+      border-radius: 25px;
+      p {
+        width: 100px;
+        font-size: 20px;
+        font-weight: 500;
+      }
     }
+    div:nth-of-type(1) {
+      margin-bottom: 50px;
+      margin-right: 0px;
+    }
+    div:nth-of-type(2) {
+      margin-left: 0px;
+    }
+  }
 }

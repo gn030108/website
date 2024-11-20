@@ -1,203 +1,283 @@
-import { useDispatch, useSelector } from 'react-redux'
-import logo from '../image/로고.png'
-import {useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { loginActions } from '../redux/reducer/pageReducer/loginReducer'
-import styles from '../styles/componentStyle/navbar.module.scss'
-import useAxiosInstance from '../api/axiosInstance';
-import { navbarActions } from '../redux/reducer/componentReducer/navbarReducer';
-
+import { useDispatch, useSelector } from "react-redux";
+import logo from "../image/로고.png";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginActions } from "../redux/reducer/pageReducer/loginReducer";
+import styles from "../styles/componentStyle/navbar.module.scss";
+import useAxiosInstance from "../api/axiosInstance";
+import { navbarActions } from "../redux/reducer/componentReducer/navbarReducer";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const axiosInstance = useAxiosInstance();
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const axiosInstance=useAxiosInstance()
-
-  const memberId = useSelector((state)=>state.login.memberId)
-  const isLogin = useSelector((state)=>state.login.isLogin)
-  const loginType = useSelector((state)=>state.login.loginType)
-  const refreshToken = useSelector((state)=> state.login.refreshToken)
+  const memberId = useSelector((state) => state.login.memberId);
+  const isLogin = useSelector((state) => state.login.isLogin);
+  const loginType = useSelector((state) => state.login.loginType);
+  const refreshToken = useSelector((state) => state.login.refreshToken);
 
   //스크롤 감지 변수
-  const [up,setUp] = useState(true);
-  const [preScroll,setPreScroll] = useState(0)
+  const [up, setUp] = useState(true);
+  const [preScroll, setPreScroll] = useState(0);
 
   //top메뉴 작동함수
-  const [handleMenu, setHandleMenu] = useState(false)
+  const [handleMenu, setHandleMenu] = useState(false);
 
   //카테고리 드롭 작동 함수
   const [handleDrop, setHandleDrop] = useState(false);
 
-
   //로그인 감지함수
-  useEffect (()=>{
+  useEffect(() => {
     // 세션 스토리지에서 리프레시 토큰 가져오기
-    const refresh = sessionStorage.getItem('refreshToken');
-    const type = sessionStorage.getItem('loginType')
-    const Id = sessionStorage.getItem('memberId')
-  
+    const refresh = sessionStorage.getItem("refreshToken");
+    const type = sessionStorage.getItem("loginType");
+    const Id = sessionStorage.getItem("memberId");
+
     if (!refresh || refresh === null) {
       dispatch(loginActions.setLogOut());
-    } 
-    else {
+    } else {
       dispatch(loginActions.setLogin());
-      dispatch(loginActions.setLoginType(type))
-      dispatch(loginActions.getId(Id))
-      dispatch(loginActions.getRefreshToken(refresh))
+      dispatch(loginActions.setLoginType(type));
+      dispatch(loginActions.getId(Id));
+      dispatch(loginActions.getRefreshToken(refresh));
     }
   }, [dispatch]);
 
-
   //스크롤 감지 함수
-  useEffect(()=>{
+  useEffect(() => {
     //스크롤을 감지해 position 값을 변경
-    const onScroll= () => {
+    const onScroll = () => {
       const nowScroll = window.scrollY;
       //스크롤 위쪽
-      if (nowScroll<preScroll){
-        setUp(true)
+      if (nowScroll < preScroll) {
+        setUp(true);
       }
-      //스크롤 아래쪽 
-      else if (nowScroll>preScroll && handleMenu===false){
-        setUp(false)
+      //스크롤 아래쪽
+      else if (nowScroll > preScroll && handleMenu === false) {
+        setUp(false);
       }
-      setPreScroll(nowScroll)
-    }
-    window.addEventListener('scroll',onScroll);
+      setPreScroll(nowScroll);
+    };
+    window.addEventListener("scroll", onScroll);
 
-    return () =>{
-      window.removeEventListener('scroll',onScroll);
-    }
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   });
 
-  const goHome = ()=>{
-    navigate('/')
-  }
-  const goLoginSelect =()=>{
-    navigate('/LoginSelect')
-  }
-  const goSignIn =()=>{
-    navigate('/SignIn')
-  }
-  const goLike =()=>{
-    navigate('/Like')
-  }
-  const goBasket =()=>{
-    navigate('/Basket')
-  }
-  const goMyPage=()=>{
-    navigate('/MyPage')
-  }
-  const goAddGoods=()=>{
-    navigate('/AddGoods')
-  }
-  const goList = (type)=>{
-    console.log(type)
-    dispatch(navbarActions.getType(type))
-    navigate("/List")
-  }
-  const  logout = (e)=>{
-
+  const goHome = () => {
+    navigate("/");
+  };
+  const goLoginSelect = () => {
+    navigate("/LoginSelect");
+  };
+  const goSignIn = () => {
+    navigate("/SignIn");
+  };
+  const goLike = () => {
+    navigate("/Like");
+  };
+  const goBasket = () => {
+    navigate("/Basket");
+  };
+  const goMyPage = () => {
+    navigate("/MyPage");
+  };
+  const goAddGoods = () => {
+    navigate("/AddGoods");
+  };
+  const goList = (type) => {
+    console.log(type);
+    dispatch(navbarActions.getType(type));
+    navigate("/List");
+  };
+  const logout = (e) => {
     e.preventDefault();
 
-    axiosInstance.post('/member/logout', {
-      memberId: memberId
-    }, 
-    {
-      headers: {
-          Refresh: refreshToken
-      }
-    })
-    .then(response =>{
-      console.log(response)
-      dispatch(loginActions.LogOut())
-      sessionStorage.removeItem('refreshToken')
-      navigate('/')
-    })
-    .catch(error=>{
-      console.log(error)
-    })
-  }
+    axiosInstance
+      .post(
+        "/member/logout",
+        {
+          memberId: memberId,
+        },
+        {
+          headers: {
+            Refresh: refreshToken,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        dispatch(loginActions.LogOut());
+        sessionStorage.removeItem("refreshToken");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className={`${up ? styles.body : styles.body_down}`}>
-      {isLogin?(
+      {isLogin ? (
         <header>
-          {loginType==='public' &&(
-            <span className={styles.header_button} onClick={()=>{goMyPage()}}>마이페이지</span>
+          {loginType === "public" && (
+            <span
+              className={styles.header_button}
+              onClick={() => {
+                goMyPage();
+              }}
+            >
+              마이페이지
+            </span>
           )}
-          {loginType==='admin' &&(
-            <span className={styles.header_button} onClick={()=>{goAddGoods()}}>상품등록</span>
+          {loginType === "admin" && (
+            <span
+              className={styles.header_button}
+              onClick={() => {
+                goAddGoods();
+              }}
+            >
+              상품등록
+            </span>
           )}
-          <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
-          <span className={styles.header_button} onClick={(e)=>{logout(e)}}>로그아웃</span>
+          <span style={{ width: "auto", cursor: "default" }}>ㅣ</span>
+          <span
+            className={styles.header_button}
+            onClick={(e) => {
+              logout(e);
+            }}
+          >
+            로그아웃
+          </span>
         </header>
-      ):(
+      ) : (
         <header>
-          <span className={styles.header_button} onClick={()=>{goSignIn()}}>회원가입</span>
-          <span style={{width:'auto',cursor:'default'}}>ㅣ</span>
-          <span className={styles.header_button} onClick={()=>{goLoginSelect()}}>로그인</span>
+          <span
+            className={styles.header_button}
+            onClick={() => {
+              goSignIn();
+            }}
+          >
+            회원가입
+          </span>
+          <span style={{ width: "auto", cursor: "default" }}>ㅣ</span>
+          <span
+            className={styles.header_button}
+            onClick={() => {
+              goLoginSelect();
+            }}
+          >
+            로그인
+          </span>
         </header>
       )}
       {handleMenu && (
-      <div className={styles.topMenu_layout}>
-        <dl className={styles.topMenu_first}>
-          <dt>
-            outer
-          </dt>
-          <dd>
-            <ul>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>아우터 전체</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>슈트/블레이저</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>코트</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>패딩</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>가디건</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>블루종/MA-1</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>후드집업</a></li>
-              <li onClick={()=>(goList('outer'))}><a href='#!'>더보기</a></li>
-            </ul>
-          </dd>
-        </dl>
-        <dl className={styles.topMenu_first}>
-          <dt>
-            Top
-          </dt>
-          <dd>
-            <ul>
-              <li onClick={()=>(goList('top'))}><a href='#!'>상의 전체</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>맨투맨/스웨트셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>긴소매 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>반소매 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>셔츠/블라우스</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>후드 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>피케/카라 티셔츠</a></li>
-              <li onClick={()=>(goList('top'))}><a href='#!'>더보기</a></li>
-            </ul>
-          </dd>
-        </dl>
-        <dl className={styles.topMenu_first}>
-          <dt>
-            Pants
-          </dt>
-          <dd>
-            <ul>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>하의 전체</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>데님 팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>코튼 팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>슈트 팬츠/슬랙스</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>트레이닝/조거팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>숏 팬츠</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>레깅스</a></li>
-              <li onClick={()=>(goList('pants'))}><a href='#!'>더보기</a></li>
-            </ul>
-          </dd>
-        </dl>
-      </div>
-        )}
+        <div className={styles.topMenu_layout}>
+          <dl className={styles.topMenu_first}>
+            <dt>outer</dt>
+            <dd>
+              <ul>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">아우터 전체</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">슈트/블레이저</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">코트</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">패딩</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">가디건</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">블루종/MA-1</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">후드집업</a>
+                </li>
+                <li onClick={() => goList("outer")}>
+                  <a href="#!">더보기</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <dl className={styles.topMenu_first}>
+            <dt>Top</dt>
+            <dd>
+              <ul>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">상의 전체</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">맨투맨/스웨트셔츠</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">긴소매 티셔츠</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">반소매 티셔츠</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">셔츠/블라우스</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">후드 티셔츠</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">피케/카라 티셔츠</a>
+                </li>
+                <li onClick={() => goList("top")}>
+                  <a href="#!">더보기</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <dl className={styles.topMenu_first}>
+            <dt>Pants</dt>
+            <dd>
+              <ul>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">하의 전체</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">데님 팬츠</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">코튼 팬츠</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">슈트 팬츠/슬랙스</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">트레이닝/조거팬츠</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">숏 팬츠</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">레깅스</a>
+                </li>
+                <li onClick={() => goList("pants")}>
+                  <a href="#!">더보기</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      )}
       <main>
         <div className={styles.left}>
-          <div className={styles.menuIconBox} onClick={()=>{setHandleMenu(!handleMenu)}}>
+          <div
+            className={styles.menuIconBox}
+            onClick={() => {
+              setHandleMenu(!handleMenu);
+            }}
+          >
             <section>
               <div></div>
               <div></div>
@@ -205,74 +285,145 @@ const NavBar = () => {
             </section>
           </div>
           <span>
-            <img src={logo} onClick={()=>{goHome()}} className={styles.logo} alt='로고'/>
+            <img
+              src={logo}
+              onClick={() => {
+                goHome();
+              }}
+              className={styles.logo}
+              alt="로고"
+            />
           </span>
-        </div>  
+        </div>
 
         <div className={styles.category}>
-          <div onMouseEnter={() => setHandleDrop(true)} onMouseLeave={() => setHandleDrop(false)}>
+          <div
+            onMouseEnter={() => setHandleDrop(true)}
+            onMouseLeave={() => setHandleDrop(false)}
+          >
             <span>Men</span>
           </div>
-          <div onMouseEnter={() => setHandleDrop(true)} onMouseLeave={() => setHandleDrop(false)}>
+          <div
+            onMouseEnter={() => setHandleDrop(true)}
+            onMouseLeave={() => setHandleDrop(false)}
+          >
             <span>Women</span>
           </div>
         </div>
 
         <div className={styles.info}>
           <span className={styles.search}>
-            <input className={styles.search_input} placeholder='검색'/>
+            <input className={styles.search_input} placeholder="검색" />
             <i className={`ri-search-line ${styles.search_icon}`}></i>
           </span>
-          <span className={styles.icon} onClick={()=>(goBasket())}>
+          <span className={styles.icon} onClick={() => goBasket()}>
             <i className="ri-shopping-bag-line"></i>
           </span>
-          <span className={styles.icon} onClick={()=>(goLike())}>
+          <span className={styles.icon} onClick={() => goLike()}>
             <i className="ri-heart-line"></i>
           </span>
         </div>
       </main>
       {/* 1024px이상 메뉴 */}
-      <div 
-          className={handleDrop ? styles.category_Top_drop_after : styles.category_Top_drop_before} 
-          onMouseEnter={() => setHandleDrop(true)} 
-          onMouseLeave={() => setHandleDrop(false)}
-        >
+      <div
+        className={
+          handleDrop
+            ? styles.category_Top_drop_after
+            : styles.category_Top_drop_before
+        }
+        onMouseEnter={() => setHandleDrop(true)}
+        onMouseLeave={() => setHandleDrop(false)}
+      >
         <ul>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>Outer</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>아우터 전체</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>슈트/블레이저</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>코트</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>패딩</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>가디건</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>블루종/MA-1</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>후드집업</a></li>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>더보기</a></li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">Outer</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">아우터 전체</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">슈트/블레이저</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">코트</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">패딩</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">가디건</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">블루종/MA-1</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">후드집업</a>
+          </li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">더보기</a>
+          </li>
         </ul>
         <ul>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>Top</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>상의 전체</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>맨투맨/스웨트셔츠</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>긴소매 티셔츠</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>반소매 티셔츠</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>셔츠/블라우스</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>후드 티셔츠</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>피케/카라 티셔츠</a></li>
-          <li onClick={()=>(goList('top'))}><a href='#!'>더보기</a></li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">Top</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">상의 전체</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">맨투맨/스웨트셔츠</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">긴소매 티셔츠</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">반소매 티셔츠</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">셔츠/블라우스</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">후드 티셔츠</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">피케/카라 티셔츠</a>
+          </li>
+          <li onClick={() => goList("top")}>
+            <a href="#!">더보기</a>
+          </li>
         </ul>
         <ul>
-          <li onClick={()=>(goList('outer'))}><a href='#!'>Pants</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>하의 전체</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>데님 팬츠</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>코튼 팬츠</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>슈트 팬츠/슬랙스</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>트레이닝/조거팬츠</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>숏 팬츠</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>레깅스</a></li>
-          <li onClick={()=>(goList('pants'))}><a href='#!'>더보기</a></li>
+          <li onClick={() => goList("outer")}>
+            <a href="#!">Pants</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">하의 전체</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">데님 팬츠</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">코튼 팬츠</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">슈트 팬츠/슬랙스</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">트레이닝/조거팬츠</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">숏 팬츠</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">레깅스</a>
+          </li>
+          <li onClick={() => goList("pants")}>
+            <a href="#!">더보기</a>
+          </li>
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

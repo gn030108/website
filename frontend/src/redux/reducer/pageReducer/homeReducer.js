@@ -1,19 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createSlice } from "@reduxjs/toolkit";
 
 let initialState = {
-    itemList : [],
+  itemList: [],
 };
 
 const homeSlice = createSlice({
-    name:"home",
-    initialState,
-    reducers:{
-        getItemList(state,action){
-            state.itemList=action.payload
-        }
-    }
-})
+  name: "home",
+  initialState,
+  reducers: {
+    getItemList(state, action) {
+      state.itemList = action.payload;
+    },
+  },
+});
 
-export const homeActions = homeSlice.actions
-export default homeSlice.reducer
+export const homeActions = homeSlice.actions;
+export default homeSlice.reducer;

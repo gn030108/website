@@ -1,16 +1,14 @@
-import React from 'react'
-import styles from '../styles/componentStyle/review.module.scss'
-import 김민주 from '../image/김민주.png'
-import Comment from './Comment'
-import { useSelector } from 'react-redux'
+import React from "react";
+import styles from "../styles/componentStyle/review.module.scss";
+import Comment from "./Comment";
+import { useSelector } from "react-redux";
 
 const Review = () => {
-
-  const reviewList = useSelector((state)=>state.review.reviewList)
+  const reviewList = useSelector((state) => state.review.reviewList);
 
   return (
-    <div style={{width:'100%'}}>
-      {reviewList.map((review,index)=>(
+    <div style={{ width: "100%" }}>
+      {reviewList.map((review, index) => (
         // 구매자 리뷰
         <div key={index}>
           {/* 구매자 이름 */}
@@ -29,7 +27,7 @@ const Review = () => {
           <div>
             {/* 상품사진 및 이름 사이즈 */}
             <div className={styles.itemImgName}>
-              <img src={review.itemImage} alt='이미지'/>
+              <img src={review.itemImage} alt="이미지" />
               <div className={styles.itemName}>
                 <p>{review.itemName}</p>
                 <p> {review.itemOption}구매</p>
@@ -37,16 +35,19 @@ const Review = () => {
             </div>
             {/* 별점 */}
             <div className={styles.stars}>
-            {[...Array(parseInt(review.stars))].map((_, index) => (
-              <i className="ri-star-fill" key={index} style={{color:'#FF933B'}}></i>
-            ))}
+              {[...Array(parseInt(review.stars))].map((_, index) => (
+                <i
+                  className="ri-star-fill"
+                  key={index}
+                  style={{ color: "#FF933B" }}
+                ></i>
+              ))}
             </div>
             {/* 상품 태그 (사이즈, 밝기, 색감, 두깨감, 배송, 포장) */}
             <div className={styles.tags_box}>
               <div>
                 <p>사이즈</p>
                 <p>{review.size}</p>
-                
               </div>
               <div>
                 <p>밝기</p>
@@ -76,23 +77,22 @@ const Review = () => {
               <p>정말 좋습니다 재구매 의사있습니다.</p>
             </div>
             <div className={styles.review_img}>
-              {review.image.map((image,index)=>(
-                <img src={image} key={index} alt='이미지'/>
+              {review.image.map((image, index) => (
+                <img src={image} key={index} alt="이미지" />
               ))}
             </div>
           </div>
           <div className={styles.comment_layout}>
             <div className={styles.comment_box}>
-              <input/>
+              <input />
               <button>작성</button>
             </div>
-            <Comment/>
+            <Comment />
           </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Review
-
+export default Review;

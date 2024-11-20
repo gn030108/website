@@ -1,25 +1,25 @@
-.layout{
-    width: 100%;
+.layout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  label {
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    label{
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #cdcdcd;
-        border-left: none;
-        outline: none;
-        cursor: pointer;
-    }
-    label:first-of-type{
-        border-left: 1px solid #cdcdcd;
-        border-top-left-radius: 13px;
-        border-bottom-left-radius: 13px;
-    }
-    label:last-of-type{
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
+    border: 1px solid #cdcdcd;
+    border-left: none;
+    outline: none;
+    cursor: pointer;
+  }
+  label:first-of-type {
+    border-left: 1px solid #cdcdcd;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+  }
+  label:last-of-type {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
 }

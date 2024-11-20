@@ -34,9 +34,10 @@ const Item = () => {
 
   const [isView, setIsView] = useState(false); //더보기 & 접기 상태 저장
 
+  //더보기 & 접기 상태 변경함수
   const handleViewImage = () => {
     setIsView(!isView);
-  }; //더보기 & 접기 상태 변경함수
+  };
 
   return (
     <div>

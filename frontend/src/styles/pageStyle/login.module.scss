@@ -1,106 +1,105 @@
-@import '../color';
-.navbar{
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import "../color";
+.navbar {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container{
-    width: auto;
-    height: auto;
-    min-height: calc(85.9vh - 200px);
-    padding-bottom: 50px;
-    margin: 50px 100px 0px 100px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.container {
+  width: auto;
+  height: auto;
+  min-height: calc(85.9vh - 200px);
+  padding-bottom: 50px;
+  margin: 50px 100px 0px 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.layout{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    margin: 50px 100px 0px 100px;
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin: 50px 100px 0px 100px;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    padding: 50px;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  padding: 50px;
 
-    input{
-        width: 460px;
-        height: 36px;
-        font-size: 20px;
-        font-weight: 500;
-        outline: none;
-        border: none;
-        border-bottom: 2px solid #E5E5E5;
-        margin: 20px 0;
-        padding: 0 20px;
-    }
-    button{
-        width: 500px;
-        height: 30px;
-        outline: none;
-        border: none;
-        margin-top: 50px;
-        font-size: 20px;
-        font-weight: 500;
-        border-radius: 20px;
-        color: white;
-        background-color: black;
-        &:hover{
-            background-color: #dcdcdc;
-            transition: all 0.2s;
-        }
-    }
-}
-.selectBox{
+  input {
+    width: 460px;
+    height: 36px;
+    font-size: 20px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #e5e5e5;
+    margin: 20px 0;
+    padding: 0 20px;
+  }
+  button {
     width: 500px;
-    margin: 20px 0px;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+    &:hover {
+      background-color: #dcdcdc;
+      transition: all 0.2s;
+    }
+  }
+}
+.selectBox {
+  width: 500px;
+  margin: 20px 0px;
 }
 
-@media screen and (max-width:786px){
-    .layout{
-        form{
-            width: 500px;
-            padding: 30px;
-            input{
-                width: 360px;
-            }
-            button{
-                width: 400px;
-            }
-        }
-    }
-    .selectBox{
+@media screen and (max-width: 786px) {
+  .layout {
+    form {
+      width: 500px;
+      padding: 30px;
+      input {
+        width: 360px;
+      }
+      button {
         width: 400px;
-        margin: 20px 0px;
+      }
     }
+  }
+  .selectBox {
+    width: 400px;
+    margin: 20px 0px;
+  }
 }
-@media screen and (max-width:480px){
-    .layout{
-        form{
-            width: 200px;
-            padding: 30px;
-            input{
-                width: 160px;
-            }
-            button{
-                width: 200px;
-            }
-        }
-    }
-    .selectBox{
+@media screen and (max-width: 480px) {
+  .layout {
+    form {
+      width: 200px;
+      padding: 30px;
+      input {
+        width: 160px;
+      }
+      button {
         width: 200px;
-        margin: 20px 0px;
+      }
     }
+  }
+  .selectBox {
+    width: 200px;
+    margin: 20px 0px;
+  }
 }
-
